@@ -7,6 +7,13 @@ local Util    = require('opus.util')
 local GPS     = require('opus.gps')
 local Point   = require('opus.point')
 
+-- open all attached modems so the server can communicate
+for _, side in ipairs(peripheral.getNames()) do
+  if peripheral.getType(side) == 'modem' then
+    pcall(rednet.open, side)
+  end
+end
+
 --[[
 This is a simplified example server implementing the architecture
 outlined by the user. Many advanced features are placeholders and
@@ -184,6 +191,13 @@ end
 function TurtleController:update(id, data)
   self:addTurtle(id)
   Util.merge(self.turtles[id], data)
+  local list = {}
+  for tid in pairs(self.turtles) do
+    table.insert(list, tid)
+  end
+  table.sort(list)
+  mainPage.tabs.network.status.value = 'Turtles: ' .. table.concat(list, ', ')
+  mainPage.tabs.network.status:draw()
 end
 
 function TurtleController:send(id, command, args)
