@@ -53,7 +53,8 @@ local function doScan()
   if scanner and scanner.scan then
     local ok, data = pcall(scanner.scan, 5)
     if ok then
-      rednet.broadcast({ type = 'scan', data = data }, protocol)
+      local pos = getPosition()
+      rednet.broadcast({ type = 'scan', origin = pos, data = data }, protocol)
     end
   end
 end

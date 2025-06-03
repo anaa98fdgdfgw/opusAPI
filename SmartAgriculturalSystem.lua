@@ -183,6 +183,7 @@ function TurtleController:addTurtle(id)
     self.turtles[id] = {
       id = id,
       state = 'IDLE',
+      lastSeen = os.clock(),
     }
     Logger:info('Turtle ' .. id .. ' added')
   end
@@ -190,21 +191,102 @@ end
 
 function TurtleController:update(id, data)
   self:addTurtle(id)
-  Util.merge(self.turtles[id], data)
+  local t = self.turtles[id]
+  if t.position and data.position then
+    local dx = data.position.x - t.position.x
+    local dz = data.position.z - t.position.z
+    if math.abs(dx) + math.abs(dz) == 1 then
+      if dx == 1 then t.facing = 'east'
+      elseif dx == -1 then t.facing = 'west'
+      elseif dz == 1 then t.facing = 'south'
+      elseif dz == -1 then t.facing = 'north' end
+    end
+  end
+  Util.merge(t, data)
+  t.lastSeen = os.clock()
   local list = {}
   for tid in pairs(self.turtles) do
     table.insert(list, tid)
   end
   table.sort(list)
   if mainPage.tabs and mainPage.tabs.network then
-    mainPage.tabs.network.status.value = 'Turtles: ' .. table.concat(list, ', ')
-    mainPage.tabs.network.status:draw()
+    local values = {}
+    for _,tid in ipairs(list) do
+      local t = self.turtles[tid]
+      table.insert(values, {
+        id = tid,
+        fuel = t.fuel,
+        state = t.state,
+        last = string.format('%.1f', os.clock() - t.lastSeen)
+      })
+    end
+    mainPage.tabs.network.grid:setValues(values)
+    mainPage.tabs.network.grid:draw()
+  end
+end
+
+function TurtleController:prune(timeout)
+  for id,t in pairs(self.turtles) do
+    if os.clock() - (t.lastSeen or 0) > timeout then
+      Logger:warn('Turtle ' .. id .. ' timed out')
+      self.turtles[id] = nil
+    end
   end
 end
 
 function TurtleController:send(id, command, args)
+  local t = self.turtles[id]
+  if not t then
+    return false
+  end
   local msg = { type = 'cmd', cmd = command, args = args }
-  Communication.send(id, msg)
+  if Communication.send(id, msg) then
+    t.state = 'BUSY'
+    return true
+  end
+  return false
+end
+
+function TurtleController:moveTo(id, goal)
+  local t = self.turtles[id]
+  if not t or not t.position then
+    return false
+  end
+  local path = SmartPathfinder:find(t.position, goal)
+  if not path then
+    Logger:warn('No path for turtle ' .. id)
+    return false
+  end
+  for i = 2, #path do
+    local prev = path[i - 1]
+    local cur  = path[i]
+    local dx = cur.x - prev.x
+    local dy = cur.y - prev.y
+    local dz = cur.z - prev.z
+    if dy ~= 0 then
+      local dir = dy > 0 and 'up' or 'down'
+      if not self:send(id, 'move', { dir }) then return false end
+    else
+      local targetFacing
+      if dx == 1 then targetFacing = 'east'
+      elseif dx == -1 then targetFacing = 'west'
+      elseif dz == 1 then targetFacing = 'south'
+      elseif dz == -1 then targetFacing = 'north' end
+      if targetFacing then
+        while t.facing and t.facing ~= targetFacing do
+          self:send(id, 'move', { 'turnRight' })
+          -- assume turn right updates facing clockwise
+          local order = { east='south', south='west', west='north', north='east' }
+          t.facing = order[t.facing]
+        end
+        if not t.facing then t.facing = targetFacing end
+        if not self:send(id, 'move', { 'forward' }) then return false end
+        -- update predicted position
+        t.position = { x = cur.x, y = cur.y, z = cur.z }
+      end
+    end
+  end
+  return true
 end
 
 -- Task manager ---------------------------------------------------------------
@@ -216,15 +298,44 @@ local TaskManager = {
 }
 
 function TaskManager:add(priority, task)
+  task.id = math.random(1, 1e9)
+  task.priority = priority
   table.insert(self.queues[priority], task)
+  Logger:info('Task '..task.id..' queued ('..priority..')')
 end
 
-function TaskManager:nextTask()
+function TaskManager:assign()
   for _,p in ipairs(self.order) do
     local q = self.queues[p]
-    if #q > 0 then
-      return table.remove(q, 1)
+    for i = #q,1,-1 do
+      local task = q[i]
+      if not task.turtle then
+        local bestId, bestScore
+        for id,t in pairs(TurtleController.turtles) do
+          if t.state == 'IDLE' and t.position then
+            local score = task.dest and Point.distance(t.position, task.dest) or 0
+            if not bestScore or score < bestScore then
+              bestScore = score
+              bestId = id
+            end
+          end
+        end
+        if bestId then
+          task.turtle = bestId
+          table.remove(q, i)
+          Logger:info('Assign task '..task.id..' to turtle '..bestId)
+          TaskManager:execute(task)
+        end
+      end
     end
+  end
+end
+
+function TaskManager:execute(task)
+  if task.cmd == 'moveTo' and task.dest then
+    TurtleController:moveTo(task.turtle, task.dest)
+  elseif task.cmd == 'scan' then
+    TurtleController:send(task.turtle, 'scan')
   end
 end
 
@@ -235,7 +346,16 @@ local mainPage = UI.Page {
     x = 1, y = 2, ex = -1, ey = -1,
     network = UI.Tab {
       index = 1, title = 'Network',
-      status = UI.Text { x = 2, y = 2, value = 'Waiting for turtles...' },
+      grid = UI.ScrollingGrid {
+        x = 1, y = 2, ex = -1, ey = -1,
+        columns = {
+          { heading = 'ID', key = 'id', width = 6 },
+          { heading = 'Fuel', key = 'fuel', width = 6 },
+          { heading = 'State', key = 'state', width = 8 },
+          { heading = 'Last', key = 'last', width = 6 },
+        },
+        values = {},
+      },
     },
     map = UI.Tab {
       index = 2, title = 'Map',
@@ -243,7 +363,16 @@ local mainPage = UI.Page {
     },
     tasks = UI.Tab {
       index = 3, title = 'Tasks',
-      info = UI.Text { x = 2, y = 2, value = 'Task manager (todo)' },
+      grid = UI.ScrollingGrid {
+        x = 1, y = 2, ex = -1, ey = -1,
+        columns = {
+          { heading = 'ID', key = 'id', width = 8 },
+          { heading = 'Cmd', key = 'cmd', width = 8 },
+          { heading = 'Turtle', key = 'turtle', width = 7 },
+          { heading = 'State', key = 'state', width = 8 },
+        },
+        values = {},
+      },
     },
     control = UI.Tab {
       index = 4, title = 'Control',
@@ -276,6 +405,8 @@ Event.on({ 'rednet_message' }, function(id, msg, proto)
   if proto == Communication.protocol and type(msg) == 'table' then
     if msg.type == 'status' then
       TurtleController:update(id, msg.data)
+    elseif msg.type == 'scan' and msg.origin and msg.data then
+      WorldMap:update(msg.data, msg.origin)
     elseif msg.ack then
       -- ignore acks
     else
@@ -293,6 +424,18 @@ Event.onInterval(2, function()
   if mainPage.tabs and mainPage.tabs.logs then
     mainPage.tabs.logs.grid:setValues(values)
     mainPage.tabs.logs.grid:draw()
+  end
+  TaskManager:assign()
+  TurtleController:prune(10)
+  if mainPage.tabs and mainPage.tabs.tasks then
+    local tv = {}
+    for _,p in ipairs(TaskManager.order) do
+      for _,task in ipairs(TaskManager.queues[p]) do
+        table.insert(tv, { id = task.id, cmd = task.cmd, turtle = task.turtle or '-', state = 'queued' })
+      end
+    end
+    mainPage.tabs.tasks.grid:setValues(tv)
+    mainPage.tabs.tasks.grid:draw()
   end
 end)
 
