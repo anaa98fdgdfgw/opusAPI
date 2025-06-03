@@ -18,9 +18,9 @@ local state = 'IDLE'
 local scanner = peripheral.find('geoScanner') or peripheral.find('plethora:scanner')
 
 local function getPosition()
-  local x,y,z = GPS.locate(2, false)
-  if x then
-    return { x = math.floor(x+0.5), y = math.floor(y+0.5), z = math.floor(z+0.5) }
+  local pos = GPS.getPoint(2, false)
+  if pos then
+    return { x = pos.x, y = pos.y, z = pos.z }
   end
 end
 
