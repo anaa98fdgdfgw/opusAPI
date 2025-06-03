@@ -14,6 +14,7 @@ end
 
 local protocol = 'smart_agro'
 local state = 'IDLE'
+local serverId
 
 local scanner = peripheral.find('geoScanner') or peripheral.find('plethora:scanner')
 
@@ -42,6 +43,28 @@ local function getStatus()
     inventory = getInventory(),
     state     = state,
   }
+end
+
+local function registerWithServer()
+  state = 'REGISTER'
+  local token = math.random(1, 1e9)
+  local msg = { type = 'register', token = token, data = getStatus() }
+  for attempt = 1, 3 do
+    rednet.broadcast(msg, protocol)
+    local timer = os.startTimer(2 ^ attempt)
+    while true do
+      local e, p1, p2, p3 = os.pullEvent()
+      if e == 'rednet_message' and p3 == protocol and type(p2) == 'table' and p2.ack == token then
+        serverId = p1
+        state = 'IDLE'
+        return true
+      elseif e == 'timer' and p1 == timer then
+        break
+      end
+    end
+  end
+  state = 'IDLE'
+  return false
 end
 
 local function sendStatus()
@@ -133,6 +156,7 @@ Event.on({ 'rednet_message' }, function(id, msg, proto)
   end
 end)
 
--- initial status
+-- register with the server and send initial status
+registerWithServer()
 sendStatus()
 Event.pullEvents()
