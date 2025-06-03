@@ -196,8 +196,10 @@ function TurtleController:update(id, data)
     table.insert(list, tid)
   end
   table.sort(list)
-  mainPage.tabs.network.status.value = 'Turtles: ' .. table.concat(list, ', ')
-  mainPage.tabs.network.status:draw()
+  if mainPage.tabs and mainPage.tabs.network then
+    mainPage.tabs.network.status.value = 'Turtles: ' .. table.concat(list, ', ')
+    mainPage.tabs.network.status:draw()
+  end
 end
 
 function TurtleController:send(id, command, args)
@@ -288,8 +290,10 @@ Event.onInterval(2, function()
   for _,entry in ipairs(Logger.logs) do
     table.insert(values, { t = string.format('%.1f', entry[1]), l = entry[2], m = entry[3] })
   end
-  mainPage.tabs.logs.grid:setValues(values)
-  mainPage.tabs.logs.grid:draw()
+  if mainPage.tabs and mainPage.tabs.logs then
+    mainPage.tabs.logs.grid:setValues(values)
+    mainPage.tabs.logs.grid:draw()
+  end
 end)
 
 -- Start the UI/event loop ----------------------------------------------------
