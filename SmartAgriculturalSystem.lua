@@ -183,6 +183,7 @@ function TurtleController:addTurtle(id)
     self.turtles[id] = {
       id = id,
       state = 'IDLE',
+      approved = false,
       lastSeen = os.clock(),
     }
     Logger:info('Turtle ' .. id .. ' added')
@@ -217,7 +218,8 @@ function TurtleController:update(id, data)
         id = tid,
         fuel = t.fuel,
         state = t.state,
-        last = string.format('%.1f', os.clock() - t.lastSeen)
+        last = string.format('%.1f', os.clock() - t.lastSeen),
+        status = t.approved and 'active' or 'pending'
       })
     end
     mainPage.tabs.network.grid:setValues(values)
@@ -231,6 +233,15 @@ function TurtleController:prune(timeout)
       Logger:warn('Turtle ' .. id .. ' timed out')
       self.turtles[id] = nil
     end
+  end
+end
+
+function TurtleController:approve(id)
+  local t = self.turtles[id]
+  if t and not t.approved then
+    t.approved = true
+    Logger:info('Turtle '..id..' approved for swarm')
+    -- optionally notify turtle
   end
 end
 
@@ -353,6 +364,7 @@ local mainPage = UI.Page {
           { heading = 'Fuel', key = 'fuel', width = 6 },
           { heading = 'State', key = 'state', width = 8 },
           { heading = 'Last', key = 'last', width = 6 },
+          { heading = 'Status', key = 'status', width = 8 },
         },
         values = {},
       },
@@ -395,6 +407,15 @@ local mainPage = UI.Page {
 
 function mainPage.tabs.logs.grid:onEvent(event)
   if event.type == 'grid_focus' then return true end
+end
+
+function mainPage.tabs.network.grid:eventHandler(event)
+  if event.type == 'grid_select' then
+    TurtleController:approve(event.selected.id)
+    self:draw()
+    return true
+  end
+  return UI.Grid.eventHandler(self, event)
 end
 
 UI:setPages({ main = mainPage })
