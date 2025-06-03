@@ -185,12 +185,27 @@ function TurtleController:addTurtle(id)
       state = 'IDLE',
     }
     Logger:info('Turtle ' .. id .. ' added')
+    if mainPage and mainPage.tabs and mainPage.tabs.control.selector then
+      local choices = {}
+      for tid in pairs(self.turtles) do
+        table.insert(choices, { name = tostring(tid), value = tid })
+      end
+      table.sort(choices, function(a,b) return a.value < b.value end)
+      mainPage.tabs.control.selector.choices = choices
+      if not Util.find(choices, 'value', mainPage.tabs.control.selector.value) then
+        mainPage.tabs.control.selector.value = choices[1] and choices[1].value
+      end
+      mainPage.tabs.control.selector:draw()
+    end
   end
 end
 
 function TurtleController:update(id, data)
   self:addTurtle(id)
   Util.merge(self.turtles[id], data)
+  if data.position then
+    self.turtles[id].position = data.position
+  end
   local list = {}
   for tid in pairs(self.turtles) do
     table.insert(list, tid)
@@ -231,13 +246,13 @@ local mainPage = UI.Page {
   titleBar = UI.TitleBar { title = 'Smart Agricultural System' },
   tabs = UI.Tabs {
     x = 1, y = 2, ex = -1, ey = -1,
-    network = UI.Tab {
+  network = UI.Tab {
       index = 1, title = 'Network',
       status = UI.Text { x = 2, y = 2, value = 'Waiting for turtles...' },
     },
     map = UI.Tab {
       index = 2, title = 'Map',
-      info = UI.Text { x = 2, y = 2, value = 'Map view (todo)' },
+      info = UI.Text { x = 2, y = 2, value = 'Blocks mapped: 0' },
     },
     tasks = UI.Tab {
       index = 3, title = 'Tasks',
@@ -245,7 +260,11 @@ local mainPage = UI.Page {
     },
     control = UI.Tab {
       index = 4, title = 'Control',
-      info = UI.Text { x = 2, y = 2, value = 'Manual control (todo)' },
+      selector = UI.Chooser { x = 2, y = 2, width = 12, nochoice = 'Turtle', choices = {} },
+      cmd      = UI.TextEntry { x = 2, y = 4, width = 18, shadowText = 'command' },
+      args     = UI.TextEntry { x = 2, y = 5, width = 18, shadowText = 'args' },
+      send     = UI.Button { x = 2, y = 7, text = 'Send', event = 'send_cmd' },
+      status   = UI.Text { x = 2, y = 9, value = '' },
     },
     logs = UI.Tab {
       index = 5, title = 'Logs',
@@ -266,6 +285,24 @@ function mainPage.tabs.logs.grid:onEvent(event)
   if event.type == 'grid_focus' then return true end
 end
 
+function mainPage.tabs.control.send:onEvent(event)
+  if event.type == 'send_cmd' then
+    local id = mainPage.tabs.control.selector.value
+    local cmd = mainPage.tabs.control.cmd.value
+    local args = mainPage.tabs.control.args.value or ''
+    if id and cmd and #cmd > 0 then
+      local argList = {}
+      for a in string.gmatch(args, '%S+') do table.insert(argList, a) end
+      TurtleController:send(id, cmd, argList)
+      mainPage.tabs.control.status.value = 'Sent ' .. cmd .. ' to ' .. id
+    else
+      mainPage.tabs.control.status.value = 'Select turtle and command'
+    end
+    mainPage.tabs.control.status:draw()
+    return true
+  end
+end
+
 UI:setPages({ main = mainPage })
 UI:setPage(mainPage)
 
@@ -274,6 +311,15 @@ Event.on({ 'rednet_message' }, function(id, msg, proto)
   if proto == Communication.protocol and type(msg) == 'table' then
     if msg.type == 'status' then
       TurtleController:update(id, msg.data)
+    elseif msg.type == 'scan' then
+      local t = TurtleController.turtles[id]
+      if t and t.position then
+        WorldMap:update(msg.data, t.position)
+        local c = 0
+        for _ in pairs(WorldMap.blocks) do c = c + 1 end
+        mainPage.tabs.map.info.value = 'Blocks mapped: ' .. c
+        mainPage.tabs.map.info:draw()
+      end
     elseif msg.ack then
       -- ignore acks
     else
