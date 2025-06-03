@@ -248,7 +248,7 @@ local mainPage = UI.Page {
   }
 }
 
-function mainPage.logs.grid:onEvent(event)
+function mainPage.tabs.logs.grid:onEvent(event)
   if event.type == 'grid_focus' then return true end
 end
 
@@ -274,8 +274,8 @@ Event.onInterval(2, function()
   for _,entry in ipairs(Logger.logs) do
     table.insert(values, { t = string.format('%.1f', entry[1]), l = entry[2], m = entry[3] })
   end
-  mainPage.logs.grid:setValues(values)
-  mainPage.logs.grid:draw()
+  mainPage.tabs.logs.grid:setValues(values)
+  mainPage.tabs.logs.grid:draw()
 end)
 
 -- Start the UI/event loop ----------------------------------------------------
