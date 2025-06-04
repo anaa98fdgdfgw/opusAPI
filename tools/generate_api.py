@@ -26,23 +26,65 @@ def parse_ui_docs():
     return docs
 
 
+def _extract_comment(lines, idx):
+    """Return comment lines immediately preceding idx (function line)."""
+    j = idx - 1
+    # skip blank lines
+    while j >= 0 and not lines[j].strip():
+        j -= 1
+    if j < 0:
+        return ""
+    line = lines[j].lstrip()
+    # multi-line comment block
+    if line.endswith("]]"):
+        block = []
+        while j >= 0:
+            cur = lines[j].strip()
+            block.insert(0, cur)
+            if cur.startswith("--[["):
+                break
+            j -= 1
+        cleaned = []
+        for l in block:
+            l = l.strip()
+            l = re.sub(r"^--\[\[", "", l)
+            l = re.sub(r"\]\]$", "", l)
+            cleaned.append(l)
+        return "\n".join(cleaned).strip()
+    # single line comments
+    if line.startswith("--"):
+        block = []
+        while j >= 0 and lines[j].lstrip().startswith("--"):
+            block.insert(0, lines[j].lstrip()[2:].strip())
+            j -= 1
+        return " ".join(block).strip()
+    return ""
+
+
 def parse_function_names():
-    """Collect function names from all modules under modules/opus."""
+    """Collect function names and comments from all modules."""
     root = Path("modules/opus")
     modules = {}
     for path in root.rglob("*.lua"):
-        text = path.read_text(encoding="utf-8")
+        lines = path.read_text(encoding="utf-8").splitlines()
         mod_name = str(path.relative_to(root)).replace("/", ".").rsplit(".lua", 1)[0]
-        for prefix, sep, name in FUNCTION_PATTERN.findall(text):
+        for idx, line in enumerate(lines):
+            m = FUNCTION_PATTERN.search(line)
+            if not m:
+                continue
+            prefix, sep, name = m.groups()
             if sep:
                 module = prefix
                 func = name
             else:
                 module = mod_name
                 func = prefix
-            modules.setdefault(module, set()).add(func)
-    # convert sets to lists of tuples for uniformity
-    return {k: [(n, "") for n in sorted(v)] for k, v in modules.items()}
+            doc = _extract_comment(lines, idx)
+            modules.setdefault(module, {})[func] = doc
+    return {
+        mod: [(name, modules[mod][name]) for name in sorted(modules[mod])]
+        for mod in modules
+    }
 
 
 def merge_docs(funcs, ui_docs):
@@ -74,7 +116,7 @@ def generate():
                 if doc:
                     fw.write(f"- **{name}**: {doc}\n")
                 else:
-                    fw.write(f"- **{name}**\n")
+                    fw.write(f"- **{name}**: No documentation available\n")
             fw.write("\n")
     print("Generated", out)
 
