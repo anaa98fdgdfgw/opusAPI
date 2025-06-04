@@ -278,6 +278,7 @@ Clears the window using either the passed values or the defaults for that window
 Clears the specified line.
 - **draw**: draw(VOID)
 Redraws the window in the internal buffer.
+  - Example: `milo/core/listing.lua:121: return UI.Window.draw(self)`
 - **emit**: emit(TABLE event)
 Send an event to the element. The event handler for the element is called.
 If the event handler returns true, then no further processing is done.
@@ -407,7 +408,9 @@ If the base class does not have colors defined, colors will be inherited from th
 
 ## compress.lzw
 - **compress**: No documentation available
+  - Example: `compress/compress.lua:28: Util.writeFile(file, LZW.compress(c), 'wb')`
 - **decompress**: No documentation available
+  - Example: `compress/uncompress.lua:43: local s, m = Tar.untar_string(LZW.decompress(c), outDir, true)`
 - **dictAddA**: No documentation available
 - **dictAddB**: No documentation available
 
@@ -422,11 +425,15 @@ If the base class does not have colors defined, colors will be inherited from th
 - **read_header_block**: No documentation available
 - **recurse**: No documentation available
 - **tar**: the bare minimum for this program to untar
+  - Example: `compress/compress.lua:24: Tar.tar(file, dir)`
 - **tar_stream**: No documentation available
 - **tar_string**: No documentation available
+  - Example: `compress/compress.lua:27: local c = Tar.tar_string(dir)`
 - **untar**: No documentation available
+  - Example: `compress/uncompress.lua:31: local s, m = Tar.untar_string(string.char(table.unpack(t)), outDir, true)`
 - **untar_stream**: No documentation available
 - **untar_string**: No documentation available
+  - Example: `compress/uncompress.lua:31: local s, m = Tar.untar_string(string.char(table.unpack(t)), outDir, true)`
 
 ## crypto.chacha20
 - **LE_toInt**: No documentation available
@@ -500,8 +507,10 @@ If the base class does not have colors defined, colors will be inherited from th
 - **BE_toInt**: No documentation available
 - **brshift**: No documentation available
 - **compute**: No documentation available
+  - Example: `secure/unlock.lua:22: if password and Security.verifyPassword(SHA.compute(password)) then`
 - **counter**: No documentation available
 - **digest**: No documentation available
+  - Example: `swshop/apis/krist.lua:6: return sha2.digest(key):toHex()`
 - **digestblock**: No documentation available
 - **hmac**: No documentation available
 - **pbkdf2**: No documentation available
@@ -553,6 +562,7 @@ If the base class does not have colors defined, colors will be inherited from th
 ## gps
 - **narrow**: No documentation available
 - **trilaterate**: from stock gps API
+  - Example: `gps/gpsServer.lua:217: local pt = GPS.trilaterate(computer)`
 
 ## h
 - **updateInterval**: No documentation available
@@ -584,7 +594,9 @@ If the base class does not have colors defined, colors will be inherited from th
 - **addpair**: No documentation available
 - **appendcustom**: No documentation available
 - **decode**: No documentation available
+  - Example: `builder/apis/blocks.lua:13: local blocks = JSON.decodeFromFile('packages/core/etc/names/minecraft.json')`
 - **decodeFromFile**: NOTE: added method - not in original source
+  - Example: `builder/apis/blocks.lua:13: local blocks = JSON.decodeFromFile('packages/core/etc/names/minecraft.json')`
 - **encode**: No documentation available
 - **encodeexception**: No documentation available
 - **escapeutf8**: No documentation available

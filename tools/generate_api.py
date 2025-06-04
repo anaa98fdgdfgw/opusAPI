@@ -105,21 +105,61 @@ def merge_docs(funcs, ui_docs):
     }
 
 
-def generate():
+def _parse_examples(app_root, docs):
+    """Return a mapping of examples from the apps repo."""
+    require_pat = re.compile(r"local\s+([A-Za-z0-9_]+)\s*=\s*require\(['\"]([^'\"]+)['\"]\)")
+    examples = {}
+    root = Path(app_root)
+    for path in root.rglob('*.lua'):
+        try:
+            text = path.read_text(encoding='utf-8')
+        except Exception:
+            continue
+        requires = dict(require_pat.findall(text))
+        if not requires:
+            continue
+        lines = text.splitlines()
+        for i, line in enumerate(lines, start=1):
+            for var, mod in requires.items():
+                mod = mod.replace('/', '.')
+                if mod.startswith('opus.'):
+                    mod = mod[len('opus.') :]
+                if mod in docs:
+                    for func, _ in docs[mod]:
+                        if f'{var}.{func}' in line or f'{var}:{func}' in line:
+                            examples.setdefault(mod, {}).setdefault(func, f"{path.relative_to(root)}:{i}: {line.strip()}")
+                if mod == 'ui':
+                    for dmod in docs:
+                        if dmod.startswith('UI.'):
+                            cls = dmod.split('.', 1)[1]
+                            for func, _ in docs[dmod]:
+                                if f'{var}.{cls}.{func}' in line or f'{var}.{cls}:{func}' in line:
+                                    examples.setdefault(dmod, {}).setdefault(func, f"{path.relative_to(root)}:{i}: {line.strip()}")
+    return examples
+
+
+def generate(app_root=None):
     docs = merge_docs(parse_function_names(), parse_ui_docs())
+    examples = _parse_examples(app_root, docs) if app_root else {}
+
     out = Path("docs/api.md")
     with out.open("w", encoding="utf-8") as fw:
         fw.write("# API Reference\n\n")
         for cls in sorted(docs):
             fw.write(f"## {cls}\n")
             for name, doc in docs[cls]:
+                example = examples.get(cls, {}).get(name)
                 if doc:
                     fw.write(f"- **{name}**: {doc}\n")
                 else:
                     fw.write(f"- **{name}**: No documentation available\n")
+                if example:
+                    fw.write(f"  - Example: `{example}`\n")
             fw.write("\n")
     print("Generated", out)
 
 
 if __name__ == "__main__":
-    generate()
+    import sys
+    app_path = sys.argv[1] if len(sys.argv) > 1 else None
+    generate(app_path)
