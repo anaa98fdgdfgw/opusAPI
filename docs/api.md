@@ -1,461 +1,665 @@
 # API Reference
 
 ## Array
-- **filter**:
-  - Example: `neural/mobRancher.lua:114: return shuffle(Array.filter(neural.sense(), function(entity)`
-- **removeByValue**:
+- **filter**: No documentation available.
+  - Example: `neural/neuralLook.lua:26: local l = Array.filter(neural.sense(), function(a)`
+  - Definition: `array.lua:5: function Array.filter(it, f)`
+- **removeByValue**: No documentation available.
   - Example: `common/edit.lua:573: Array.removeByValue(config.recent, path)`
+  - Definition: `array.lua:15: function Array.removeByValue(t, e)`
 
 ## Blit
-- **init**:
+- **init**: No documentation available.
+  - Example: `ui/blit.lua:18: function Blit:init(t, args)`
   - Definition: `ui/blit.lua:18: function Blit:init(t, args)`
-- **insert**:
+- **insert**: No documentation available.
+  - Example: `ui/blit.lua:49: function Blit:insert(x, text, bg, fg)`
   - Definition: `ui/blit.lua:49: function Blit:insert(x, text, bg, fg)`
-- **sub**:
+- **sub**: No documentation available.
+  - Example: `ui/blit.lua:91: function Blit:sub(s, e)`
   - Definition: `ui/blit.lua:91: function Blit:sub(s, e)`
 - **toblit**: convert a string of text to blit format doing color conversion and processing ansi color sequences
+  - Example: `ui/blit.lua:128: function Blit.toblit(str, cs)`
   - Definition: `ui/blit.lua:128: function Blit.toblit(str, cs)`
-- **wrap**:
+- **wrap**: No documentation available.
+  - Example: `ui/blit.lua:99: function Blit:wrap(max)`
   - Definition: `ui/blit.lua:99: function Blit:wrap(max)`
-- **write**:
+- **write**: No documentation available.
+  - Example: `ui/blit.lua:43: function Blit:write(x, text, bg, fg)`
   - Definition: `ui/blit.lua:43: function Blit:write(x, text, bg, fg)`
 
 ## BulkGet
-- **download**:
+- **download**: No documentation available.
+  - Example: `bulkget.lua:7: function BulkGet.download(list, callback)`
   - Definition: `bulkget.lua:7: function BulkGet.download(list, callback)`
 
 ## Canvas
-- **__blitRect**:
+- **__blitRect**: No documentation available.
+  - Example: `ui/canvas.lua:372: function Canvas:__blitRect(device, src, tgt, doubleBuffer)`
   - Definition: `ui/canvas.lua:372: function Canvas:__blitRect(device, src, tgt, doubleBuffer)`
 - **__renderLayers**: regions are comprised of absolute values that correspond to the output device. canvases have coordinates relative to their parent. canvas layer's stacking order is determined by the position within the array. layers in the beginning of the array are overlayed by layers further down in the array.
+  - Example: `ui/canvas.lua:325: function Canvas:__renderLayers(device, offset, doubleBuffer)`
   - Definition: `ui/canvas.lua:325: function Canvas:__renderLayers(device, offset, doubleBuffer)`
-- **addLayer**:
+- **addLayer**: No documentation available.
+  - Example: `ui/canvas.lua:126: function Canvas:addLayer(layer)`
   - Definition: `ui/canvas.lua:126: function Canvas:addLayer(layer)`
-- **applyPalette**:
+- **applyPalette**: No documentation available.
+  - Example: `ui/canvas.lua:271: function Canvas:applyPalette(palette)`
   - Definition: `ui/canvas.lua:271: function Canvas:applyPalette(palette)`
-- **blit**:
+- **blit**: No documentation available.
+  - Example: `ui/canvas.lua:175: function Canvas:blit(x, y, text, bg, fg)`
   - Definition: `ui/canvas.lua:175: function Canvas:blit(x, y, text, bg, fg)`
-- **clean**:
+- **clean**: No documentation available.
+  - Example: `ui/canvas.lua:265: function Canvas:clean()`
   - Definition: `ui/canvas.lua:265: function Canvas:clean()`
-- **clear**:
+- **clear**: No documentation available.
+  - Example: `ui/canvas.lua:234: function Canvas:clear(bg, fg)`
   - Definition: `ui/canvas.lua:234: function Canvas:clear(bg, fg)`
-- **clearLine**:
+- **clearLine**: No documentation available.
+  - Example: `ui/canvas.lua:228: function Canvas:clearLine(y, bg, fg)`
   - Definition: `ui/canvas.lua:228: function Canvas:clearLine(y, bg, fg)`
-- **copy**:
+- **copy**: No documentation available.
+  - Example: `ui/canvas.lua:110: function Canvas:copy()`
   - Definition: `ui/canvas.lua:110: function Canvas:copy()`
-- **dirty**:
+- **dirty**: No documentation available.
+  - Example: `ui/canvas.lua:251: function Canvas:dirty(includingChildren)`
   - Definition: `ui/canvas.lua:251: function Canvas:dirty(includingChildren)`
 - **init**: A canvas can have more lines than canvas.height in order to scroll
 
 TODO: finish vertical scrolling
+  - Example: `ui/canvas.lua:32: function Canvas:init(args)`
   - Definition: `ui/canvas.lua:32: function Canvas:init(args)`
-- **isDirty**:
+- **isDirty**: No documentation available.
+  - Example: `ui/canvas.lua:243: function Canvas:isDirty()`
   - Definition: `ui/canvas.lua:243: function Canvas:isDirty()`
-- **move**:
+- **move**: No documentation available.
+  - Example: `ui/canvas.lua:59: function Canvas:move(x, y)`
   - Definition: `ui/canvas.lua:59: function Canvas:move(x, y)`
 - **raise**: Push a layer to the top
+  - Example: `ui/canvas.lua:154: function Canvas:raise()`
   - Definition: `ui/canvas.lua:154: function Canvas:raise()`
-- **removeLayer**:
+- **removeLayer**: No documentation available.
+  - Example: `ui/canvas.lua:135: function Canvas:removeLayer()`
   - Definition: `ui/canvas.lua:135: function Canvas:removeLayer()`
 - **render**: either render directly to the device or use another canvas as a backing buffer
+  - Example: `ui/canvas.lua:288: function Canvas:render(device, doubleBuffer)`
   - Definition: `ui/canvas.lua:288: function Canvas:render(device, doubleBuffer)`
-- **resize**:
+- **resize**: No documentation available.
+  - Example: `ui/canvas.lua:68: function Canvas:resize(w, h)`
   - Definition: `ui/canvas.lua:68: function Canvas:resize(w, h)`
 - **resizeBuffer**: resize the canvas buffer - not the canvas itself
+  - Example: `ui/canvas.lua:78: function Canvas:resizeBuffer(w, h)`
   - Definition: `ui/canvas.lua:78: function Canvas:resizeBuffer(w, h)`
-- **setVisible**:
+- **setVisible**: No documentation available.
+  - Example: `ui/canvas.lua:145: function Canvas:setVisible(visible)`
   - Definition: `ui/canvas.lua:145: function Canvas:setVisible(visible)`
-- **write**:
+- **write**: No documentation available.
+  - Example: `ui/canvas.lua:165: function Canvas:write(x, y, text, bg, fg)`
   - Definition: `ui/canvas.lua:165: function Canvas:write(x, y, text, bg, fg)`
-- **writeLine**:
+- **writeLine**: No documentation available.
+  - Example: `ui/canvas.lua:219: function Canvas:writeLine(y, text, fg, bg)`
   - Definition: `ui/canvas.lua:219: function Canvas:writeLine(y, text, fg, bg)`
 
 ## Config
-- **load**:
-  - Example: `swshop/shopView.lua:14: local config = Config.load('shop')`
-- **update**:
-  - Example: `swshop/Shoplogs.lua:148: Config.update('Shoplogs', config)`
+- **load**: No documentation available.
+  - Example: `swshop/shopView-example.lua:10: local config = Config.load('shop')`
+  - Definition: `config.lua:7: function Config.load(fname, data)`
+- **update**: No documentation available.
+  - Example: `swshop/shopTab.lua:57: Config.update('shop', config)`
+  - Definition: `config.lua:27: function Config.update(fname, data)`
 
 ## Entry
-- **backspace**:
+- **backspace**: No documentation available.
+  - Example: `entry.lua:121: function Entry:backspace()`
   - Definition: `entry.lua:121: function Entry:backspace()`
-- **clearLine**:
+- **clearLine**: No documentation available.
+  - Example: `entry.lua:229: function Entry:clearLine()`
   - Definition: `entry.lua:229: function Entry:clearLine()`
-- **copy**:
+- **copy**: No documentation available.
+  - Example: `entry.lua:193: function Entry:copy()`
   - Definition: `entry.lua:193: function Entry:copy()`
-- **copyMarked**:
+- **copyMarked**: No documentation available.
+  - Example: `entry.lua:211: function Entry:copyMarked()`
   - Definition: `entry.lua:211: function Entry:copyMarked()`
-- **copyText**:
+- **copyText**: No documentation available.
+  - Example: `entry.lua:64: function Entry:copyText(cx, ex)`
   - Definition: `entry.lua:64: function Entry:copyText(cx, ex)`
-- **cut**:
+- **cut**: No documentation available.
+  - Example: `entry.lua:204: function Entry:cut()`
   - Definition: `entry.lua:204: function Entry:cut()`
-- **cutFromStart**:
+- **cutFromStart**: No documentation available.
+  - Example: `entry.lua:151: function Entry:cutFromStart()`
   - Definition: `entry.lua:151: function Entry:cutFromStart()`
-- **cutNextWord**:
+- **cutNextWord**: No documentation available.
+  - Example: `entry.lua:168: function Entry:cutNextWord()`
   - Definition: `entry.lua:168: function Entry:cutNextWord()`
-- **cutPrevWord**:
+- **cutPrevWord**: No documentation available.
+  - Example: `entry.lua:177: function Entry:cutPrevWord()`
   - Definition: `entry.lua:177: function Entry:cutPrevWord()`
-- **cutToEnd**:
+- **cutToEnd**: No documentation available.
+  - Example: `entry.lua:159: function Entry:cutToEnd()`
   - Definition: `entry.lua:159: function Entry:cutToEnd()`
-- **delete**:
+- **delete**: No documentation available.
+  - Example: `entry.lua:143: function Entry:delete()`
   - Definition: `entry.lua:143: function Entry:delete()`
-- **deleteText**:
+- **deleteText**: No documentation available.
+  - Example: `entry.lua:81: function Entry:deleteText(sx, ex)`
   - Definition: `entry.lua:81: function Entry:deleteText(sx, ex)`
-- **forcePaste**:
+- **forcePaste**: No documentation available.
+  - Example: `entry.lua:225: function Entry.forcePaste()`
   - Definition: `entry.lua:225: function Entry.forcePaste()`
-- **init**:
+- **init**: No documentation available.
+  - Example: `entry.lua:12: function Entry:init(args)`
   - Definition: `entry.lua:12: function Entry:init(args)`
-- **insertChar**:
+- **insertChar**: No documentation available.
+  - Example: `entry.lua:186: function Entry:insertChar(ie)`
   - Definition: `entry.lua:186: function Entry:insertChar(ie)`
-- **insertText**:
+- **insertText**: No documentation available.
+  - Example: `entry.lua:69: function Entry:insertText(x, text)`
   - Definition: `entry.lua:69: function Entry:insertText(x, text)`
-- **markAll**:
+- **markAll**: No documentation available.
+  - Example: `entry.lua:328: function Entry:markAll()`
   - Definition: `entry.lua:328: function Entry:markAll()`
-- **markAnchor**:
+- **markAnchor**: No documentation available.
+  - Example: `entry.lua:262: function Entry:markAnchor(ie)`
   - Definition: `entry.lua:262: function Entry:markAnchor(ie)`
-- **markBegin**:
+- **markBegin**: No documentation available.
+  - Example: `entry.lua:235: function Entry:markBegin()`
   - Definition: `entry.lua:235: function Entry:markBegin()`
-- **markEnd**:
+- **markEnd**: No documentation available.
+  - Example: `entry.lua:348: function Entry:markEnd()`
   - Definition: `entry.lua:348: function Entry:markEnd()`
-- **markFinish**:
+- **markFinish**: No documentation available.
+  - Example: `entry.lua:244: function Entry:markFinish()`
   - Definition: `entry.lua:244: function Entry:markFinish()`
-- **markHome**:
+- **markHome**: No documentation available.
+  - Example: `entry.lua:339: function Entry:markHome()`
   - Definition: `entry.lua:339: function Entry:markHome()`
-- **markLeft**:
+- **markLeft**: No documentation available.
+  - Example: `entry.lua:272: function Entry:markLeft()`
   - Definition: `entry.lua:272: function Entry:markLeft()`
-- **markNextWord**:
+- **markNextWord**: No documentation available.
+  - Example: `entry.lua:310: function Entry:markNextWord()`
   - Definition: `entry.lua:310: function Entry:markNextWord()`
-- **markPrevWord**:
+- **markPrevWord**: No documentation available.
+  - Example: `entry.lua:319: function Entry:markPrevWord()`
   - Definition: `entry.lua:319: function Entry:markPrevWord()`
-- **markRight**:
+- **markRight**: No documentation available.
+  - Example: `entry.lua:281: function Entry:markRight()`
   - Definition: `entry.lua:281: function Entry:markRight()`
-- **markTo**:
+- **markTo**: No documentation available.
+  - Example: `entry.lua:357: function Entry:markTo(ie)`
   - Definition: `entry.lua:357: function Entry:markTo(ie)`
-- **markWord**:
+- **markWord**: No documentation available.
+  - Example: `entry.lua:290: function Entry:markWord(ie)`
   - Definition: `entry.lua:290: function Entry:markWord(ie)`
-- **moveEnd**:
+- **moveEnd**: No documentation available.
+  - Example: `entry.lua:110: function Entry:moveEnd()`
   - Definition: `entry.lua:110: function Entry:moveEnd()`
-- **moveHome**:
+- **moveHome**: No documentation available.
+  - Example: `entry.lua:103: function Entry:moveHome()`
   - Definition: `entry.lua:103: function Entry:moveHome()`
-- **moveLeft**:
+- **moveLeft**: No documentation available.
+  - Example: `entry.lua:89: function Entry:moveLeft()`
   - Definition: `entry.lua:89: function Entry:moveLeft()`
-- **moveRight**:
+- **moveRight**: No documentation available.
+  - Example: `entry.lua:96: function Entry:moveRight()`
   - Definition: `entry.lua:96: function Entry:moveRight()`
-- **moveTo**:
+- **moveTo**: No documentation available.
+  - Example: `entry.lua:117: function Entry:moveTo(ie)`
   - Definition: `entry.lua:117: function Entry:moveTo(ie)`
-- **moveWordLeft**:
+- **moveWordLeft**: No documentation available.
+  - Example: `entry.lua:136: function Entry:moveWordLeft()`
   - Definition: `entry.lua:136: function Entry:moveWordLeft()`
-- **moveWordRight**:
+- **moveWordRight**: No documentation available.
+  - Example: `entry.lua:129: function Entry:moveWordRight()`
   - Definition: `entry.lua:129: function Entry:moveWordRight()`
-- **nextWord**:
+- **nextWord**: No documentation available.
+  - Example: `entry.lua:30: function Entry:nextWord()`
   - Definition: `entry.lua:30: function Entry:nextWord()`
-- **paste**:
+- **paste**: No documentation available.
+  - Example: `entry.lua:216: function Entry:paste(ie)`
   - Definition: `entry.lua:216: function Entry:paste(ie)`
-- **prevWord**:
+- **prevWord**: No documentation available.
+  - Example: `entry.lua:35: function Entry:prevWord()`
   - Definition: `entry.lua:35: function Entry:prevWord()`
-- **process**:
+- **process**: No documentation available.
+  - Example: `entry.lua:405: function Entry:process(ie)`
   - Definition: `entry.lua:405: function Entry:process(ie)`
-- **reset**:
+- **reset**: No documentation available.
+  - Example: `entry.lua:23: function Entry:reset()`
   - Definition: `entry.lua:23: function Entry:reset()`
-- **unmark**:
+- **unmark**: No documentation available.
+  - Example: `entry.lua:255: function Entry:unmark()`
   - Definition: `entry.lua:255: function Entry:unmark()`
-- **updateScroll**:
+- **updateScroll**: No documentation available.
+  - Example: `entry.lua:42: function Entry:updateScroll()`
   - Definition: `entry.lua:42: function Entry:updateScroll()`
 
 ## Event
-- **addRoutine**:
+- **addRoutine**: No documentation available.
+  - Example: `event.lua:167: function Event.addRoutine(fn)`
   - Definition: `event.lua:167: function Event.addRoutine(fn)`
-- **exitPullEvents**:
+- **exitPullEvents**: No documentation available.
+  - Example: `event.lua:191: function Event.exitPullEvents()`
   - Definition: `event.lua:191: function Event.exitPullEvents()`
-- **off**:
+- **off**: No documentation available.
+  - Example: `event.lua:114: function Event.off(h)`
   - Definition: `event.lua:114: function Event.off(h)`
-- **on**:
+- **on**: No documentation available.
+  - Example: `event.lua:92: function Event.on(events, fn)`
   - Definition: `event.lua:92: function Event.on(events, fn)`
-- **onInterval**:
+- **onInterval**: No documentation available.
+  - Example: `event.lua:128: function Event.onInterval(interval, fn)`
   - Definition: `event.lua:128: function Event.onInterval(interval, fn)`
 - **onTerminate**: Set a handler for the terminate event. Within the function, return true or false to indicate whether the event should be propagated to all sub-threads
+  - Example: `event.lua:158: function Event.onTerminate(fn)`
   - Definition: `event.lua:158: function Event.onTerminate(fn)`
-- **onTimeout**:
+- **onTimeout**: No documentation available.
+  - Example: `event.lua:141: function Event.onTimeout(timeout, fn)`
   - Definition: `event.lua:141: function Event.onTimeout(timeout, fn)`
-- **processEvent**:
+- **processEvent**: No documentation available.
+  - Example: `event.lua:242: function Event.processEvent(e)`
   - Definition: `event.lua:242: function Event.processEvent(e)`
-- **pullEvent**:
+- **pullEvent**: No documentation available.
+  - Example: `event.lua:247: function Event.pullEvent(eventType)`
   - Definition: `event.lua:247: function Event.pullEvent(eventType)`
-- **pullEvents**:
+- **pullEvents**: No documentation available.
+  - Example: `event.lua:179: function Event.pullEvents(...)`
   - Definition: `event.lua:179: function Event.pullEvents(...)`
-- **termFn**:
+- **termFn**: No documentation available.
+  - Example: `event.lua:162: function Event.termFn()`
   - Definition: `event.lua:162: function Event.termFn()`
 - **trigger**: invoke the handlers registered for this event
+  - Example: `event.lua:228: function Event.trigger(event, ...)`
   - Definition: `event.lua:228: function Event.trigger(event, ...)`
 
 ## GPS
-- **getPoint**:
+- **getPoint**: No documentation available.
+  - Example: `gps.lua:74: function GPS.getPoint(timeout, debug)`
   - Definition: `gps.lua:74: function GPS.getPoint(timeout, debug)`
-- **isAvailable**:
+- **isAvailable**: No documentation available.
+  - Example: `gps.lua:70: function GPS.isAvailable()`
   - Definition: `gps.lua:70: function GPS.isAvailable()`
-- **locate**:
+- **locate**: No documentation available.
+  - Example: `gps.lua:9: function GPS.locate(timeout, debug)`
   - Definition: `gps.lua:9: function GPS.locate(timeout, debug)`
 - **trilaterate**: end stock gps api
+  - Example: `gps.lua:146: function GPS.trilaterate(tFixes)`
   - Definition: `gps.lua:146: function GPS.trilaterate(tFixes)`
 
 ## History
-- **add**:
+- **add**: No documentation available.
+  - Example: `history.lua:19: function History:add(line)`
   - Definition: `history.lua:19: function History:add(line)`
-- **back**:
+- **back**: No documentation available.
+  - Example: `history.lua:36: function History:back()`
   - Definition: `history.lua:36: function History:back()`
-- **forward**:
+- **forward**: No documentation available.
+  - Example: `history.lua:43: function History:forward()`
   - Definition: `history.lua:43: function History:forward()`
-- **load**:
+- **load**: No documentation available.
+  - Example: `history.lua:6: function History.load(filename, limit)`
   - Definition: `history.lua:6: function History.load(filename, limit)`
-- **reset**:
+- **reset**: No documentation available.
+  - Example: `history.lua:32: function History:reset()`
   - Definition: `history.lua:32: function History:reset()`
 
 ## Map
 - **prune**: remove table entries if passed function returns false
+  - Example: `map.lua:31: function Map.prune(t, fn)`
   - Definition: `map.lua:31: function Map.prune(t, fn)`
-- **removeMatches**:
+- **removeMatches**: No documentation available.
+  - Example: `map.lua:13: function Map.removeMatches(t, values)`
   - Definition: `map.lua:13: function Map.removeMatches(t, values)`
-- **size**:
+- **size**: No documentation available.
+  - Example: `map.lua:44: function Map.size(list)`
   - Definition: `map.lua:44: function Map.size(list)`
 
 ## NFT
-- **load**:
+- **load**: No documentation available.
+  - Example: `nft.lua:83: function NFT.load(path)`
   - Definition: `nft.lua:83: function NFT.load(path)`
-- **parse**:
+- **parse**: No documentation available.
+  - Example: `nft.lua:19: function NFT.parse(imageText)`
   - Definition: `nft.lua:19: function NFT.parse(imageText)`
-- **save**:
+- **save**: No documentation available.
+  - Example: `nft.lua:91: function NFT.save(image, filename)`
   - Definition: `nft.lua:91: function NFT.save(image, filename)`
-- **transparency**:
+- **transparency**: No documentation available.
+  - Example: `nft.lua:68: function NFT.transparency(image)`
   - Definition: `nft.lua:68: function NFT.transparency(image)`
 
 ## Packages
-- **downloadList**:
+- **downloadList**: No documentation available.
+  - Example: `packages.lua:57: function Packages:downloadList()`
   - Definition: `packages.lua:57: function Packages:downloadList()`
-- **downloadManifest**:
+- **downloadManifest**: No documentation available.
+  - Example: `packages.lua:68: function Packages:downloadManifest(package)`
   - Definition: `packages.lua:68: function Packages:downloadManifest(package)`
-- **getManifest**:
+- **getManifest**: No documentation available.
+  - Example: `packages.lua:84: function Packages:getManifest(package)`
   - Definition: `packages.lua:84: function Packages:getManifest(package)`
-- **installed**:
+- **installed**: No documentation available.
+  - Example: `packages.lua:10: function Packages:installed()`
   - Definition: `packages.lua:10: function Packages:installed()`
-- **installedSorted**:
+- **installedSorted**: No documentation available.
+  - Example: `packages.lua:23: function Packages:installedSorted()`
   - Definition: `packages.lua:23: function Packages:installedSorted()`
-- **isInstalled**:
+- **isInstalled**: No documentation available.
+  - Example: `packages.lua:53: function Packages:isInstalled(package)`
   - Definition: `packages.lua:53: function Packages:isInstalled(package)`
-- **list**:
+- **list**: No documentation available.
+  - Example: `packages.lua:46: function Packages:list()`
   - Definition: `packages.lua:46: function Packages:list()`
 
 ## Peripheral
-- **addDevice**:
+- **addDevice**: No documentation available.
+  - Example: `peripheral.lua:18: function Peripheral.addDevice(deviceList, side)`
   - Definition: `peripheral.lua:18: function Peripheral.addDevice(deviceList, side)`
 - **get**: match any of the passed arguments
   - Example: `milo/storageGen.lua:71: self.storages = Util.filter(Peripheral.getList(), function(dev)`
-- **getByMethod**:
+  - Definition: `peripheral.lua:94: function Peripheral.get(args)`
+- **getByMethod**: No documentation available.
   - Example: `core/apis/refinedAdapter.lua:17: controller = Peripheral.getByMethod('getCraftingTasks')`
-- **getBySide**:
+  - Definition: `peripheral.lua:85: function Peripheral.getByMethod(method)`
+- **getBySide**: No documentation available.
   - Example: `core/apis/refinedAdapter.lua:19: controller = Peripheral.getBySide(self.side)`
-- **getByType**:
+  - Definition: `peripheral.lua:77: function Peripheral.getBySide(side)`
+- **getByType**: No documentation available.
   - Example: `core/apis/meAdapter18.lua:20: controller = Peripheral.getByType(DEVICE_TYPE)`
-- **getList**:
+  - Definition: `peripheral.lua:81: function Peripheral.getByType(typeName)`
+- **getList**: No documentation available.
   - Example: `milo/storageGen.lua:71: self.storages = Util.filter(Peripheral.getList(), function(dev)`
+  - Definition: `peripheral.lua:5: function Peripheral.getList()`
 
 ## Point
-- **above**:
-  - Example: `common/Follow.lua:228: addBlocks(Point.above(pt))`
-- **adjacentPoints**:
+- **above**: No documentation available.
+  - Example: `farms/treefarm.lua:412: turtle.pathfind(Point.above(state.chest))`
+  - Definition: `point.lua:64: function Point.above(pt)`
+- **adjacentPoints**: No documentation available.
   - Example: `common/Follow.lua:220: local apts = Point.adjacentPoints(tpt)`
-- **below**:
-  - Example: `farms/superTreefarm.lua:152: local pt = Point.below(HOME_PT)`
-- **calculateHeading**:
+  - Definition: `point.lua:228: function Point.adjacentPoints(pt)`
+- **below**: No documentation available.
+  - Example: `farms/treefarm.lua:178: turtle.pathfind(Point.below(state.furnace))`
+  - Definition: `point.lua:68: function Point.below(pt)`
+- **calculateHeading**: No documentation available.
   - Example: `farms/apis/level.lua:82: local h = Point.calculateHeading(reference, pt)`
+  - Definition: `point.lua:108: function Point.calculateHeading(pta, ptb)`
 - **calculateMoves**: Calculate distance to location including turns also returns the resulting heading
-  - Example: `turtle/apis/pathfind.lua:57: return Point.calculateMoves(node, n)`
-- **calculateTurns**:
+  - Example: `miners/simpleMiner.lua:117: local moves = Point.calculateMoves(turtle.point, pt)`
+  - Definition: `point.lua:131: function Point.calculateMoves(pta, ptb, distance)`
+- **calculateTurns**: No documentation available.
   - Example: `farms/apis/level.lua:83: local t = Point.calculateTurns(reference.heading, h)`
+  - Definition: `point.lua:98: function Point.calculateTurns(ih, oh)`
 - **closest**: given a set of points, find the one taking the least moves
-  - Example: `neural/mobPickup.lua:65: local b = Point.closest(pt, sensed)`
-- **closestPointInBox**:
+  - Example: `turtle/obsidian.lua:67: node = Point.closest(turtle.point, nodes)`
+  - Definition: `point.lua:179: function Point.closest(reference, pts)`
+- **closestPointInBox**: No documentation available.
+  - Example: `point.lua:332: function Point.closestPointInBox(pt, box)`
   - Definition: `point.lua:332: function Point.closestPointInBox(pt, box)`
-- **copy**:
-  - Example: `common/Follow.lua:131: pt = Point.copy(gpt)`
+- **copy**: No documentation available.
+  - Example: `miners/scanningMiner.lua:569: home = Point.copy(turtle.point),`
+  - Definition: `point.lua:47: function Point.copy(pt)`
 - **distance**: Euclidian distance
-  - Example: `neural/shootingGallery.lua:34: return Point.distance(e1, pos) < Point.distance(e2, pos)`
-- **eachClosest**:
-  - Example: `turtle/lavaRefuel.lua:48: Point.eachClosest(turtle.point, t, function(b)`
+  - Example: `miners/scanningMiner.lua:559: page.statusBar:setValue('distance', math.floor(Point.distance(turtle.point, HOME_PT)))`
+  - Definition: `point.lua:79: function Point.distance(a, b)`
+- **eachClosest**: No documentation available.
+  - Example: `miners/scanningMiner.lua:391: Point.eachClosest(turtle.point, blocks, function(b)`
+  - Definition: `point.lua:203: function Point.eachClosest(spt, ipts, fn)`
 - **expandBox**: expand box to include point
   - Example: `turtle/apis/pathfind.lua:22: Point.expandBox(box, dest)`
-- **inBox**:
-  - Example: `common/multiMiner.lua:68: return Point.inBox(pt, box)`
-- **iterateClosest**:
-  - Example: `farms/superTreefarm.lua:337: for pt in Point.iterateClosest(turtle.point, blocks) do`
-- **makeBox**:
-  - Example: `common/multiMiner.lua:155: local box = Point.makeBox(`
+  - Definition: `point.lua:294: function Point.expandBox(box, pt)`
+- **inBox**: No documentation available.
+  - Example: `turtle/apis/pathfind.lua:9: if Point.inBox(b, dim) then`
+  - Definition: `point.lua:323: function Point.inBox(pt, box)`
+- **iterateClosest**: No documentation available.
+  - Example: `farms/attack.lua:67: for c in Point.iterateClosest(turtle.point, chests) do`
+  - Definition: `point.lua:217: function Point.iterateClosest(spt, ipts)`
+- **makeBox**: No documentation available.
+  - Example: `turtle/apis/pathfind.lua:20: local box = Point.makeBox(turtle.point, turtle.point)`
+  - Definition: `point.lua:282: function Point.makeBox(pt1, pt2)`
 - **nearestTo**: get the point nearest A that is in the direction of B
   - Example: `turtle/apis/pathfind.lua:192: local bpt = Point.nearestTo(turtle.point, pt)`
-- **normalizeBox**:
-  - Example: `common/multiMiner.lua:161: pathingBox = Point.normalizeBox(box),`
-- **rotate**:
+  - Definition: `point.lua:240: function Point.nearestTo(pta, ptb)`
+- **normalizeBox**: No documentation available.
+  - Example: `miners/simpleMiner.lua:221: local box = Point.normalizeBox({ x = turtle.point.x, y = turtle.point.y, z = turtle.point.z,`
+  - Definition: `point.lua:312: function Point.normalizeBox(box)`
+- **rotate**: No documentation available.
   - Example: `turtle/canvasClient.lua:21: Point.rotate(c, rotated[reference.heading])`
-- **round**:
+  - Definition: `point.lua:268: function Point.rotate(pt, facing)`
+- **round**: No documentation available.
+  - Example: `point.lua:51: function Point.round(pt)`
   - Definition: `point.lua:51: function Point.round(pt)`
-- **same**:
-  - Example: `neural/mobFollow.lua:30: if pt and lpt and Point.same(pt, lpt) then`
-- **subtract**:
+- **same**: No documentation available.
+  - Example: `builder/apis/turtle.lua:611: if not Point.same(turtle.getPoint(), self.supplyPoint) then`
+  - Definition: `point.lua:58: function Point.same(pta, ptb)`
+- **subtract**: No documentation available.
+  - Example: `point.lua:72: function Point.subtract(a, b)`
   - Definition: `point.lua:72: function Point.subtract(a, b)`
 - **turtleDistance**: turtle distance (manhattan)
-  - Example: `miners/simpleMiner.lua:498: local veryMinFuel = Point.turtleDistance(turtle.point, { x = 0, y = 0, z = 0}) + 512`
+  - Example: `miners/scanningMiner.lua:466: local veryMinFuel = Point.turtleDistance(turtle.point, HOME_PT) + 512`
+  - Definition: `point.lua:87: function Point.turtleDistance(a, b)`
 
 ## Region
 - **andRect**: region:andRect(r1, r2, r3, r4): Logical ''and''s a rectange to a region
+  - Example: `ui/region.lua:132: function Region:andRect(s1, s2, s3, s4)`
   - Definition: `ui/region.lua:132: function Region:andRect(s1, s2, s3, s4)`
 - **andRegion**: region:andRegion(r): Logically ''and''s a region to a region
+  - Example: `ui/region.lua:205: function Region:andRegion(s)`
   - Definition: `ui/region.lua:205: function Region:andRegion(s)`
 - **checkIntersect**: success = region:checkIntersect(x0, y0, x1, y1): Returns a boolean indicating whether a rectangle specified by its coordinates overlaps with a region.
+  - Example: `ui/region.lua:186: function Region:checkIntersect(s1, s2, s3, s4)`
   - Definition: `ui/region.lua:186: function Region:checkIntersect(s1, s2, s3, s4)`
 - **forEach**: region:forEach(func, obj, ...): For each rectangle in a region, calls the specified function according the following scheme: func(obj, x0, y0, x1, y1, ...) Extra arguments are passed through to the function.
+  - Example: `ui/region.lua:224: function Region:forEach(func, obj, ...)`
   - Definition: `ui/region.lua:224: function Region:forEach(func, obj, ...)`
 - **get**: minx, miny, maxx, maxy = region:get(): Get region's min/max extents
+  - Example: `ui/region.lua:246: function Region:get()`
   - Definition: `ui/region.lua:246: function Region:get()`
 - **getRects**: region:getRect - gets an iterator on the rectangles in a region [internal]
+  - Example: `ui/region.lua:173: function Region:getRects()`
   - Definition: `ui/region.lua:173: function Region:getRects()`
 - **intersect**: x0, y0, x1, y1 = Region.intersect(d1, d2, d3, d4, s1, s2, s3, s4): Returns the coordinates of a rectangle where a rectangle specified by the coordinates s1, s2, s3, s4 overlaps with the rectangle specified by the coordinates d1, d2, d3, d4. The return value is '''nil''' if the rectangles do not overlap.
+  - Example: `ui/region.lua:34: function Region.intersect(d1, d2, d3, d4, s1, s2, s3, s4)`
   - Definition: `ui/region.lua:34: function Region.intersect(d1, d2, d3, d4, s1, s2, s3, s4)`
 - **isEmpty**: region:isEmpty(): Returns '''true''' if a region is empty.
+  - Example: `ui/region.lua:241: function Region:isEmpty()`
   - Definition: `ui/region.lua:241: function Region:isEmpty()`
 - **new**: region = Region.new(r1, r2, r3, r4): Creates a new region from the given coordinates.
+  - Example: `ui/region.lua:104: function Region.new(r1, r2, r3, r4)`
   - Definition: `ui/region.lua:104: function Region.new(r1, r2, r3, r4)`
 - **orRect**: region:orRect(r1, r2, r3, r4): Logical ''or''s a rectangle to a region
+  - Example: `ui/region.lua:119: function Region:orRect(s1, s2, s3, s4)`
   - Definition: `ui/region.lua:119: function Region:orRect(s1, s2, s3, s4)`
 - **orRegion**: region:orRegion(region): Logical ''or''s another region to a region
+  - Example: `ui/region.lua:125: function Region:orRegion(s)`
   - Definition: `ui/region.lua:125: function Region:orRegion(s)`
 - **setRect**: self = region:setRect(r1, r2, r3, r4): Resets an existing region to the specified rectangle.
+  - Example: `ui/region.lua:113: function Region:setRect(r1, r2, r3, r4)`
   - Definition: `ui/region.lua:113: function Region:setRect(r1, r2, r3, r4)`
 - **shift**: region:shift(dx, dy): Shifts a region by delta x and y.
+  - Example: `ui/region.lua:231: function Region:shift(dx, dy)`
   - Definition: `ui/region.lua:231: function Region:shift(dx, dy)`
 - **subRect**: self = region:subRect(r1, r2, r3, r4): Subtracts a rectangle from a region
+  - Example: `ui/region.lua:160: function Region:subRect(s1, s2, s3, s4)`
   - Definition: `ui/region.lua:160: function Region:subRect(s1, s2, s3, s4)`
 - **subRegion**: region:subRegion(region2): Subtracts {{region2}} from {{region}}.
+  - Example: `ui/region.lua:196: function Region:subRegion(region)`
   - Definition: `ui/region.lua:196: function Region:subRegion(region)`
 - **xorRect**: region:xorRect(r1, r2, r3, r4): Logical ''xor''s a rectange to a region
+  - Example: `ui/region.lua:145: function Region:xorRect(s1, s2, s3, s4)`
   - Definition: `ui/region.lua:145: function Region:xorRect(s1, s2, s3, s4)`
 
 ## Routine
-- **isDead**:
+- **isDead**: No documentation available.
+  - Example: `event.lua:34: function Routine:isDead()`
   - Definition: `event.lua:34: function Routine:isDead()`
-- **resume**:
+- **resume**: No documentation available.
+  - Example: `event.lua:47: function Routine:resume(event, ...)`
   - Definition: `event.lua:47: function Routine:resume(event, ...)`
-- **terminate**:
+- **terminate**: No documentation available.
+  - Example: `event.lua:41: function Routine:terminate()`
   - Definition: `event.lua:41: function Routine:terminate()`
 
 ## Security
-- **getIdentifier**:
+- **getIdentifier**: No documentation available.
+  - Example: `security.lua:14: function Security.getIdentifier()`
   - Definition: `security.lua:14: function Security.getIdentifier()`
-- **getPassword**:
+- **getPassword**: No documentation available.
+  - Example: `security.lua:36: function Security.getPassword()`
   - Definition: `security.lua:36: function Security.getPassword()`
-- **hasPassword**:
+- **hasPassword**: No documentation available.
+  - Example: `security.lua:10: function Security.hasPassword()`
   - Definition: `security.lua:10: function Security.hasPassword()`
-- **updatePassword**:
+- **updatePassword**: No documentation available.
+  - Example: `security.lua:30: function Security.updatePassword(password)`
   - Definition: `security.lua:30: function Security.updatePassword(password)`
-- **verifyPassword**:
+- **verifyPassword**: No documentation available.
   - Example: `secure/unlock.lua:22: if password and Security.verifyPassword(SHA.compute(password)) then`
+  - Definition: `security.lua:5: function Security.verifyPassword(password)`
 
 ## Socket
-- **connect**:
+- **connect**: No documentation available.
+  - Example: `socket.lua:121: function Socket.connect(host, port, options)`
   - Definition: `socket.lua:121: function Socket.connect(host, port, options)`
-- **server**:
+- **server**: No documentation available.
+  - Example: `socket.lua:209: function Socket.server(port, options)`
   - Definition: `socket.lua:209: function Socket.server(port, options)`
 
 ## Sound
-- **play**:
-  - Example: `swshop/shopView.lua:201: Sound.play('entity.player.levelup')`
-- **setVolume**:
+- **play**: No documentation available.
+  - Example: `miners/findSwarm.lua:116: Sound.play('entity.villager.no')`
+  - Definition: `sound.lua:7: function Sound.play(sound, vol)`
+- **setVolume**: No documentation available.
   - Example: `milo/plugins/speakerView.lua:11: Sound.setVolume(speakerNode.volume)`
+  - Definition: `sound.lua:13: function Sound.setVolume(volume)`
 
 ## Sync
-- **isLocked**:
+- **isLocked**: No documentation available.
+  - Example: `sync.lua:56: function Sync.isLocked(obj)`
   - Definition: `sync.lua:56: function Sync.isLocked(obj)`
-- **lock**:
+- **lock**: No documentation available.
+  - Example: `sync.lua:30: function Sync.lock(obj)`
   - Definition: `sync.lua:30: function Sync.lock(obj)`
-- **release**:
+- **release**: No documentation available.
+  - Example: `sync.lua:43: function Sync.release(obj)`
   - Definition: `sync.lua:43: function Sync.release(obj)`
-- **sync**:
+- **sync**: No documentation available.
+  - Example: `sync.lua:7: function Sync.sync(obj, fn)`
   - Definition: `sync.lua:7: function Sync.sync(obj, fn)`
 
 ## Terminal
-- **colorToGrayscale**:
+- **colorToGrayscale**: No documentation available.
+  - Example: `terminal.lua:379: function Terminal.colorToGrayscale(c)`
   - Definition: `terminal.lua:379: function Terminal.colorToGrayscale(c)`
-- **copy**:
+- **copy**: No documentation available.
+  - Example: `terminal.lua:433: function Terminal.copy(it, ot)`
   - Definition: `terminal.lua:433: function Terminal.copy(it, ot)`
 - **getContents**: get windows contents
+  - Example: `terminal.lua:359: function Terminal.getContents(win)`
   - Definition: `terminal.lua:359: function Terminal.getContents(win)`
-- **getNullTerm**:
+- **getNullTerm**: No documentation available.
+  - Example: `terminal.lua:421: function Terminal.getNullTerm(ct)`
   - Definition: `terminal.lua:421: function Terminal.getNullTerm(ct)`
-- **mirror**:
+- **mirror**: No documentation available.
+  - Example: `terminal.lua:443: function Terminal.mirror(ct, dt)`
   - Definition: `terminal.lua:443: function Terminal.mirror(ct, dt)`
-- **readPassword**:
+- **readPassword**: No documentation available.
+  - Example: `terminal.lua:457: function Terminal.readPassword(prompt)`
   - Definition: `terminal.lua:457: function Terminal.readPassword(prompt)`
-- **toGrayscale**:
+- **toGrayscale**: No documentation available.
+  - Example: `terminal.lua:383: function Terminal.toGrayscale(ct)`
   - Definition: `terminal.lua:383: function Terminal.toGrayscale(ct)`
 - **window**: Replacement for window api with scrolling and buffering
+  - Example: `terminal.lua:29: function Terminal.window(parent, sx, sy, w, h, isVisible)`
   - Definition: `terminal.lua:29: function Terminal.window(parent, sx, sy, w, h, isVisible)`
 
 ## Transition
-- **expandUp**:
+- **expandUp**: No documentation available.
+  - Example: `ui/transition.lua:37: function Transition.expandUp(canvas, args)`
   - Definition: `ui/transition.lua:37: function Transition.expandUp(canvas, args)`
-- **shake**:
+- **shake**: No documentation available.
+  - Example: `ui/transition.lua:53: function Transition.shake(canvas, args)`
   - Definition: `ui/transition.lua:53: function Transition.shake(canvas, args)`
-- **shuffle**:
+- **shuffle**: No documentation available.
+  - Example: `ui/transition.lua:67: function Transition.shuffle(canvas, args)`
   - Definition: `ui/transition.lua:67: function Transition.shuffle(canvas, args)`
-- **slideLeft**:
+- **slideLeft**: No documentation available.
+  - Example: `ui/transition.lua:5: function Transition.slideLeft(canvas, args)`
   - Definition: `ui/transition.lua:5: function Transition.slideLeft(canvas, args)`
-- **slideRight**:
+- **slideRight**: No documentation available.
+  - Example: `ui/transition.lua:21: function Transition.slideRight(canvas, args)`
   - Definition: `ui/transition.lua:21: function Transition.slideRight(canvas, args)`
 
 ## Tween
-- **reset**:
+- **reset**: No documentation available.
+  - Example: `ui/tween.lua:326: function Tween:reset()`
   - Definition: `ui/tween.lua:326: function Tween:reset()`
-- **set**:
+- **set**: No documentation available.
+  - Example: `ui/tween.lua:301: function Tween:set(clock)`
   - Definition: `ui/tween.lua:301: function Tween:set(clock)`
-- **update**:
+- **update**: No documentation available.
+  - Example: `ui/tween.lua:330: function Tween:update(dt)`
   - Definition: `ui/tween.lua:330: function Tween:update(dt)`
 
 ## UI
-- **addPage**:
+- **addPage**: No documentation available.
+  - Example: `ui.lua:316: function UI:addPage(name, page)`
   - Definition: `ui.lua:316: function UI:addPage(name, page)`
-- **click**:
+- **click**: No documentation available.
+  - Example: `ui.lua:259: function UI:click(target, ie)`
   - Definition: `ui.lua:259: function UI:click(target, ie)`
-- **configure**:
+- **configure**: No documentation available.
+  - Example: `ui.lua:156: function UI:configure(appName, ...)`
   - Definition: `ui.lua:156: function UI:configure(appName, ...)`
-- **disableEffects**:
+- **disableEffects**: No documentation available.
+  - Example: `ui.lua:194: function UI:disableEffects()`
   - Definition: `ui.lua:194: function UI:disableEffects()`
-- **emitEvent**:
+- **emitEvent**: No documentation available.
+  - Example: `ui.lua:252: function UI:emitEvent(event)`
   - Definition: `ui.lua:252: function UI:emitEvent(event)`
-- **generateTheme**:
+- **generateTheme**: No documentation available.
+  - Example: `ui.lua:212: function UI:generateTheme(filename)`
   - Definition: `ui.lua:212: function UI:generateTheme(filename)`
-- **getActivePage**:
+- **getActivePage**: No documentation available.
+  - Example: `ui.lua:337: function UI:getActivePage(page)`
   - Definition: `ui.lua:337: function UI:getActivePage(page)`
-- **getCurrentPage**:
+- **getCurrentPage**: No documentation available.
+  - Example: `ui.lua:378: function UI:getCurrentPage()`
   - Definition: `ui.lua:378: function UI:getCurrentPage()`
-- **getDefaults**:
+- **getDefaults**: No documentation available.
+  - Example: `ui.lua:390: function UI:getDefaults(element, args)`
   - Definition: `ui.lua:390: function UI:getDefaults(element, args)`
-- **getPage**:
+- **getPage**: No documentation available.
+  - Example: `ui.lua:327: function UI:getPage(pageName)`
   - Definition: `ui.lua:327: function UI:getPage(pageName)`
-- **init**:
+- **init**: No documentation available.
+  - Example: `ui.lua:38: function UI:init()`
   - Definition: `ui.lua:38: function UI:init()`
-- **loadTheme**:
+- **loadTheme**: No documentation available.
+  - Example: `ui.lua:198: function UI:loadTheme(filename)`
   - Definition: `ui.lua:198: function UI:loadTheme(filename)`
-- **mergeProperties**:
+- **mergeProperties**: No documentation available.
+  - Example: `ui.lua:398: function UI:mergeProperties(obj, args)`
   - Definition: `ui.lua:398: function UI:mergeProperties(obj, args)`
-- **pullEvents**:
+- **pullEvents**: No documentation available.
+  - Example: `ui.lua:414: function UI:pullEvents(...)`
   - Definition: `ui.lua:414: function UI:pullEvents(...)`
-- **setActivePage**:
+- **setActivePage**: No documentation available.
+  - Example: `ui.lua:344: function UI:setActivePage(page)`
   - Definition: `ui.lua:344: function UI:setActivePage(page)`
-- **setDefaultDevice**:
+- **setDefaultDevice**: No documentation available.
+  - Example: `ui.lua:312: function UI:setDefaultDevice(dev)`
   - Definition: `ui.lua:312: function UI:setDefaultDevice(dev)`
-- **setPage**:
+- **setPage**: No documentation available.
+  - Example: `ui.lua:348: function UI:setPage(pageOrName, ...)`
   - Definition: `ui.lua:348: function UI:setPage(pageOrName, ...)`
-- **setPages**:
+- **setPages**: No documentation available.
+  - Example: `ui.lua:323: function UI:setPages(pages)`
   - Definition: `ui.lua:323: function UI:setPages(pages)`
-- **setPreviousPage**:
+- **setPreviousPage**: No documentation available.
+  - Example: `ui.lua:382: function UI:setPreviousPage()`
   - Definition: `ui.lua:382: function UI:setPreviousPage()`
 
 ## UI.Tabs
@@ -513,952 +717,1374 @@ If colors are not specified, the colors from the base class will be used.
 If the base class does not have colors defined, colors will be inherited from the parent container.
 
 ## Util
-- **any**:
+- **any**: No documentation available.
+  - Example: `util.lua:410: function Util.any(t, fn)`
   - Definition: `util.lua:410: function Util.any(t, fn)`
-- **backup**:
+- **backup**: No documentation available.
+  - Example: `util.lua:488: function Util.backup(fname)`
   - Definition: `util.lua:488: function Util.backup(fname)`
-- **byteArrayToHex**:
+- **byteArrayToHex**: No documentation available.
+  - Example: `util.lua:86: function Util.byteArrayToHex(tbl)`
   - Definition: `util.lua:86: function Util.byteArrayToHex(tbl)`
-- **checkMinecraftVersion**:
+- **checkMinecraftVersion**: No documentation available.
+  - Example: `util.lua:196: function Util.checkMinecraftVersion(minVersion)`
   - Definition: `util.lua:196: function Util.checkMinecraftVersion(minVersion)`
-- **clamp**:
+- **clamp**: No documentation available.
+  - Example: `util.lua:216: function Util.clamp(num, low, high)`
   - Definition: `util.lua:216: function Util.clamp(num, low, high)`
 - **clear**: [[ Table functions ]] --
+  - Example: `util.lua:233: function Util.clear(t)`
   - Definition: `util.lua:233: function Util.clear(t)`
-- **contains**:
+- **contains**: No documentation available.
+  - Example: `util.lua:292: function Util.contains(t, value)`
   - Definition: `util.lua:292: function Util.contains(t, value)`
-- **deepCopy**:
+- **deepCopy**: No documentation available.
+  - Example: `util.lua:327: function Util.deepCopy(t)`
   - Definition: `util.lua:327: function Util.deepCopy(t)`
-- **deepMerge**:
+- **deepMerge**: No documentation available.
+  - Example: `util.lua:269: function Util.deepMerge(obj, args)`
   - Definition: `util.lua:269: function Util.deepMerge(obj, args)`
-- **download**:
+- **download**: No documentation available.
+  - Example: `util.lua:578: function Util.download(url, filename)`
   - Definition: `util.lua:578: function Util.download(url, filename)`
-- **each**:
+- **each**: No documentation available.
+  - Example: `util.lua:427: function Util.each(list, func)`
   - Definition: `util.lua:427: function Util.each(list, func)`
-- **empty**:
+- **empty**: No documentation available.
+  - Example: `util.lua:240: function Util.empty(t)`
   - Definition: `util.lua:240: function Util.empty(t)`
-- **every**:
+- **every**: No documentation available.
+  - Example: `util.lua:418: function Util.every(t, fn)`
   - Definition: `util.lua:418: function Util.every(t, fn)`
-- **filter**:
+- **filter**: No documentation available.
+  - Example: `util.lua:363: function Util.filter(it, f)`
   - Definition: `util.lua:363: function Util.filter(it, f)`
 - **filterInplace**: http://snippets.luacode.org/?p=snippets/Filter_a_table_in-place_119
+  - Example: `util.lua:344: function Util.filterInplace(t, predicate)`
   - Definition: `util.lua:344: function Util.filterInplace(t, predicate)`
-- **find**:
+- **find**: No documentation available.
+  - Example: `util.lua:300: function Util.find(t, name, value)`
   - Definition: `util.lua:300: function Util.find(t, name, value)`
-- **findAll**:
+- **findAll**: No documentation available.
+  - Example: `util.lua:308: function Util.findAll(t, name, value)`
   - Definition: `util.lua:308: function Util.findAll(t, name, value)`
-- **first**:
+- **first**: No documentation available.
+  - Example: `util.lua:468: function Util.first(t, order)`
   - Definition: `util.lua:468: function Util.first(t, order)`
-- **getMinecraftVersion**:
+- **getMinecraftVersion**: No documentation available.
+  - Example: `util.lua:185: function Util.getMinecraftVersion()`
   - Definition: `util.lua:185: function Util.getMinecraftVersion()`
-- **getOptions**:
+- **getOptions**: No documentation available.
+  - Example: `util.lua:801: function Util.getOptions(options, args, ignoreInvalid)`
   - Definition: `util.lua:801: function Util.getOptions(options, args, ignoreInvalid)`
-- **getVersion**:
+- **getVersion**: No documentation available.
+  - Example: `util.lua:172: function Util.getVersion()`
   - Definition: `util.lua:172: function Util.getVersion()`
-- **hexToByteArray**:
+- **hexToByteArray**: No documentation available.
+  - Example: `util.lua:77: function Util.hexToByteArray(str)`
   - Definition: `util.lua:77: function Util.hexToByteArray(str)`
 - **httpGet**: [[ loading and running functions ]] --
+  - Example: `util.lua:568: function Util.httpGet(url, headers, isBinary)`
   - Definition: `util.lua:568: function Util.httpGet(url, headers, isBinary)`
-- **insertString**:
+- **insertString**: No documentation available.
+  - Example: `util.lua:633: function Util.insertString(str, istr, pos)`
   - Definition: `util.lua:633: function Util.insertString(str, istr, pos)`
-- **key**:
+- **key**: No documentation available.
+  - Example: `util.lua:244: function Util.key(t, value)`
   - Definition: `util.lua:244: function Util.key(t, value)`
-- **keys**:
+- **keys**: No documentation available.
+  - Example: `util.lua:252: function Util.keys(t)`
   - Definition: `util.lua:252: function Util.keys(t)`
-- **loadTable**:
+- **loadTable**: No documentation available.
+  - Example: `util.lua:552: function Util.loadTable(fname)`
   - Definition: `util.lua:552: function Util.loadTable(fname)`
-- **loadUrl**:
+- **loadUrl**: No documentation available.
+  - Example: `util.lua:590: function Util.loadUrl(url, env)  -- loadfile equivalent`
   - Definition: `util.lua:590: function Util.loadUrl(url, env)  -- loadfile equivalent`
-- **matches**:
+- **matches**: No documentation available.
+  - Example: `util.lua:646: function Util.matches(str, pattern)`
   - Definition: `util.lua:646: function Util.matches(str, pattern)`
-- **merge**:
+- **merge**: No documentation available.
+  - Example: `util.lua:260: function Util.merge(obj, args)`
   - Definition: `util.lua:260: function Util.merge(obj, args)`
 - **parse**: https://github.com/MightyPirates/OpenComputers
+  - Example: `util.lua:730: function Util.parse(...)`
   - Definition: `util.lua:730: function Util.parse(...)`
 - **permutation**: https://www.lua.org/pil/9.3.html
+  - Example: `util.lua:835: function Util.permutation(tbl)`
   - Definition: `util.lua:835: function Util.permutation(tbl)`
-- **print**:
+- **print**: No documentation available.
+  - Example: `util.lua:168: function Util.print(pattern, ...)`
   - Definition: `util.lua:168: function Util.print(pattern, ...)`
-- **randomFloat**:
+- **randomFloat**: No documentation available.
+  - Example: `util.lua:226: function Util.randomFloat(max, min)`
   - Definition: `util.lua:226: function Util.randomFloat(max, min)`
 - **readFile**: [[ File functions ]]--
+  - Example: `util.lua:479: function Util.readFile(fname, flags)`
   - Definition: `util.lua:479: function Util.readFile(fname, flags)`
-- **readLines**:
+- **readLines**: No documentation available.
+  - Example: `util.lua:516: function Util.readLines(fname)`
   - Definition: `util.lua:516: function Util.readLines(fname)`
-- **readTable**:
+- **readTable**: No documentation available.
+  - Example: `util.lua:541: function Util.readTable(fname)`
   - Definition: `util.lua:541: function Util.readTable(fname)`
-- **reduce**:
+- **reduce**: No documentation available.
+  - Example: `util.lua:373: function Util.reduce(t, fn, acc)`
   - Definition: `util.lua:373: function Util.reduce(t, fn, acc)`
-- **removeByValue**:
+- **removeByValue**: No documentation available.
+  - Example: `util.lua:397: function Util.removeByValue(t, e)`
   - Definition: `util.lua:397: function Util.removeByValue(t, e)`
 - **round**: http://lua-users.org/wiki/SimpleRound
+  - Example: `util.lua:221: function Util.round(num, idp)`
   - Definition: `util.lua:221: function Util.round(num, idp)`
-- **rpairs**:
+- **rpairs**: No documentation available.
+  - Example: `util.lua:433: function Util.rpairs(t)`
   - Definition: `util.lua:433: function Util.rpairs(t)`
-- **run**:
+- **run**: No documentation available.
+  - Example: `util.lua:606: function Util.run(env, path, ...)`
   - Definition: `util.lua:606: function Util.run(env, path, ...)`
-- **runFunction**:
+- **runFunction**: No documentation available.
+  - Example: `util.lua:615: function Util.runFunction(env, fn, ...)`
   - Definition: `util.lua:615: function Util.runFunction(env, fn, ...)`
-- **runUrl**:
+- **runUrl**: No documentation available.
+  - Example: `util.lua:598: function Util.runUrl(env, url, ...)   -- os.run equivalent`
   - Definition: `util.lua:598: function Util.runUrl(env, url, ...)   -- os.run equivalent`
-- **shallowCopy**:
+- **shallowCopy**: No documentation available.
+  - Example: `util.lua:318: function Util.shallowCopy(t)`
   - Definition: `util.lua:318: function Util.shallowCopy(t)`
-- **showOptions**:
+- **showOptions**: No documentation available.
+  - Example: `util.lua:794: function Util.showOptions(options)`
   - Definition: `util.lua:794: function Util.showOptions(options)`
-- **signum**:
+- **signum**: No documentation available.
+  - Example: `util.lua:206: function Util.signum(num)`
   - Definition: `util.lua:206: function Util.signum(num)`
-- **size**:
+- **size**: No documentation available.
+  - Example: `util.lua:381: function Util.size(list)`
   - Definition: `util.lua:381: function Util.size(list)`
 - **spairs**: http://stackoverflow.com/questions/15706270/sort-a-table-in-lua
+  - Example: `util.lua:447: function Util.spairs(t, order)`
   - Definition: `util.lua:447: function Util.spairs(t, order)`
-- **split**:
+- **split**: No documentation available.
+  - Example: `util.lua:637: function Util.split(str, pattern)`
   - Definition: `util.lua:637: function Util.split(str, pattern)`
-- **startsWith**:
+- **startsWith**: No documentation available.
+  - Example: `util.lua:655: function Util.startsWith(s, match)`
   - Definition: `util.lua:655: function Util.startsWith(s, match)`
-- **throttle**:
+- **throttle**: No documentation available.
+  - Example: `util.lua:121: function Util.throttle(fn)`
   - Definition: `util.lua:121: function Util.throttle(fn)`
-- **timer**:
+- **timer**: No documentation available.
+  - Example: `util.lua:112: function Util.timer()`
   - Definition: `util.lua:112: function Util.timer()`
 - **toBytes**: [[ String functions ]] --
+  - Example: `util.lua:621: function Util.toBytes(n)`
   - Definition: `util.lua:621: function Util.toBytes(n)`
-- **tostring**:
+- **tostring**: No documentation available.
+  - Example: `util.lua:136: function Util.tostring(pattern, ...)`
   - Definition: `util.lua:136: function Util.tostring(pattern, ...)`
-- **transpose**:
+- **transpose**: No documentation available.
+  - Example: `util.lua:284: function Util.transpose(t)`
   - Definition: `util.lua:284: function Util.transpose(t)`
 - **trim**: http://snippets.luacode.org/?p=snippets/trim_whitespace_from_string_76
+  - Example: `util.lua:684: function Util.trim(s)`
   - Definition: `util.lua:684: function Util.trim(s)`
 - **triml**: trim whitespace from left end of string
+  - Example: `util.lua:689: function Util.triml(s)`
   - Definition: `util.lua:689: function Util.triml(s)`
 - **trimr**: trim whitespace from right end of string
+  - Example: `util.lua:694: function Util.trimr(s)`
   - Definition: `util.lua:694: function Util.trimr(s)`
-- **tryTimed**:
+- **tryTimed**: No documentation available.
+  - Example: `util.lua:91: function Util.tryTimed(timeout, f, ...)`
   - Definition: `util.lua:91: function Util.tryTimed(timeout, f, ...)`
-- **tryTimes**:
+- **tryTimes**: No documentation available.
+  - Example: `util.lua:101: function Util.tryTimes(attempts, f, ...)`
   - Definition: `util.lua:101: function Util.tryTimes(attempts, f, ...)`
 - **widthify**: return a fixed length string using specified alignment
+  - Example: `util.lua:660: function Util.widthify(s, len, align)`
   - Definition: `util.lua:660: function Util.widthify(s, len, align)`
-- **wordWrap**:
+- **wordWrap**: No documentation available.
+  - Example: `util.lua:719: function Util.wordWrap(str, limit)`
   - Definition: `util.lua:719: function Util.wordWrap(str, limit)`
-- **writeFile**:
+- **writeFile**: No documentation available.
+  - Example: `util.lua:496: function Util.writeFile(fname, data, flags)`
   - Definition: `util.lua:496: function Util.writeFile(fname, data, flags)`
-- **writeLines**:
+- **writeLines**: No documentation available.
+  - Example: `util.lua:530: function Util.writeLines(fname, lines)`
   - Definition: `util.lua:530: function Util.writeLines(fname, lines)`
-- **writeTable**:
+- **writeTable**: No documentation available.
+  - Example: `util.lua:548: function Util.writeTable(fname, data)`
   - Definition: `util.lua:548: function Util.writeTable(fname, data)`
 
 ## Writer
-- **finish**:
+- **finish**: No documentation available.
+  - Example: `ui/components/Grid.lua:29: function Writer:finish(bg)`
   - Definition: `ui/components/Grid.lua:29: function Writer:finish(bg)`
-- **init**:
+- **init**: No documentation available.
+  - Example: `ui/components/Grid.lua:17: function Writer:init(element, y)`
   - Definition: `ui/components/Grid.lua:17: function Writer:init(element, y)`
-- **write**:
+- **write**: No documentation available.
+  - Example: `ui/components/Grid.lua:23: function Writer:write(s, width, align, bg, fg)`
   - Definition: `ui/components/Grid.lua:23: function Writer:write(s, width, align, bg, fg)`
 
 ## cbor
 - **decode**: opts.more(n) -> want more data opts.simple -> decode simple value opts[int] -> tagged decoder
+  - Example: `cbor.lua:520: local function decode(s, opts)`
   - Definition: `cbor.lua:520: local function decode(s, opts)`
-- **encode**:
+- **encode**: No documentation available.
+  - Example: `cbor.lua:55: local function encode(obj, opts)`
   - Definition: `cbor.lua:55: local function encode(obj, opts)`
-- **integer**:
+- **integer**: No documentation available.
+  - Example: `cbor.lua:94: function integer(num, m)`
   - Definition: `cbor.lua:94: function integer(num, m)`
-- **more**:
+- **more**: No documentation available.
+  - Example: `cbor.lua:533: function more()`
   - Definition: `cbor.lua:533: function more()`
-- **read_array**:
+- **read_array**: No documentation available.
+  - Example: `cbor.lua:361: local function read_array(fh, mintyp, opts)`
   - Definition: `cbor.lua:361: local function read_array(fh, mintyp, opts)`
-- **read_byte**:
+- **read_byte**: No documentation available.
+  - Example: `cbor.lua:300: local function read_byte(fh)`
   - Definition: `cbor.lua:300: local function read_byte(fh)`
 - **read_bytes**: Decoder Reads from a file-handle like object
+  - Example: `cbor.lua:296: local function read_bytes(fh, len)`
   - Definition: `cbor.lua:296: local function read_bytes(fh, len)`
-- **read_double**:
+- **read_double**: No documentation available.
+  - Example: `cbor.lua:478: function read_double(fh) return s_unpack(">d", read_bytes(fh, 8)) end`
   - Definition: `cbor.lua:478: function read_double(fh) return s_unpack(">d", read_bytes(fh, 8)) end`
-- **read_float**:
+- **read_float**: No documentation available.
+  - Example: `cbor.lua:477: function read_float(fh) return s_unpack(">f", read_bytes(fh, 4)) end`
   - Definition: `cbor.lua:477: function read_float(fh) return s_unpack(">f", read_bytes(fh, 4)) end`
-- **read_half_float**:
+- **read_half_float**: No documentation available.
+  - Example: `cbor.lua:411: local function read_half_float(fh)`
   - Definition: `cbor.lua:411: local function read_half_float(fh)`
-- **read_integer**:
+- **read_integer**: No documentation available.
+  - Example: `cbor.lua:330: local function read_integer(fh, mintyp)`
   - Definition: `cbor.lua:330: local function read_integer(fh, mintyp)`
-- **read_length**:
+- **read_length**: No documentation available.
+  - Example: `cbor.lua:304: local function read_length(fh, mintyp)`
   - Definition: `cbor.lua:304: local function read_length(fh, mintyp)`
-- **read_map**:
+- **read_map**: No documentation available.
+  - Example: `cbor.lua:379: local function read_map(fh, mintyp, opts)`
   - Definition: `cbor.lua:379: local function read_map(fh, mintyp, opts)`
-- **read_negative_integer**:
+- **read_negative_integer**: No documentation available.
+  - Example: `cbor.lua:334: local function read_negative_integer(fh, mintyp)`
   - Definition: `cbor.lua:334: local function read_negative_integer(fh, mintyp)`
-- **read_object**:
+- **read_object**: No documentation available.
+  - Example: `cbor.lua:325: local function read_object(fh, opts)`
   - Definition: `cbor.lua:325: local function read_object(fh, opts)`
-- **read_semantic**:
+- **read_semantic**: No documentation available.
+  - Example: `cbor.lua:401: local function read_semantic(fh, mintyp, opts)`
   - Definition: `cbor.lua:401: local function read_semantic(fh, mintyp, opts)`
-- **read_simple**:
+- **read_simple**: No documentation available.
+  - Example: `cbor.lua:481: local function read_simple(fh, value, opts)`
   - Definition: `cbor.lua:481: local function read_simple(fh, value, opts)`
-- **read_string**:
+- **read_string**: No documentation available.
+  - Example: `cbor.lua:338: local function read_string(fh, mintyp)`
   - Definition: `cbor.lua:338: local function read_string(fh, mintyp)`
-- **read_type**:
+- **read_type**: No documentation available.
+  - Example: `cbor.lua:320: local function read_type(fh)`
   - Definition: `cbor.lua:320: local function read_type(fh)`
-- **read_unicode_string**:
+- **read_unicode_string**: No documentation available.
+  - Example: `cbor.lua:352: local function read_unicode_string(fh, mintyp)`
   - Definition: `cbor.lua:352: local function read_unicode_string(fh, mintyp)`
-- **simple**:
+- **simple**: No documentation available.
+  - Example: `cbor.lua:116: local function simple(value, name, cbor)`
   - Definition: `cbor.lua:116: local function simple(value, name, cbor)`
 - **softreq**: Concise Binary Object Representation (CBOR) RFC 7049
+  - Example: `cbor.lua:4: local function softreq(pkg, field)`
   - Definition: `cbor.lua:4: local function softreq(pkg, field)`
-- **tagged**:
+- **tagged**: No documentation available.
+  - Example: `cbor.lua:125: local function tagged(tag, value)`
   - Definition: `cbor.lua:125: local function tagged(tag, value)`
 
 ## compress.lzw
-- **compress**:
+- **compress**: No documentation available.
   - Example: `compress/compress.lua:28: Util.writeFile(file, LZW.compress(c), 'wb')`
-- **decompress**:
+  - Definition: `compress/lzw.lua:32: local function compress(input)`
+- **decompress**: No documentation available.
   - Example: `compress/uncompress.lua:43: local s, m = Tar.untar_string(LZW.decompress(c), outDir, true)`
-- **dictAddA**:
+  - Definition: `compress/lzw.lua:89: local function decompress(input)`
+- **dictAddA**: No documentation available.
+  - Example: `compress/lzw.lua:19: local function dictAddA(str, dict, a, b)`
   - Definition: `compress/lzw.lua:19: local function dictAddA(str, dict, a, b)`
-- **dictAddB**:
+- **dictAddB**: No documentation available.
+  - Example: `compress/lzw.lua:76: local function dictAddB(str, dict, a, b)`
   - Definition: `compress/lzw.lua:76: local function dictAddB(str, dict, a, b)`
 
 ## compress.tar
-- **checksum_header**:
+- **checksum_header**: No documentation available.
+  - Example: `compress/tar.lua:43: local function checksum_header(block)`
   - Definition: `compress/tar.lua:43: local function checksum_header(block)`
-- **create_header_block**:
+- **create_header_block**: No documentation available.
+  - Example: `compress/tar.lua:190: local function create_header_block(filename, abspath)`
   - Definition: `compress/tar.lua:190: local function create_header_block(filename, abspath)`
-- **get_typeflag**:
+- **get_typeflag**: No documentation available.
+  - Example: `compress/tar.lua:11: local function get_typeflag(flag)`
   - Definition: `compress/tar.lua:11: local function get_typeflag(flag)`
-- **ins**:
+- **ins**: No documentation available.
+  - Example: `compress/tar.lua:197: local function ins(pos, istr)`
   - Definition: `compress/tar.lua:197: local function ins(pos, istr)`
-- **nullterm**:
+- **nullterm**: No documentation available.
+  - Example: `compress/tar.lua:56: local function nullterm(s)`
   - Definition: `compress/tar.lua:56: local function nullterm(s)`
-- **number_to_octal**:
+- **number_to_octal**: No documentation available.
+  - Example: `compress/tar.lua:193: local function number_to_octal(n)`
   - Definition: `compress/tar.lua:193: local function number_to_octal(n)`
-- **octal_to_number**:
+- **octal_to_number**: No documentation available.
+  - Example: `compress/tar.lua:28: local function octal_to_number(octal)`
   - Definition: `compress/tar.lua:28: local function octal_to_number(octal)`
-- **read_header_block**:
+- **read_header_block**: No documentation available.
+  - Example: `compress/tar.lua:60: local function read_header_block(block)`
   - Definition: `compress/tar.lua:60: local function read_header_block(block)`
-- **recurse**:
+- **recurse**: No documentation available.
+  - Example: `compress/tar.lua:213: local function recurse(rel)`
   - Definition: `compress/tar.lua:213: local function recurse(rel)`
 - **tar**: the bare minimum for this program to untar
-  - Example: `compress/compress.lua:24: Tar.tar(file, dir)`
-- **tar_stream**:
+  - Example: `tests/test-tar.lua:12: tar.tar('packages/tests/test.tar', 'packages/tests', files)`
+  - Definition: `compress/tar.lua:252: local function tar(filename, root, files)`
+- **tar_stream**: No documentation available.
+  - Example: `compress/tar.lua:210: local function tar_stream(tar_handle, root, files)`
   - Definition: `compress/tar.lua:210: local function tar_stream(tar_handle, root, files)`
-- **tar_string**:
+- **tar_string**: No documentation available.
   - Example: `compress/compress.lua:27: local c = Tar.tar_string(dir)`
-- **untar**:
-  - Example: `compress/uncompress.lua:31: local s, m = Tar.untar_string(string.char(table.unpack(t)), outDir, true)`
-- **untar_stream**:
+  - Definition: `compress/tar.lua:240: local function tar_string(root, files)`
+- **untar**: No documentation available.
+  - Example: `tests/test-tar.lua:15: tar.untar('packages/tests/test.tar', 'packages/tests/untar')`
+  - Definition: `compress/tar.lua:177: local function untar(filename, destdir, verbose)`
+- **untar_stream**: No documentation available.
+  - Example: `compress/tar.lua:84: local function untar_stream(tar_handle, destdir, verbose)`
   - Definition: `compress/tar.lua:84: local function untar_stream(tar_handle, destdir, verbose)`
-- **untar_string**:
+- **untar_string**: No documentation available.
   - Example: `compress/uncompress.lua:31: local s, m = Tar.untar_string(string.char(table.unpack(t)), outDir, true)`
+  - Definition: `compress/tar.lua:162: local function untar_string(str, destdir, verbose)`
 
 ## crypto.chacha20
-- **LE_toInt**:
+- **LE_toInt**: No documentation available.
+  - Example: `crypto/chacha20.lua:48: local function LE_toInt(bs, i)`
   - Definition: `crypto/chacha20.lua:48: local function LE_toInt(bs, i)`
-- **crypt**:
+- **crypt**: No documentation available.
+  - Example: `crypto/chacha20.lua:93: local function crypt(data, key, nonce, cntr, round)`
   - Definition: `crypto/chacha20.lua:93: local function crypt(data, key, nonce, cntr, round)`
-- **decrypt**:
+- **decrypt**: No documentation available.
+  - Example: `crypto/chacha20.lua:142: local function decrypt(data, key)`
   - Definition: `crypto/chacha20.lua:142: local function decrypt(data, key)`
-- **encrypt**:
+- **encrypt**: No documentation available.
+  - Example: `crypto/chacha20.lua:133: local function encrypt(data, key)`
   - Definition: `crypto/chacha20.lua:133: local function encrypt(data, key)`
 - **genNonce**: Helper functions
+  - Example: `crypto/chacha20.lua:125: local function genNonce(len)`
   - Definition: `crypto/chacha20.lua:125: local function genNonce(len)`
-- **hashBlock**:
+- **hashBlock**: No documentation available.
+  - Example: `crypto/chacha20.lua:35: local function hashBlock(state, rnd)`
   - Definition: `crypto/chacha20.lua:35: local function hashBlock(state, rnd)`
-- **initState**:
+- **initState**: No documentation available.
+  - Example: `crypto/chacha20.lua:55: local function initState(key, nonce, counter)`
   - Definition: `crypto/chacha20.lua:55: local function initState(key, nonce, counter)`
-- **newRNG**:
+- **newRNG**: No documentation available.
+  - Example: `crypto/chacha20.lua:171: local function newRNG(seed)`
   - Definition: `crypto/chacha20.lua:171: local function newRNG(seed)`
-- **quarterRound**:
+- **quarterRound**: No documentation available.
+  - Example: `crypto/chacha20.lua:27: local function quarterRound(s, a, b, c, d)`
   - Definition: `crypto/chacha20.lua:27: local function quarterRound(s, a, b, c, d)`
-- **rotl**:
+- **rotl**: No documentation available.
+  - Example: `crypto/chacha20.lua:21: local function rotl(n, b)`
   - Definition: `crypto/chacha20.lua:21: local function rotl(n, b)`
-- **serialize**:
+- **serialize**: No documentation available.
+  - Example: `crypto/chacha20.lua:82: local function serialize(state)`
   - Definition: `crypto/chacha20.lua:82: local function serialize(state)`
 
 ## crypto.ecc.elliptic
-- **NAF**:
+- **NAF**: No documentation available.
+  - Example: `crypto/ecc/elliptic.lua:181: local function NAF(d)`
   - Definition: `crypto/ecc/elliptic.lua:181: local function NAF(d)`
-- **expMod**:
+- **expMod**: No documentation available.
+  - Example: `crypto/ecc/elliptic.lua:58: local function expMod(a, t)`
   - Definition: `crypto/ecc/elliptic.lua:58: local function expMod(a, t)`
-- **generator**:
+- **generator**: No documentation available.
+  - Example: `crypto/ecc/elliptic.lua:54: local function generator()`
   - Definition: `crypto/ecc/elliptic.lua:54: local function generator()`
-- **isOnCurve**:
+- **isOnCurve**: No documentation available.
+  - Example: `crypto/ecc/elliptic.lua:155: local function isOnCurve(P1)`
   - Definition: `crypto/ecc/elliptic.lua:155: local function isOnCurve(P1)`
-- **mods**:
+- **mods**: No documentation available.
+  - Example: `crypto/ecc/elliptic.lua:170: local function mods(d)`
   - Definition: `crypto/ecc/elliptic.lua:170: local function mods(d)`
-- **pointAdd**:
+- **pointAdd**: No documentation available.
+  - Example: `crypto/ecc/elliptic.lua:94: local function pointAdd(P1, P2)`
   - Definition: `crypto/ecc/elliptic.lua:94: local function pointAdd(P1, P2)`
-- **pointDecode**:
+- **pointDecode**: No documentation available.
+  - Example: `crypto/ecc/elliptic.lua:267: local function pointDecode(enc)`
   - Definition: `crypto/ecc/elliptic.lua:267: local function pointDecode(enc)`
 - **pointDouble**: We're using Projective Coordinates For Edwards curves The identity element is represented by (0:1:1)
+  - Example: `crypto/ecc/elliptic.lua:75: local function pointDouble(P1)`
   - Definition: `crypto/ecc/elliptic.lua:75: local function pointDouble(P1)`
-- **pointEncode**:
+- **pointEncode**: No documentation available.
+  - Example: `crypto/ecc/elliptic.lua:250: local function pointEncode(P1)`
   - Definition: `crypto/ecc/elliptic.lua:250: local function pointEncode(P1)`
-- **pointEq**:
+- **pointEq**: No documentation available.
+  - Example: `crypto/ecc/elliptic.lua:143: local function pointEq(P1, P2)`
   - Definition: `crypto/ecc/elliptic.lua:143: local function pointEq(P1, P2)`
-- **pointNeg**:
+- **pointNeg**: No documentation available.
+  - Example: `crypto/ecc/elliptic.lua:114: local function pointNeg(P1)`
   - Definition: `crypto/ecc/elliptic.lua:114: local function pointNeg(P1)`
-- **pointScale**:
+- **pointScale**: No documentation available.
+  - Example: `crypto/ecc/elliptic.lua:130: local function pointScale(P1)`
   - Definition: `crypto/ecc/elliptic.lua:130: local function pointScale(P1)`
-- **pointSub**:
+- **pointSub**: No documentation available.
+  - Example: `crypto/ecc/elliptic.lua:126: local function pointSub(P1, P2)`
   - Definition: `crypto/ecc/elliptic.lua:126: local function pointSub(P1, P2)`
-- **scalarMul**:
+- **scalarMul**: No documentation available.
+  - Example: `crypto/ecc/elliptic.lua:199: local function scalarMul(s, P1)`
   - Definition: `crypto/ecc/elliptic.lua:199: local function scalarMul(s, P1)`
-- **scalarMulG**:
+- **scalarMulG**: No documentation available.
+  - Example: `crypto/ecc/elliptic.lua:228: local function scalarMulG(s)`
   - Definition: `crypto/ecc/elliptic.lua:228: local function scalarMulG(s)`
 
 ## crypto.ecc.fp
-- **REDC**:
+- **REDC**: No documentation available.
+  - Example: `crypto/ecc/fp.lua:714: local function REDC(T)`
   - Definition: `crypto/ecc/fp.lua:714: local function REDC(T)`
-- **add**:
+- **add**: No documentation available.
+  - Example: `crypto/ecc/fp.lua:91: local function add(a, b)`
   - Definition: `crypto/ecc/fp.lua:91: local function add(a, b)`
-- **add384**:
+- **add384**: No documentation available.
+  - Example: `crypto/ecc/fp.lua:342: local function add384(a, b)`
   - Definition: `crypto/ecc/fp.lua:342: local function add384(a, b)`
-- **eq**:
+- **eq**: No documentation available.
+  - Example: `crypto/ecc/fp.lua:12: local function eq(a, b)`
   - Definition: `crypto/ecc/fp.lua:12: local function eq(a, b)`
-- **invMont**:
+- **invMont**: No documentation available.
+  - Example: `crypto/ecc/fp.lua:910: local function invMont(a)`
   - Definition: `crypto/ecc/fp.lua:910: local function invMont(a)`
-- **mont**:
+- **mont**: No documentation available.
+  - Example: `crypto/ecc/fp.lua:906: local function mont(a)`
   - Definition: `crypto/ecc/fp.lua:906: local function mont(a)`
-- **mul**:
+- **mul**: No documentation available.
+  - Example: `crypto/ecc/fp.lua:721: local function mul(a, b)`
   - Definition: `crypto/ecc/fp.lua:721: local function mul(a, b)`
-- **mul384**:
+- **mul384**: No documentation available.
+  - Example: `crypto/ecc/fp.lua:466: local function mul384(a, b)`
   - Definition: `crypto/ecc/fp.lua:466: local function mul384(a, b)`
-- **reduce**:
+- **reduce**: No documentation available.
+  - Example: `crypto/ecc/fp.lua:22: local function reduce(a)`
   - Definition: `crypto/ecc/fp.lua:22: local function reduce(a)`
-- **shr**:
+- **shr**: No documentation available.
+  - Example: `crypto/ecc/fp.lua:155: local function shr(a)`
   - Definition: `crypto/ecc/fp.lua:155: local function shr(a)`
-- **sqr**:
+- **sqr**: No documentation available.
+  - Example: `crypto/ecc/fp.lua:725: local function sqr(a)`
   - Definition: `crypto/ecc/fp.lua:725: local function sqr(a)`
-- **sub**:
+- **sub**: No documentation available.
+  - Example: `crypto/ecc/fp.lua:274: local function sub(a, b)`
   - Definition: `crypto/ecc/fp.lua:274: local function sub(a, b)`
-- **sub192**:
+- **sub192**: No documentation available.
+  - Example: `crypto/ecc/fp.lua:210: local function sub192(a, b)`
   - Definition: `crypto/ecc/fp.lua:210: local function sub192(a, b)`
 
 ## crypto.ecc.fq
-- **add**:
+- **add**: No documentation available.
+  - Example: `crypto/ecc/fq.lua:142: local function add(a, b)`
   - Definition: `crypto/ecc/fq.lua:142: local function add(a, b)`
-- **add384**:
+- **add384**: No documentation available.
+  - Example: `crypto/ecc/fq.lua:216: local function add384(a, b)`
   - Definition: `crypto/ecc/fq.lua:216: local function add384(a, b)`
-- **bytes**:
+- **bytes**: No documentation available.
+  - Example: `crypto/ecc/fq.lua:45: local function bytes(x)`
   - Definition: `crypto/ecc/fq.lua:45: local function bytes(x)`
-- **cmp**:
+- **cmp**: No documentation available.
+  - Example: `crypto/ecc/fq.lua:21: local function cmp(a, b)`
   - Definition: `crypto/ecc/fq.lua:21: local function cmp(a, b)`
-- **cmp384**:
+- **cmp384**: No documentation available.
+  - Example: `crypto/ecc/fq.lua:33: local function cmp384(a, b)`
   - Definition: `crypto/ecc/fq.lua:33: local function cmp384(a, b)`
-- **eq**:
+- **eq**: No documentation available.
+  - Example: `crypto/ecc/fq.lua:11: local function eq(a, b)`
   - Definition: `crypto/ecc/fq.lua:11: local function eq(a, b)`
-- **fromBytes**:
+- **fromBytes**: No documentation available.
+  - Example: `crypto/ecc/fq.lua:57: local function fromBytes(enc)`
   - Definition: `crypto/ecc/fq.lua:57: local function fromBytes(enc)`
-- **mul**:
+- **mul**: No documentation available.
+  - Example: `crypto/ecc/fq.lua:730: local function mul(a, b)`
   - Definition: `crypto/ecc/fq.lua:730: local function mul(a, b)`
-- **mul384**:
+- **mul384**: No documentation available.
+  - Example: `crypto/ecc/fq.lua:464: local function mul384(a, b)`
   - Definition: `crypto/ecc/fq.lua:464: local function mul384(a, b)`
-- **reduce**:
+- **reduce**: No documentation available.
+  - Example: `crypto/ecc/fq.lua:132: local function reduce(a)`
   - Definition: `crypto/ecc/fq.lua:132: local function reduce(a)`
-- **reduce384**:
+- **reduce384**: No documentation available.
+  - Example: `crypto/ecc/fq.lua:712: local function reduce384(a)`
   - Definition: `crypto/ecc/fq.lua:712: local function reduce384(a)`
-- **sub**:
+- **sub**: No documentation available.
+  - Example: `crypto/ecc/fq.lua:206: local function sub(a, b)`
   - Definition: `crypto/ecc/fq.lua:206: local function sub(a, b)`
-- **sub192**:
+- **sub192**: No documentation available.
+  - Example: `crypto/ecc/fq.lua:68: local function sub192(a, b)`
   - Definition: `crypto/ecc/fq.lua:68: local function sub192(a, b)`
-- **sub384**:
+- **sub384**: No documentation available.
+  - Example: `crypto/ecc/fq.lua:340: local function sub384(a, b)`
   - Definition: `crypto/ecc/fq.lua:340: local function sub384(a, b)`
 
 ## crypto.ecc.init
-- **exchange**:
+- **exchange**: No documentation available.
+  - Example: `crypto/ecc/init.lua:36: local function exchange(sk, pk)`
   - Definition: `crypto/ecc/init.lua:36: local function exchange(sk, pk)`
-- **hashModQ**:
+- **hashModQ**: No documentation available.
+  - Example: `crypto/ecc/init.lua:16: local function hashModQ(sk)`
   - Definition: `crypto/ecc/init.lua:16: local function hashModQ(sk)`
-- **publicKey**:
+- **publicKey**: No documentation available.
+  - Example: `crypto/ecc/init.lua:27: local function publicKey(sk)`
   - Definition: `crypto/ecc/init.lua:27: local function publicKey(sk)`
-- **sign**:
+- **sign**: No documentation available.
+  - Example: `crypto/ecc/init.lua:47: local function sign(sk, message)`
   - Definition: `crypto/ecc/init.lua:47: local function sign(sk, message)`
-- **verify**:
+- **verify**: No documentation available.
+  - Example: `crypto/ecc/init.lua:71: local function verify(pk, message, sig)`
   - Definition: `crypto/ecc/init.lua:71: local function verify(pk, message, sig)`
 
 ## crypto.sha2
-- **BE_toInt**:
+- **BE_toInt**: No documentation available.
+  - Example: `crypto/sha2.lua:50: local function BE_toInt(bs, i)`
   - Definition: `crypto/sha2.lua:50: local function BE_toInt(bs, i)`
-- **brshift**:
+- **brshift**: No documentation available.
+  - Example: `crypto/sha2.lua:19: local function brshift(int, by)`
   - Definition: `crypto/sha2.lua:19: local function brshift(int, by)`
-- **compute**:
-  - Example: `common/Appstore.lua:17: app.key = SHA.compute(key)`
-- **counter**:
+- **compute**: No documentation available.
+  - Example: `secure/unlock.lua:22: if password and Security.verifyPassword(SHA.compute(password)) then`
+  - Definition: `crypto/sha2.lua:183: local function compute(data)`
+- **counter**: No documentation available.
+  - Example: `crypto/sha2.lua:40: local function counter(incr)`
   - Definition: `crypto/sha2.lua:40: local function counter(incr)`
-- **digest**:
+- **digest**: No documentation available.
   - Example: `swshop/apis/krist.lua:6: return sha2.digest(key):toHex()`
-- **digestblock**:
+  - Definition: `crypto/sha2.lua:108: local function digest(data)`
+- **digestblock**: No documentation available.
+  - Example: `crypto/sha2.lua:70: local function digestblock(w, C)`
   - Definition: `crypto/sha2.lua:70: local function digestblock(w, C)`
-- **hmac**:
+- **hmac**: No documentation available.
+  - Example: `crypto/sha2.lua:118: local function hmac(data, key)`
   - Definition: `crypto/sha2.lua:118: local function hmac(data, key)`
-- **pbkdf2**:
+- **pbkdf2**: No documentation available.
+  - Example: `crypto/sha2.lua:149: local function pbkdf2(pass, salt, iter, dklen)`
   - Definition: `crypto/sha2.lua:149: local function pbkdf2(pass, salt, iter, dklen)`
-- **preprocess**:
+- **preprocess**: No documentation available.
+  - Example: `crypto/sha2.lua:54: local function preprocess(data)`
   - Definition: `crypto/sha2.lua:54: local function preprocess(data)`
-- **rrotate**:
+- **rrotate**: No documentation available.
+  - Example: `crypto/sha2.lua:14: local function rrotate(n, b)`
   - Definition: `crypto/sha2.lua:14: local function rrotate(n, b)`
-- **toBytes**:
+- **toBytes**: No documentation available.
+  - Example: `crypto/sha2.lua:97: local function toBytes(t, n)`
   - Definition: `crypto/sha2.lua:97: local function toBytes(t, n)`
 
 ## encoder
 - **array**: Array or dict-only encoders, which can be set as __tocbor metamethod
+  - Example: `cbor.lua:253: function encoder.array(t, opts)`
   - Definition: `cbor.lua:253: function encoder.array(t, opts)`
-- **boolean**:
+- **boolean**: No documentation available.
+  - Example: `cbor.lua:202: function encoder.boolean(bool)`
   - Definition: `cbor.lua:202: function encoder.boolean(bool)`
 - **bytestring**: Major type 2 - byte strings
+  - Example: `cbor.lua:190: function encoder.bytestring(s)`
   - Definition: `cbor.lua:190: function encoder.bytestring(s)`
-- **float**:
+- **float**: No documentation available.
+  - Example: `cbor.lua:183: function encoder.float(num)`
   - Definition: `cbor.lua:183: function encoder.float(num)`
 - **integer**: Major types 0, 1
+  - Example: `cbor.lua:140: function encoder.integer(num)`
   - Definition: `cbor.lua:140: function encoder.integer(num)`
-- **map**:
+- **map**: No documentation available.
+  - Example: `cbor.lua:261: function encoder.map(t, opts)`
   - Definition: `cbor.lua:261: function encoder.map(t, opts)`
 - **number**: Number types dispatch
+  - Example: `cbor.lua:135: function encoder.number(num)`
   - Definition: `cbor.lua:135: function encoder.number(num)`
-- **ordered_map**:
+- **ordered_map**: No documentation available.
+  - Example: `cbor.lua:274: function encoder.ordered_map(t, opts)`
   - Definition: `cbor.lua:274: function encoder.ordered_map(t, opts)`
-- **table**:
+- **table**: No documentation available.
+  - Example: `cbor.lua:219: function encoder.table(t, opts)`
   - Definition: `cbor.lua:219: function encoder.table(t, opts)`
-- **userdata**:
+- **userdata**: No documentation available.
+  - Example: `cbor.lua:208: function encoder.userdata(ud, opts)`
   - Definition: `cbor.lua:208: function encoder.userdata(ud, opts)`
 - **utf8string**: Major type 3 - UTF-8 strings
+  - Example: `cbor.lua:195: function encoder.utf8string(s)`
   - Definition: `cbor.lua:195: function encoder.utf8string(s)`
 
 ## entry
 - **_val**: convert value to a string (supporting nils or numbers in value)
+  - Example: `entry.lua:6: local function _val(a)`
   - Definition: `entry.lua:6: local function _val(a)`
 
 ## env
-- **require**:
+- **require**: No documentation available.
+  - Example: `injector.lua:99: function env.require(modname)`
   - Definition: `injector.lua:99: function env.require(modname)`
 
 ## event
 - **createCoroutine**: Use a pool of coroutines for event handlers
+  - Example: `event.lua:13: local function createCoroutine(h)`
   - Definition: `event.lua:13: local function createCoroutine(h)`
-- **nextUID**:
+- **nextUID**: No documentation available.
+  - Example: `event.lua:87: local function nextUID()`
   - Definition: `event.lua:87: local function nextUID()`
-- **processHandlers**:
+- **processHandlers**: No documentation available.
+  - Example: `event.lua:196: local function processHandlers(event)`
   - Definition: `event.lua:196: local function processHandlers(event)`
-- **processRoutines**:
+- **processRoutines**: No documentation available.
+  - Example: `event.lua:217: local function processRoutines(...)`
   - Definition: `event.lua:217: local function processRoutines(...)`
-- **tokeys**:
+- **tokeys**: No documentation available.
+  - Example: `event.lua:209: local function tokeys(t)`
   - Definition: `event.lua:209: local function tokeys(t)`
 
 ## fh
-- **read**:
+- **read**: No documentation available.
+  - Example: `cbor.lua:538: function fh:read(bytes)`
   - Definition: `cbor.lua:538: function fh:read(bytes)`
-- **write**:
+- **write**: No documentation available.
+  - Example: `cbor.lua:549: function fh:write(bytes) -- luacheck: no self`
   - Definition: `cbor.lua:549: function fh:write(bytes) -- luacheck: no self`
 
 ## fs.netfs
-- **remoteCommand**:
+- **remoteCommand**: No documentation available.
+  - Example: `fs/netfs.lua:8: local function remoteCommand(node, msg)`
   - Definition: `fs/netfs.lua:8: local function remoteCommand(node, msg)`
-- **resolve**:
+- **resolve**: No documentation available.
+  - Example: `fs/netfs.lua:37: local function resolve(node, dir)`
   - Definition: `fs/netfs.lua:37: local function resolve(node, dir)`
 
 ## git
-- **getContents**:
+- **getContents**: No documentation available.
+  - Example: `git.lua:25: local function getContents()`
   - Definition: `git.lua:25: local function getContents()`
-- **list**:
+- **list**: No documentation available.
+  - Example: `git.lua:13: function git.list(repository)`
   - Definition: `git.lua:13: function git.list(repository)`
 
 ## gitfs
-- **mount**:
+- **mount**: No documentation available.
+  - Example: `fs/gitfs.lua:7: function gitfs.mount(dir, repo)`
   - Definition: `fs/gitfs.lua:7: function gitfs.mount(dir, repo)`
 
 ## gps
-- **narrow**:
+- **narrow**: No documentation available.
+  - Example: `gps.lua:132: local function narrow( p1, p2, fix )`
   - Definition: `gps.lua:132: local function narrow( p1, p2, fix )`
 - **trilaterate**: from stock gps API
   - Example: `gps/gpsServer.lua:217: local pt = GPS.trilaterate(computer)`
+  - Definition: `gps.lua:92: local function trilaterate(A, B, C)`
 
 ## h
-- **updateInterval**:
+- **updateInterval**: No documentation available.
+  - Example: `event.lua:135: function h.updateInterval(i)`
   - Definition: `event.lua:135: function h.updateInterval(i)`
 
 ## http.pastebin
 - **download**: Download the contents of a paste
+  - Example: `http/pastebin.lua:22: local function download(code)`
   - Definition: `http/pastebin.lua:22: local function download(code)`
 - **get**: Download the contents to a file from pastebin
+  - Example: `http/pastebin.lua:80: local function get(code, path)`
   - Definition: `http/pastebin.lua:80: local function get(code, path)`
 - **parseCode**: - Parse the pastebin code from the given code or URL
+  - Example: `http/pastebin.lua:2: local function parseCode(paste)`
   - Definition: `http/pastebin.lua:2: local function parseCode(paste)`
 - **put**: Upload a file to pastebin.com
+  - Example: `http/pastebin.lua:102: local function put(path)`
   - Definition: `http/pastebin.lua:102: local function put(path)`
 - **upload**: Upload text to pastebin
+  - Example: `http/pastebin.lua:53: local function upload(name, text)`
   - Definition: `http/pastebin.lua:53: local function upload(name, text)`
 
 ## injector
-- **helper**:
+- **helper**: No documentation available.
+  - Example: `injector.lua:9: local function helper(line) table.insert(t, line) return "" end`
   - Definition: `injector.lua:9: local function helper(line) table.insert(t, line) return "" end`
-- **insert**:
+- **insert**: No documentation available.
+  - Example: `injector.lua:14: local function insert(p)`
   - Definition: `injector.lua:14: local function insert(p)`
-- **pathSearcher**:
+- **pathSearcher**: No documentation available.
+  - Example: `injector.lua:57: local function pathSearcher(modname)`
   - Definition: `injector.lua:57: local function pathSearcher(modname)`
-- **preloadSearcher**:
+- **preloadSearcher**: No documentation available.
+  - Example: `injector.lua:49: local function preloadSearcher(modname)`
   - Definition: `injector.lua:49: local function preloadSearcher(modname)`
-- **split**:
+- **split**: No documentation available.
+  - Example: `injector.lua:7: local function split(str)`
   - Definition: `injector.lua:7: local function split(str)`
 
 ## input
-- **isCombo**:
+- **isCombo**: No documentation available.
+  - Example: `input.lua:80: local function isCombo()`
   - Definition: `input.lua:80: local function isCombo()`
-- **modifierPressed**:
+- **modifierPressed**: No documentation available.
+  - Example: `input.lua:26: function input:modifierPressed()`
   - Definition: `input.lua:26: function input:modifierPressed()`
-- **reset**:
+- **reset**: No documentation available.
+  - Example: `input.lua:72: function input:reset()`
   - Definition: `input.lua:72: function input:reset()`
-- **toCode**:
+- **toCode**: No documentation available.
+  - Example: `input.lua:33: function input:toCode(ch, code)`
   - Definition: `input.lua:33: function input:toCode(ch, code)`
-- **translate**:
+- **translate**: No documentation available.
+  - Example: `input.lua:86: function input:translate(event, code, p1, p2)`
   - Definition: `input.lua:86: function input:translate(event, code, p1, p2)`
 
 ## json
-- **addnewline**:
+- **addnewline**: No documentation available.
+  - Example: `json.lua:182: function json.addnewline (state)`
   - Definition: `json.lua:182: function json.addnewline (state)`
-- **addnewline2**:
+- **addnewline2**: No documentation available.
+  - Example: `json.lua:175: local function addnewline2 (level, buffer, buflen)`
   - Definition: `json.lua:175: local function addnewline2 (level, buffer, buflen)`
-- **addpair**:
+- **addpair**: No documentation available.
+  - Example: `json.lua:191: local function addpair (key, value, prev, indent, level, buffer, buflen, tables, globalorder, state)`
   - Definition: `json.lua:191: local function addpair (key, value, prev, indent, level, buffer, buflen, tables, globalorder, state)`
-- **appendcustom**:
+- **appendcustom**: No documentation available.
+  - Example: `json.lua:208: local function appendcustom(res, buffer, state)`
   - Definition: `json.lua:208: local function appendcustom(res, buffer, state)`
-- **decode**:
-  - Example: `core/apis/nameDB.lua:20: local blocks = JSON.decodeFromFile(fs.combine(directory, file))`
+- **decode**: No documentation available.
+  - Example: `builder/apis/blocks.lua:13: local blocks = JSON.decodeFromFile('packages/core/etc/names/minecraft.json')`
+  - Definition: `json.lua:576: function json.decode (str, pos, nullval, ...)`
 - **decodeFromFile**: NOTE: added method - not in original source
-  - Example: `core/apis/nameDB.lua:20: local blocks = JSON.decodeFromFile(fs.combine(directory, file))`
-- **encode**:
+  - Example: `builder/apis/blocks.lua:13: local blocks = JSON.decodeFromFile('packages/core/etc/names/minecraft.json')`
+  - Definition: `json.lua:582: function json.decodeFromFile(path)`
+- **encode**: No documentation available.
+  - Example: `json.lua:337: function json.encode (value, state)`
   - Definition: `json.lua:337: function json.encode (value, state)`
-- **encodeexception**:
+- **encodeexception**: No documentation available.
+  - Example: `json.lua:230: function json.encodeexception(reason, value, state, defaultmessage)`
   - Definition: `json.lua:230: function json.encodeexception(reason, value, state, defaultmessage)`
-- **escapeutf8**:
+- **escapeutf8**: No documentation available.
+  - Example: `json.lua:84: local function escapeutf8 (uchar)`
   - Definition: `json.lua:84: local function escapeutf8 (uchar)`
-- **exception**:
+- **exception**: No documentation available.
+  - Example: `json.lua:217: local function exception(reason, value, state, buffer, buflen, defaultmessage)`
   - Definition: `json.lua:217: local function exception(reason, value, state, buffer, buflen, defaultmessage)`
-- **fsub**:
+- **fsub**: No documentation available.
+  - Example: `json.lua:114: local function fsub (str, pattern, repl)`
   - Definition: `json.lua:114: local function fsub (str, pattern, repl)`
-- **isarray**:
+- **isarray**: No documentation available.
+  - Example: `json.lua:55: local function isarray (tbl)`
   - Definition: `json.lua:55: local function isarray (tbl)`
-- **loc**:
+- **loc**: No documentation available.
+  - Example: `json.lua:357: local function loc (str, where)`
   - Definition: `json.lua:357: local function loc (str, where)`
-- **num2str**:
+- **num2str**: No documentation available.
+  - Example: `json.lua:162: local function num2str (num)`
   - Definition: `json.lua:162: local function num2str (num)`
-- **optionalmetatables**:
+- **optionalmetatables**: No documentation available.
+  - Example: `json.lua:568: local function optionalmetatables(...)`
   - Definition: `json.lua:568: local function optionalmetatables(...)`
-- **quotestring**:
+- **quotestring**: No documentation available.
+  - Example: `json.lua:125: local function quotestring (value)`
   - Definition: `json.lua:125: local function quotestring (value)`
-- **replace**:
+- **replace**: No documentation available.
+  - Example: `json.lua:142: local function replace(str, o, n)`
   - Definition: `json.lua:142: local function replace(str, o, n)`
-- **scanstring**:
+- **scanstring**: No documentation available.
+  - Example: `json.lua:424: local function scanstring (str, pos)`
   - Definition: `json.lua:424: local function scanstring (str, pos)`
-- **scantable**:
+- **scantable**: No documentation available.
+  - Example: `json.lua:487: local function scantable (what, closechar, str, startpos, nullval, objectmeta, arraymeta)`
   - Definition: `json.lua:487: local function scantable (what, closechar, str, startpos, nullval, objectmeta, arraymeta)`
-- **scanwhite**:
+- **scanwhite**: No documentation available.
+  - Example: `json.lua:376: local function scanwhite (str, pos)`
   - Definition: `json.lua:376: local function scanwhite (str, pos)`
-- **str2num**:
+- **str2num**: No documentation available.
+  - Example: `json.lua:166: local function str2num (str)`
   - Definition: `json.lua:166: local function str2num (str)`
-- **unichar**:
+- **unichar**: No documentation available.
+  - Example: `json.lua:402: local function unichar (value)`
   - Definition: `json.lua:402: local function unichar (value)`
-- **unterminated**:
+- **unterminated**: No documentation available.
+  - Example: `json.lua:372: local function unterminated (str, what, where)`
   - Definition: `json.lua:372: local function unterminated (str, what, where)`
-- **updatedecpoint**:
+- **updatedecpoint**: No documentation available.
+  - Example: `json.lua:154: local function updatedecpoint ()`
   - Definition: `json.lua:154: local function updatedecpoint ()`
 
 ## linkfs
-- **copy**:
+- **copy**: No documentation available.
+  - Example: `fs/linkfs.lua:43: function linkfs.copy(node, s, t)`
   - Definition: `fs/linkfs.lua:43: function linkfs.copy(node, s, t)`
-- **delete**:
+- **delete**: No documentation available.
+  - Example: `fs/linkfs.lua:49: function linkfs.delete(node, dir)`
   - Definition: `fs/linkfs.lua:49: function linkfs.delete(node, dir)`
-- **find**:
+- **find**: No documentation available.
+  - Example: `fs/linkfs.lua:58: function linkfs.find(node, spec)`
   - Definition: `fs/linkfs.lua:58: function linkfs.find(node, spec)`
-- **mount**:
+- **mount**: No documentation available.
+  - Example: `fs/linkfs.lua:21: function linkfs.mount(path, source)`
   - Definition: `fs/linkfs.lua:21: function linkfs.mount(path, source)`
-- **move**:
+- **move**: No documentation available.
+  - Example: `fs/linkfs.lua:69: function linkfs.move(node, s, t)`
   - Definition: `fs/linkfs.lua:69: function linkfs.move(node, s, t)`
-- **resolve**:
+- **resolve**: No documentation available.
+  - Example: `fs/linkfs.lua:17: function linkfs.resolve(node, dir)`
   - Definition: `fs/linkfs.lua:17: function linkfs.resolve(node, dir)`
 
 ## map
-- **matchAll**:
+- **matchAll**: No documentation available.
+  - Example: `map.lua:14: local function matchAll(entry)`
   - Definition: `map.lua:14: local function matchAll(entry)`
 
 ## netfs
-- **complete**:
+- **complete**: No documentation available.
+  - Example: `fs/netfs.lua:69: function netfs.complete(node, partial, dir, includeFiles, includeSlash)`
   - Definition: `fs/netfs.lua:69: function netfs.complete(node, partial, dir, includeFiles, includeSlash)`
-- **copy**:
+- **copy**: No documentation available.
+  - Example: `fs/netfs.lua:78: function netfs.copy(node, s, t)`
   - Definition: `fs/netfs.lua:78: function netfs.copy(node, s, t)`
-- **find**:
+- **find**: No documentation available.
+  - Example: `fs/netfs.lua:118: function netfs.find(node, spec)`
   - Definition: `fs/netfs.lua:118: function netfs.find(node, spec)`
-- **getDrive**:
+- **getDrive**: No documentation available.
+  - Example: `fs/netfs.lua:65: function netfs.getDrive()`
   - Definition: `fs/netfs.lua:65: function netfs.getDrive()`
-- **getSize**:
+- **getSize**: No documentation available.
+  - Example: `fs/netfs.lua:108: function netfs.getSize(node, dir)`
   - Definition: `fs/netfs.lua:108: function netfs.getSize(node, dir)`
-- **isDir**:
+- **isDir**: No documentation available.
+  - Example: `fs/netfs.lua:88: function netfs.isDir(node, dir)`
   - Definition: `fs/netfs.lua:88: function netfs.isDir(node, dir)`
-- **isReadOnly**:
+- **isReadOnly**: No documentation available.
+  - Example: `fs/netfs.lua:98: function netfs.isReadOnly(node, dir)`
   - Definition: `fs/netfs.lua:98: function netfs.isReadOnly(node, dir)`
-- **mount**:
+- **mount**: No documentation available.
+  - Example: `fs/netfs.lua:54: function netfs.mount(_, id, source)`
   - Definition: `fs/netfs.lua:54: function netfs.mount(_, id, source)`
-- **move**:
+- **move**: No documentation available.
+  - Example: `fs/netfs.lua:132: function netfs.move(node, s, t)`
   - Definition: `fs/netfs.lua:132: function netfs.move(node, s, t)`
-- **open**:
+- **open**: No documentation available.
+  - Example: `fs/netfs.lua:142: function netfs.open(node, fn, fl)`
   - Definition: `fs/netfs.lua:142: function netfs.open(node, fn, fl)`
 
 ## nft
-- **getColourOf**:
+- **getColourOf**: No documentation available.
+  - Example: `nft.lua:15: local function getColourOf(hex)`
   - Definition: `nft.lua:15: local function getColourOf(hex)`
 
 ## obj
-- **nextInt**:
+- **nextInt**: No documentation available.
+  - Example: `crypto/chacha20.lua:156: function obj:nextInt(byte)`
   - Definition: `crypto/chacha20.lua:156: function obj:nextInt(byte)`
 
 ## ramfs
-- **attributes**:
+- **attributes**: No documentation available.
+  - Example: `fs/ramfs.lua:25: function ramfs.attributes(node)`
   - Definition: `fs/ramfs.lua:25: function ramfs.attributes(node)`
-- **delete**:
+- **delete**: No documentation available.
+  - Example: `fs/ramfs.lua:34: function ramfs.delete(node, dir)`
   - Definition: `fs/ramfs.lua:34: function ramfs.delete(node, dir)`
-- **exists**:
+- **exists**: No documentation available.
+  - Example: `fs/ramfs.lua:40: function ramfs.exists(node, fn)`
   - Definition: `fs/ramfs.lua:40: function ramfs.exists(node, fn)`
-- **getDrive**:
+- **getDrive**: No documentation available.
+  - Example: `fs/ramfs.lua:62: function ramfs.getDrive()`
   - Definition: `fs/ramfs.lua:62: function ramfs.getDrive()`
-- **getFreeSpace**:
+- **getFreeSpace**: No documentation available.
+  - Example: `fs/ramfs.lua:66: function ramfs.getFreeSpace()`
   - Definition: `fs/ramfs.lua:66: function ramfs.getFreeSpace()`
-- **getSize**:
+- **getSize**: No documentation available.
+  - Example: `fs/ramfs.lua:44: function ramfs.getSize(node)`
   - Definition: `fs/ramfs.lua:44: function ramfs.getSize(node)`
-- **isDir**:
+- **isDir**: No documentation available.
+  - Example: `fs/ramfs.lua:56: function ramfs.isDir(node, dir)`
   - Definition: `fs/ramfs.lua:56: function ramfs.isDir(node, dir)`
-- **isReadOnly**:
+- **isReadOnly**: No documentation available.
+  - Example: `fs/ramfs.lua:48: function ramfs.isReadOnly()`
   - Definition: `fs/ramfs.lua:48: function ramfs.isReadOnly()`
-- **list**:
+- **list**: No documentation available.
+  - Example: `fs/ramfs.lua:70: function ramfs.list(node, dir)`
   - Definition: `fs/ramfs.lua:70: function ramfs.list(node, dir)`
-- **makeDir**:
+- **makeDir**: No documentation available.
+  - Example: `fs/ramfs.lua:52: function ramfs.makeDir(_, dir)`
   - Definition: `fs/ramfs.lua:52: function ramfs.makeDir(_, dir)`
-- **mount**:
+- **mount**: No documentation available.
+  - Example: `fs/ramfs.lua:7: function ramfs.mount(_, nodeType)`
   - Definition: `fs/ramfs.lua:7: function ramfs.mount(_, nodeType)`
-- **open**:
+- **open**: No documentation available.
+  - Example: `fs/ramfs.lua:81: function ramfs.open(node, fn, fl)`
   - Definition: `fs/ramfs.lua:81: function ramfs.open(node, fn, fl)`
 
 ## self
-- **render**:
+- **render**: No documentation available.
+  - Example: `ui/components/Embedded.lua:22: function self.render()`
   - Definition: `ui/components/Embedded.lua:22: function self.render()`
 
 ## simple_mt
-- **__tocbor**:
+- **__tocbor**: No documentation available.
+  - Example: `cbor.lua:114: function simple_mt:__tocbor() return self.cbor or integer(self.value, 224); end`
   - Definition: `cbor.lua:114: function simple_mt:__tocbor() return self.cbor or integer(self.value, 224); end`
-- **__tostring**:
+- **__tostring**: No documentation available.
+  - Example: `cbor.lua:113: function simple_mt:__tostring() return self.name or ("simple(%d)"):format(self.value); end`
   - Definition: `cbor.lua:113: function simple_mt:__tostring() return self.name or ("simple(%d)"):format(self.value); end`
 
 ## socket
-- **getIdentifier**:
+- **getIdentifier**: No documentation available.
+  - Example: `socket.lua:180: local function getIdentifier()`
   - Definition: `socket.lua:180: local function getIdentifier()`
-- **loopback**:
+- **loopback**: No documentation available.
+  - Example: `socket.lua:79: local function loopback(port, sport, msg)`
   - Definition: `socket.lua:79: local function loopback(port, sport, msg)`
-- **newSocket**:
+- **newSocket**: No documentation available.
+  - Example: `socket.lua:83: local function newSocket(isLoopback)`
   - Definition: `socket.lua:83: local function newSocket(isLoopback)`
-- **setupCrypto**:
+- **setupCrypto**: No documentation available.
+  - Example: `socket.lua:107: local function setupCrypto(socket, isClient)`
   - Definition: `socket.lua:107: local function setupCrypto(socket, isClient)`
-- **trusted**:
+- **trusted**: No documentation available.
+  - Example: `socket.lua:179: local function trusted(socket, msg, options)`
   - Definition: `socket.lua:179: local function trusted(socket, msg, options)`
 
 ## socketClass
-- **close**:
+- **close**: No documentation available.
+  - Example: `socket.lua:65: function socketClass:close()`
   - Definition: `socket.lua:65: function socketClass:close()`
-- **ping**:
+- **ping**: No documentation available.
+  - Example: `socket.lua:58: function socketClass:ping()`
   - Definition: `socket.lua:58: function socketClass:ping()`
-- **read**:
+- **read**: No documentation available.
+  - Example: `socket.lua:12: function socketClass:read(timeout)`
   - Definition: `socket.lua:12: function socketClass:read(timeout)`
-- **write**:
+- **write**: No documentation available.
+  - Example: `socket.lua:47: function socketClass:write(data)`
   - Definition: `socket.lua:47: function socketClass:write(data)`
 
 ## tagged_mt
-- **__tocbor**:
+- **__tocbor**: No documentation available.
+  - Example: `cbor.lua:123: function tagged_mt:__tocbor() return integer(self.tag, 192) .. encode(self.value); end`
   - Definition: `cbor.lua:123: function tagged_mt:__tocbor() return integer(self.tag, 192) .. encode(self.value); end`
-- **__tostring**:
+- **__tostring**: No documentation available.
+  - Example: `cbor.lua:122: function tagged_mt:__tostring() return ("%d(%s)"):format(self.tag, tostring(self.value)); end`
   - Definition: `cbor.lua:122: function tagged_mt:__tostring() return ("%d(%s)"):format(self.tag, tostring(self.value)); end`
 
 ## terminal
-- **newLine**:
+- **newLine**: No documentation available.
+  - Example: `terminal.lua:283: local function newLine()`
   - Definition: `terminal.lua:283: local function newLine()`
-- **scrollTo**:
+- **scrollTo**: No documentation available.
+  - Example: `terminal.lua:59: local function scrollTo(y)`
   - Definition: `terminal.lua:59: local function scrollTo(y)`
-- **translate**:
+- **translate**: No documentation available.
+  - Example: `terminal.lua:408: local function translate(s)`
   - Definition: `terminal.lua:408: local function translate(s)`
-- **update**:
+- **update**: No documentation available.
+  - Example: `terminal.lua:52: local function update()`
   - Definition: `terminal.lua:52: local function update()`
 
 ## trace
-- **matchesFilter**:
+- **matchesFilter**: No documentation available.
+  - Example: `trace.lua:61: local function matchesFilter(line)`
   - Definition: `trace.lua:61: local function matchesFilter(line)`
-- **traceback**:
+- **traceback**: No documentation available.
+  - Example: `trace.lua:7: local function traceback(x)`
   - Definition: `trace.lua:7: local function traceback(x)`
-- **trim_traceback**:
+- **trim_traceback**: No documentation available.
+  - Example: `trace.lua:39: local function trim_traceback(stack)`
   - Definition: `trace.lua:39: local function trim_traceback(stack)`
 
 ## tween
 - **new**: Public interface
+  - Example: `ui/tween.lua:338: function tween.new(duration, subject, target, easing)`
   - Definition: `ui/tween.lua:338: function tween.new(duration, subject, target, easing)`
 
 ## ui
-- **calc**:
+- **calc**: No documentation available.
+  - Example: `ui.lua:514: local function calc(p, max)`
   - Definition: `ui.lua:514: local function calc(p, max)`
-- **focusSort**:
+- **focusSort**: No documentation available.
+  - Example: `ui.lua:856: local function focusSort(a, b)`
   - Definition: `ui.lua:856: local function focusSort(a, b)`
-- **getFocusable**:
+- **getFocusable**: No documentation available.
+  - Example: `ui.lua:863: local function getFocusable(parent)`
   - Definition: `ui.lua:863: local function getFocusable(parent)`
-- **getName**:
+- **getName**: No documentation available.
+  - Example: `ui.lua:215: local function getName(d)`
   - Definition: `ui.lua:215: local function getName(d)`
-- **getPosition**:
+- **getPosition**: No documentation available.
+  - Example: `ui.lua:263: local function getPosition(element, x, y)`
   - Definition: `ui.lua:263: local function getPosition(element, x, y)`
-- **keyFunction**:
+- **keyFunction**: No documentation available.
+  - Example: `ui.lua:49: local function keyFunction(event, code, held)`
   - Definition: `ui.lua:49: local function keyFunction(event, code, held)`
-- **load**:
+- **load**: No documentation available.
+  - Example: `ui.lua:1096: local function load(name)`
   - Definition: `ui.lua:1096: local function load(name)`
 - **loadComponents**: lazy load components
+  - Example: `ui.lua:1095: local function loadComponents()`
   - Definition: `ui.lua:1095: local function loadComponents()`
-- **resize**:
+- **resize**: No documentation available.
+  - Example: `ui.lua:60: local function resize(_, side)`
   - Definition: `ui.lua:60: local function resize(_, side)`
 - **setOffset**: TODO: fix
+  - Example: `ui.lua:906: local function setOffset(y)`
   - Definition: `ui.lua:906: local function setOffset(y)`
 
 ## ui.blit
-- **replace**:
+- **replace**: No documentation available.
+  - Example: `ui/blit.lua:66: local function replace(sstr, rstr)`
   - Definition: `ui/blit.lua:66: local function replace(sstr, rstr)`
 
 ## ui.canvas
-- **genPalette**:
+- **genPalette**: No documentation available.
+  - Example: `ui/canvas.lua:12: local function genPalette(map)`
   - Definition: `ui/canvas.lua:12: local function genPalette(map)`
-- **replace**:
+- **replace**: No documentation available.
+  - Example: `ui/canvas.lua:192: local function replace(sstr, rstr)`
   - Definition: `ui/canvas.lua:192: local function replace(sstr, rstr)`
 
 ## ui.components.CheckboxGrid
-- **safeValue**:
+- **safeValue**: No documentation available.
+  - Example: `ui/components/CheckboxGrid.lua:4: local function safeValue(v)`
   - Definition: `ui/components/CheckboxGrid.lua:4: local function safeValue(v)`
 
 ## ui.components.Grid
-- **inverseSort**:
+- **inverseSort**: No documentation available.
+  - Example: `ui/components/Grid.lua:251: local function inverseSort(a, b)`
   - Definition: `ui/components/Grid.lua:251: local function inverseSort(a, b)`
-- **safeValue**:
+- **safeValue**: No documentation available.
+  - Example: `ui/components/Grid.lua:8: local function safeValue(v)`
   - Definition: `ui/components/Grid.lua:8: local function safeValue(v)`
-- **sort**:
+- **sort**: No documentation available.
+  - Example: `ui/components/Grid.lua:242: local function sort(a, b)`
   - Definition: `ui/components/Grid.lua:242: local function sort(a, b)`
 
 ## ui.components.MenuBar
-- **getPosition**:
+- **getPosition**: No documentation available.
+  - Example: `ui/components/MenuBar.lua:65: local function getPosition(element)`
   - Definition: `ui/components/MenuBar.lua:65: local function getPosition(element)`
 
 ## ui.components.Page
-- **getNextFocus**:
+- **getNextFocus**: No documentation available.
+  - Example: `ui/components/Page.lua:92: local function getNextFocus(focused)`
   - Definition: `ui/components/Page.lua:92: local function getNextFocus(focused)`
-- **getPosition**:
+- **getPosition**: No documentation available.
+  - Example: `ui/components/Page.lua:48: local function getPosition(element)`
   - Definition: `ui/components/Page.lua:48: local function getPosition(element)`
-- **getPreviousFocus**:
+- **getPreviousFocus**: No documentation available.
+  - Example: `ui/components/Page.lua:74: local function getPreviousFocus(focused)`
   - Definition: `ui/components/Page.lua:74: local function getPreviousFocus(focused)`
 
 ## ui.components.QuickSelect
-- **recurse**:
+- **recurse**: No documentation available.
+  - Example: `ui/components/QuickSelect.lua:63: local function recurse(dir)`
   - Definition: `ui/components/QuickSelect.lua:63: local function recurse(dir)`
 
 ## ui.components.TextEntry
-- **transform**:
+- **transform**: No documentation available.
+  - Example: `ui/components/TextEntry.lua:8: local function transform(directive)`
   - Definition: `ui/components/TextEntry.lua:8: local function transform(directive)`
 
 ## ui.region
 - **cutrect**: cutrect: cut rect d into table of new rects, using rect s as a punch
+  - Example: `ui/region.lua:67: local function cutrect(d1, d2, d3, d4, s1, s2, s3, s4)`
   - Definition: `ui/region.lua:67: local function cutrect(d1, d2, d3, d4, s1, s2, s3, s4)`
 - **cutregion**: cutregion: cut region d, using s as a punch
+  - Example: `ui/region.lua:91: local function cutregion(d, s1, s2, s3, s4)`
   - Definition: `ui/region.lua:91: local function cutregion(d, s1, s2, s3, s4)`
 - **insertrect**: insertrect: insert rect to table, merging with an existing one if possible
+  - Example: `ui/region.lua:41: local function insertrect(d, s1, s2, s3, s4)`
   - Definition: `ui/region.lua:41: local function insertrect(d, s1, s2, s3, s4)`
 
 ## ui.tween
 - **calculatePAS**: elastic
+  - Example: `ui/tween.lua:129: local function calculatePAS(p,a,c,d)`
   - Definition: `ui/tween.lua:129: local function calculatePAS(p,a,c,d)`
-- **checkNewParams**:
+- **checkNewParams**: No documentation available.
+  - Example: `ui/tween.lua:263: local function checkNewParams(duration, subject, target, easing)`
   - Definition: `ui/tween.lua:263: local function checkNewParams(duration, subject, target, easing)`
-- **checkSubjectAndTargetRecursively**:
+- **checkSubjectAndTargetRecursively**: No documentation available.
+  - Example: `ui/tween.lua:247: local function checkSubjectAndTargetRecursively(subject, target, path)`
   - Definition: `ui/tween.lua:247: local function checkSubjectAndTargetRecursively(subject, target, path)`
 - **copyTables**: private stuff
+  - Example: `ui/tween.lua:231: local function copyTables(destination, keysTable, valuesTable)`
   - Definition: `ui/tween.lua:231: local function copyTables(destination, keysTable, valuesTable)`
-- **getEasingFunction**:
+- **getEasingFunction**: No documentation available.
+  - Example: `ui/tween.lua:272: local function getEasingFunction(easing)`
   - Definition: `ui/tween.lua:272: local function getEasingFunction(easing)`
 - **inBack**: back
+  - Example: `ui/tween.lua:167: local function inBack(t, b, c, d, s)`
   - Definition: `ui/tween.lua:167: local function inBack(t, b, c, d, s)`
-- **inBounce**:
+- **inBounce**: No documentation available.
+  - Example: `ui/tween.lua:203: local function inBounce(t, b, c, d) return c - outBounce(d - t, 0, c, d) + b end`
   - Definition: `ui/tween.lua:203: local function inBounce(t, b, c, d) return c - outBounce(d - t, 0, c, d) + b end`
 - **inCirc**: circ
+  - Example: `ui/tween.lua:115: local function inCirc(t, b, c, d) return(-c * (sqrt(1 - pow(t / d, 2)) - 1) + b) end`
   - Definition: `ui/tween.lua:115: local function inCirc(t, b, c, d) return(-c * (sqrt(1 - pow(t / d, 2)) - 1) + b) end`
 - **inCubic**: cubic
+  - Example: `ui/tween.lua:45: local function inCubic (t, b, c, d) return c * pow(t / d, 3) + b end`
   - Definition: `ui/tween.lua:45: local function inCubic (t, b, c, d) return c * pow(t / d, 3) + b end`
-- **inElastic**:
+- **inElastic**: No documentation available.
+  - Example: `ui/tween.lua:134: local function inElastic(t, b, c, d, a, p)`
   - Definition: `ui/tween.lua:134: local function inElastic(t, b, c, d, a, p)`
 - **inExpo**: expo
+  - Example: `ui/tween.lua:94: local function inExpo(t, b, c, d)`
   - Definition: `ui/tween.lua:94: local function inExpo(t, b, c, d)`
-- **inOutBack**:
+- **inOutBack**: No documentation available.
+  - Example: `ui/tween.lua:177: local function inOutBack(t, b, c, d, s)`
   - Definition: `ui/tween.lua:177: local function inOutBack(t, b, c, d, s)`
-- **inOutBounce**:
+- **inOutBounce**: No documentation available.
+  - Example: `ui/tween.lua:204: local function inOutBounce(t, b, c, d)`
   - Definition: `ui/tween.lua:204: local function inOutBounce(t, b, c, d)`
-- **inOutCirc**:
+- **inOutCirc**: No documentation available.
+  - Example: `ui/tween.lua:117: local function inOutCirc(t, b, c, d)`
   - Definition: `ui/tween.lua:117: local function inOutCirc(t, b, c, d)`
-- **inOutCubic**:
+- **inOutCubic**: No documentation available.
+  - Example: `ui/tween.lua:47: local function inOutCubic(t, b, c, d)`
   - Definition: `ui/tween.lua:47: local function inOutCubic(t, b, c, d)`
-- **inOutElastic**:
+- **inOutElastic**: No documentation available.
+  - Example: `ui/tween.lua:151: local function inOutElastic(t, b, c, d, a, p)`
   - Definition: `ui/tween.lua:151: local function inOutElastic(t, b, c, d, a, p)`
-- **inOutExpo**:
+- **inOutExpo**: No documentation available.
+  - Example: `ui/tween.lua:102: local function inOutExpo(t, b, c, d)`
   - Definition: `ui/tween.lua:102: local function inOutExpo(t, b, c, d)`
-- **inOutQuad**:
+- **inOutQuad**: No documentation available.
+  - Example: `ui/tween.lua:34: local function inOutQuad(t, b, c, d)`
   - Definition: `ui/tween.lua:34: local function inOutQuad(t, b, c, d)`
-- **inOutQuart**:
+- **inOutQuart**: No documentation available.
+  - Example: `ui/tween.lua:61: local function inOutQuart(t, b, c, d)`
   - Definition: `ui/tween.lua:61: local function inOutQuart(t, b, c, d)`
-- **inOutQuint**:
+- **inOutQuint**: No documentation available.
+  - Example: `ui/tween.lua:74: local function inOutQuint(t, b, c, d)`
   - Definition: `ui/tween.lua:74: local function inOutQuint(t, b, c, d)`
-- **inOutSine**:
+- **inOutSine**: No documentation available.
+  - Example: `ui/tween.lua:87: local function inOutSine(t, b, c, d) return -c / 2 * (cos(pi * t / d) - 1) + b end`
   - Definition: `ui/tween.lua:87: local function inOutSine(t, b, c, d) return -c / 2 * (cos(pi * t / d) - 1) + b end`
 - **inQuad**: quad
+  - Example: `ui/tween.lua:29: local function inQuad(t, b, c, d) return c * pow(t / d, 2) + b end`
   - Definition: `ui/tween.lua:29: local function inQuad(t, b, c, d) return c * pow(t / d, 2) + b end`
 - **inQuart**: quart
+  - Example: `ui/tween.lua:59: local function inQuart(t, b, c, d) return c * pow(t / d, 4) + b end`
   - Definition: `ui/tween.lua:59: local function inQuart(t, b, c, d) return c * pow(t / d, 4) + b end`
 - **inQuint**: quint
+  - Example: `ui/tween.lua:72: local function inQuint(t, b, c, d) return c * pow(t / d, 5) + b end`
   - Definition: `ui/tween.lua:72: local function inQuint(t, b, c, d) return c * pow(t / d, 5) + b end`
 - **inSine**: sine
+  - Example: `ui/tween.lua:85: local function inSine(t, b, c, d) return -c * cos(t / d * (pi / 2)) + c + b end`
   - Definition: `ui/tween.lua:85: local function inSine(t, b, c, d) return -c * cos(t / d * (pi / 2)) + c + b end`
 - **linear**: linear
+  - Example: `ui/tween.lua:26: local function linear(t, b, c, d) return c * t / d + b end`
   - Definition: `ui/tween.lua:26: local function linear(t, b, c, d) return c * t / d + b end`
-- **outBack**:
+- **outBack**: No documentation available.
+  - Example: `ui/tween.lua:172: local function outBack(t, b, c, d, s)`
   - Definition: `ui/tween.lua:172: local function outBack(t, b, c, d, s)`
 - **outBounce**: bounce
+  - Example: `ui/tween.lua:190: local function outBounce(t, b, c, d)`
   - Definition: `ui/tween.lua:190: local function outBounce(t, b, c, d)`
-- **outCirc**:
+- **outCirc**: No documentation available.
+  - Example: `ui/tween.lua:116: local function outCirc(t, b, c, d)  return(c * sqrt(1 - pow(t / d - 1, 2)) + b) end`
   - Definition: `ui/tween.lua:116: local function outCirc(t, b, c, d)  return(c * sqrt(1 - pow(t / d - 1, 2)) + b) end`
-- **outCubic**:
+- **outCubic**: No documentation available.
+  - Example: `ui/tween.lua:46: local function outCubic(t, b, c, d) return c * (pow(t / d - 1, 3) + 1) + b end`
   - Definition: `ui/tween.lua:46: local function outCubic(t, b, c, d) return c * (pow(t / d - 1, 3) + 1) + b end`
-- **outElastic**:
+- **outElastic**: No documentation available.
+  - Example: `ui/tween.lua:143: local function outElastic(t, b, c, d, a, p)`
   - Definition: `ui/tween.lua:143: local function outElastic(t, b, c, d, a, p)`
-- **outExpo**:
+- **outExpo**: No documentation available.
+  - Example: `ui/tween.lua:98: local function outExpo(t, b, c, d)`
   - Definition: `ui/tween.lua:98: local function outExpo(t, b, c, d)`
-- **outInBack**:
+- **outInBack**: No documentation available.
+  - Example: `ui/tween.lua:184: local function outInBack(t, b, c, d, s)`
   - Definition: `ui/tween.lua:184: local function outInBack(t, b, c, d, s)`
-- **outInBounce**:
+- **outInBounce**: No documentation available.
+  - Example: `ui/tween.lua:208: local function outInBounce(t, b, c, d)`
   - Definition: `ui/tween.lua:208: local function outInBounce(t, b, c, d)`
-- **outInCirc**:
+- **outInCirc**: No documentation available.
+  - Example: `ui/tween.lua:123: local function outInCirc(t, b, c, d)`
   - Definition: `ui/tween.lua:123: local function outInCirc(t, b, c, d)`
-- **outInCubic**:
+- **outInCubic**: No documentation available.
+  - Example: `ui/tween.lua:53: local function outInCubic(t, b, c, d)`
   - Definition: `ui/tween.lua:53: local function outInCubic(t, b, c, d)`
-- **outInElastic**:
+- **outInElastic**: No documentation available.
+  - Example: `ui/tween.lua:161: local function outInElastic(t, b, c, d, a, p)`
   - Definition: `ui/tween.lua:161: local function outInElastic(t, b, c, d, a, p)`
-- **outInExpo**:
+- **outInExpo**: No documentation available.
+  - Example: `ui/tween.lua:109: local function outInExpo(t, b, c, d)`
   - Definition: `ui/tween.lua:109: local function outInExpo(t, b, c, d)`
-- **outInQuad**:
+- **outInQuad**: No documentation available.
+  - Example: `ui/tween.lua:39: local function outInQuad(t, b, c, d)`
   - Definition: `ui/tween.lua:39: local function outInQuad(t, b, c, d)`
-- **outInQuart**:
+- **outInQuart**: No documentation available.
+  - Example: `ui/tween.lua:66: local function outInQuart(t, b, c, d)`
   - Definition: `ui/tween.lua:66: local function outInQuart(t, b, c, d)`
-- **outInQuint**:
+- **outInQuint**: No documentation available.
+  - Example: `ui/tween.lua:79: local function outInQuint(t, b, c, d)`
   - Definition: `ui/tween.lua:79: local function outInQuint(t, b, c, d)`
-- **outInSine**:
+- **outInSine**: No documentation available.
+  - Example: `ui/tween.lua:88: local function outInSine(t, b, c, d)`
   - Definition: `ui/tween.lua:88: local function outInSine(t, b, c, d)`
-- **outQuad**:
+- **outQuad**: No documentation available.
+  - Example: `ui/tween.lua:30: local function outQuad(t, b, c, d)`
   - Definition: `ui/tween.lua:30: local function outQuad(t, b, c, d)`
-- **outQuart**:
+- **outQuart**: No documentation available.
+  - Example: `ui/tween.lua:60: local function outQuart(t, b, c, d) return -c * (pow(t / d - 1, 4) - 1) + b end`
   - Definition: `ui/tween.lua:60: local function outQuart(t, b, c, d) return -c * (pow(t / d - 1, 4) - 1) + b end`
-- **outQuint**:
+- **outQuint**: No documentation available.
+  - Example: `ui/tween.lua:73: local function outQuint(t, b, c, d) return c * (pow(t / d - 1, 5) + 1) + b end`
   - Definition: `ui/tween.lua:73: local function outQuint(t, b, c, d) return c * (pow(t / d - 1, 5) + 1) + b end`
-- **outSine**:
+- **outSine**: No documentation available.
+  - Example: `ui/tween.lua:86: local function outSine(t, b, c, d) return c * sin(t / d * (pi / 2)) + b end`
   - Definition: `ui/tween.lua:86: local function outSine(t, b, c, d) return c * sin(t / d * (pi / 2)) + b end`
-- **performEasingOnSubject**:
+- **performEasingOnSubject**: No documentation available.
+  - Example: `ui/tween.lua:284: local function performEasingOnSubject(subject, target, initial, clock, duration, easing)`
   - Definition: `ui/tween.lua:284: local function performEasingOnSubject(subject, target, initial, clock, duration, easing)`
 
 ## urlfs
-- **attributes**:
+- **attributes**: No documentation available.
+  - Example: `fs/urlfs.lua:23: function urlfs.attributes(node, path)`
   - Definition: `fs/urlfs.lua:23: function urlfs.attributes(node, path)`
-- **delete**:
+- **delete**: No documentation available.
+  - Example: `fs/urlfs.lua:32: function urlfs.delete(node, path)`
   - Definition: `fs/urlfs.lua:32: function urlfs.delete(node, path)`
-- **exists**:
+- **exists**: No documentation available.
+  - Example: `fs/urlfs.lua:38: function urlfs.exists(node, path)`
   - Definition: `fs/urlfs.lua:38: function urlfs.exists(node, path)`
-- **getDrive**:
+- **getDrive**: No documentation available.
+  - Example: `fs/urlfs.lua:54: function urlfs.getDrive()`
   - Definition: `fs/urlfs.lua:54: function urlfs.getDrive()`
-- **getSize**:
+- **getSize**: No documentation available.
+  - Example: `fs/urlfs.lua:42: function urlfs.getSize(node, path)`
   - Definition: `fs/urlfs.lua:42: function urlfs.getSize(node, path)`
-- **isDir**:
+- **isDir**: No documentation available.
+  - Example: `fs/urlfs.lua:50: function urlfs.isDir()`
   - Definition: `fs/urlfs.lua:50: function urlfs.isDir()`
-- **isReadOnly**:
+- **isReadOnly**: No documentation available.
+  - Example: `fs/urlfs.lua:46: function urlfs.isReadOnly()`
   - Definition: `fs/urlfs.lua:46: function urlfs.isReadOnly()`
-- **mount**:
+- **mount**: No documentation available.
+  - Example: `fs/urlfs.lua:8: function urlfs.mount(path, url, force)`
   - Definition: `fs/urlfs.lua:8: function urlfs.mount(path, url, force)`
-- **open**:
+- **open**: No documentation available.
+  - Example: `fs/urlfs.lua:58: function urlfs.open(node, fn, fl)`
   - Definition: `fs/urlfs.lua:58: function urlfs.open(node, fn, fl)`
 
 ## util
-- **convert**:
+- **convert**: No documentation available.
+  - Example: `util.lua:198: local function convert(v)`
   - Definition: `util.lua:198: local function convert(v)`
 - **getopt**: http://lua-users.org/wiki/AlternativeGetOpt
+  - Example: `util.lua:761: local function getopt( arg, options )`
   - Definition: `util.lua:761: local function getopt( arg, options )`
-- **helper**:
+- **helper**: No documentation available.
+  - Example: `util.lua:641: local function helper(line) table.insert(t, line) return "" end`
   - Definition: `util.lua:641: local function helper(line) table.insert(t, line) return "" end`
-- **isArray**:
+- **isArray**: No documentation available.
+  - Example: `util.lua:392: local function isArray(value)`
   - Definition: `util.lua:392: local function isArray(value)`
-- **permgen**:
+- **permgen**: No documentation available.
+  - Example: `util.lua:836: local function permgen(a, n)`
   - Definition: `util.lua:836: local function permgen(a, n)`
-- **serialize**:
+- **serialize**: No documentation available.
+  - Example: `util.lua:138: local function serialize(tbl, width)`
   - Definition: `util.lua:138: local function serialize(tbl, width)`
 - **wrap**: end http://snippets.luacode.org/?p=snippets/trim_whitespace_from_string_76
+  - Example: `util.lua:699: local function wrap(text, max, lines)`
   - Definition: `util.lua:699: local function wrap(text, max, lines)`
-- **wrapRequest**:
+- **wrapRequest**: No documentation available.
+  - Example: `util.lua:20: local function wrapRequest(_url, ...)`
   - Definition: `util.lua:20: local function wrapRequest(_url, ...)`
 
 ## win
-- **blit**:
+- **blit**: No documentation available.
+  - Example: `terminal.lua:77: function win.blit(str, fg, bg)`
   - Definition: `terminal.lua:77: function win.blit(str, fg, bg)`
-- **clear**:
+- **clear**: No documentation available.
+  - Example: `terminal.lua:83: function win.clear()`
   - Definition: `terminal.lua:83: function win.clear()`
-- **clearLine**:
+- **clearLine**: No documentation available.
+  - Example: `terminal.lua:97: function win.clearLine()`
   - Definition: `terminal.lua:97: function win.clearLine()`
-- **getBackgroundColor**:
+- **getBackgroundColor**: No documentation available.
+  - Example: `terminal.lua:181: function win.getBackgroundColor()`
   - Definition: `terminal.lua:181: function win.getBackgroundColor()`
-- **getCanvas**:
+- **getCanvas**: No documentation available.
+  - Example: `terminal.lua:272: function win.getCanvas()`
   - Definition: `terminal.lua:272: function win.getCanvas()`
-- **getCursorBlink**:
+- **getCursorBlink**: No documentation available.
+  - Example: `terminal.lua:114: function win.getCursorBlink()`
   - Definition: `terminal.lua:114: function win.getCursorBlink()`
-- **getCursorPos**:
+- **getCursorPos**: No documentation available.
+  - Example: `terminal.lua:103: function win.getCursorPos()`
   - Definition: `terminal.lua:103: function win.getCursorPos()`
-- **getLine**:
+- **getLine**: No documentation available.
+  - Example: `terminal.lua:92: function win.getLine(n)`
   - Definition: `terminal.lua:92: function win.getLine(n)`
-- **getPaletteColor**:
+- **getPaletteColor**: No documentation available.
+  - Example: `terminal.lua:135: function win.getPaletteColor(n)`
   - Definition: `terminal.lua:135: function win.getPaletteColor(n)`
-- **getParent**:
+- **getParent**: No documentation available.
+  - Example: `terminal.lua:276: function win.getParent()`
   - Definition: `terminal.lua:276: function win.getParent()`
-- **getPosition**:
+- **getPosition**: No documentation available.
+  - Example: `terminal.lua:211: function win.getPosition()`
   - Definition: `terminal.lua:211: function win.getPosition()`
-- **getSize**:
+- **getSize**: No documentation available.
+  - Example: `terminal.lua:155: function win.getSize()`
   - Definition: `terminal.lua:155: function win.getSize()`
-- **getTextColor**:
+- **getTextColor**: No documentation available.
+  - Example: `terminal.lua:176: function win.getTextColor()`
   - Definition: `terminal.lua:176: function win.getTextColor()`
-- **isColor**:
+- **isColor**: No documentation available.
+  - Example: `terminal.lua:125: function win.isColor()`
   - Definition: `terminal.lua:125: function win.isColor()`
-- **print**:
+- **print**: No documentation available.
+  - Example: `terminal.lua:335: function win.print(...)`
   - Definition: `terminal.lua:335: function win.print(...)`
-- **redraw**:
+- **redraw**: No documentation available.
+  - Example: `terminal.lua:196: function win.redraw()`
   - Definition: `terminal.lua:196: function win.redraw()`
-- **reposition**:
+- **reposition**: No documentation available.
+  - Example: `terminal.lua:215: function win.reposition(x, y, width, height)`
   - Definition: `terminal.lua:215: function win.reposition(x, y, width, height)`
-- **restoreCursor**:
+- **restoreCursor**: No documentation available.
+  - Example: `terminal.lua:203: function win.restoreCursor()`
   - Definition: `terminal.lua:203: function win.restoreCursor()`
-- **scroll**:
+- **scroll**: No documentation available.
+  - Example: `terminal.lua:159: function win.scroll(n)`
   - Definition: `terminal.lua:159: function win.scroll(n)`
-- **scrollBottom**:
+- **scrollBottom**: No documentation available.
+  - Example: `terminal.lua:264: function win.scrollBottom()`
   - Definition: `terminal.lua:264: function win.scrollBottom()`
 - **scrollDown**: [[ Additional methods ]]--
+  - Example: `terminal.lua:252: function win.scrollDown()`
   - Definition: `terminal.lua:252: function win.scrollDown()`
-- **scrollTop**:
+- **scrollTop**: No documentation available.
+  - Example: `terminal.lua:260: function win.scrollTop()`
   - Definition: `terminal.lua:260: function win.scrollTop()`
-- **scrollUp**:
+- **scrollUp**: No documentation available.
+  - Example: `terminal.lua:256: function win.scrollUp()`
   - Definition: `terminal.lua:256: function win.scrollUp()`
-- **setBackgroundColor**:
+- **setBackgroundColor**: No documentation available.
+  - Example: `terminal.lua:150: function win.setBackgroundColor(c)`
   - Definition: `terminal.lua:150: function win.setBackgroundColor(c)`
-- **setCursorBlink**:
+- **setCursorBlink**: No documentation available.
+  - Example: `terminal.lua:118: function win.setCursorBlink(b)`
   - Definition: `terminal.lua:118: function win.setCursorBlink(b)`
-- **setCursorPos**:
+- **setCursorPos**: No documentation available.
+  - Example: `terminal.lua:107: function win.setCursorPos(x, y)`
   - Definition: `terminal.lua:107: function win.setCursorPos(x, y)`
-- **setMaxScroll**:
+- **setMaxScroll**: No documentation available.
+  - Example: `terminal.lua:268: function win.setMaxScroll(ms)`
   - Definition: `terminal.lua:268: function win.setMaxScroll(ms)`
-- **setPaletteColor**:
+- **setPaletteColor**: No documentation available.
+  - Example: `terminal.lua:143: function win.setPaletteColor(n, r, g, b)`
   - Definition: `terminal.lua:143: function win.setPaletteColor(n, r, g, b)`
-- **setTextColor**:
+- **setTextColor**: No documentation available.
+  - Example: `terminal.lua:130: function win.setTextColor(c)`
   - Definition: `terminal.lua:130: function win.setTextColor(c)`
-- **setVisible**:
+- **setVisible**: No documentation available.
+  - Example: `terminal.lua:186: function win.setVisible(visible)`
   - Definition: `terminal.lua:186: function win.setVisible(visible)`
-- **write**:
+- **write**: No documentation available.
+  - Example: `terminal.lua:70: function win.write(str)`
   - Definition: `terminal.lua:70: function win.write(str)`
-- **writeX**:
+- **writeX**: No documentation available.
+  - Example: `terminal.lua:280: function win.writeX(sText)`
   - Definition: `terminal.lua:280: function win.writeX(sText)`
 

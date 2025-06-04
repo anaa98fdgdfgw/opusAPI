@@ -154,16 +154,22 @@ def generate(app_root=None):
         for cls in sorted(docs):
             fw.write(f"## {cls}\n")
             for name, info in sorted(docs[cls].items()):
-                doc = info.get("doc", "")
+                doc = info.get("doc", "").strip()
                 src = info.get("source", "")
                 example = examples.get(cls, {}).get(name)
-                if doc:
-                    fw.write(f"- **{name}**: {doc}\n")
-                else:
-                    fw.write(f"- **{name}**:\n")
+
+                if not doc:
+                    doc = "No documentation available."
+
+                fw.write(f"- **{name}**: {doc}\n")
+
+                if not example:
+                    example = src
+
                 if example:
                     fw.write(f"  - Example: `{example}`\n")
-                elif src:
+
+                if src:
                     fw.write(f"  - Definition: `{src}`\n")
             fw.write("\n")
     print("Generated", out)
