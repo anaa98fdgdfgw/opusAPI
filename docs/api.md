@@ -1,14 +1,14 @@
-# UI API
+# API Reference
 
-## Tabs
+## UI.Tabs
 - **selectTab**: selectTab(TAB)
 Make to the passed tab active.
 
-## TextEntry
+## UI.TextEntry
 - **reset**: reset()
 Clears the value and resets the cursor.
 
-## Window
+## UI.Window
 - **add**: add(TABLE)
 Add element(s) to a window. Example:
 page:add({
@@ -52,4 +52,72 @@ Call to force a screen update.
 Write text to the canvas.
 If colors are not specified, the colors from the base class will be used.
 If the base class does not have colors defined, colors will be inherited from the parent container.
+
+## Util
+- **any**
+- **backup**
+- **byteArrayToHex**
+- **checkMinecraftVersion**
+- **clamp**
+- **clear**
+- **contains**
+- **deepCopy**
+- **deepMerge**
+- **download**
+- **each**
+- **empty**
+- **every**
+- **filter**
+- **filterInplace**
+- **find**
+- **findAll**
+- **first**
+- **getMinecraftVersion**
+- **getOptions**
+- **getVersion**
+- **hexToByteArray**
+- **httpGet**
+- **insertString**
+- **key**
+- **keys**
+- **loadTable**
+- **loadUrl**
+- **matches**
+- **merge**
+- **parse**
+- **permutation**
+- **print**
+- **randomFloat**
+- **readFile**
+- **readLines**
+- **readTable**
+- **reduce**
+- **removeByValue**
+- **round**
+- **rpairs**
+- **run**
+- **runFunction**
+- **runUrl**
+- **shallowCopy**
+- **showOptions**
+- **signum**
+- **size**
+- **spairs**
+- **split**
+- **startsWith**
+- **throttle**
+- **timer**
+- **toBytes**
+- **tostring**
+- **transpose**
+- **trim**
+- **triml**
+- **trimr**
+- **tryTimed**
+- **tryTimes**
+- **widthify**
+- **wordWrap**
+- **writeFile**
+- **writeLines**
+- **writeTable**
 
