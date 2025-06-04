@@ -22,7 +22,7 @@ def parse_ui_docs():
     for path in files:
         text = path.read_text(encoding="utf-8")
         for cls, method, doc in UI_PATTERN.findall(text):
-            docs.setdefault("UI." + cls, []).append((method, doc.strip()))
+            docs.setdefault("UI." + cls, {})[method] = doc.strip()
     return docs
 
 
@@ -62,7 +62,7 @@ def _extract_comment(lines, idx):
 
 
 def parse_function_names():
-    """Collect function names and comments from all modules."""
+    """Collect function names, comments, and definition lines from all modules."""
     root = Path("modules/opus")
     modules = {}
     for path in root.rglob("*.lua"):
@@ -80,29 +80,29 @@ def parse_function_names():
                 module = mod_name
                 func = prefix
             doc = _extract_comment(lines, idx)
-            modules.setdefault(module, {})[func] = doc
-    return {
-        mod: [(name, modules[mod][name]) for name in sorted(modules[mod])]
-        for mod in modules
-    }
+            source = f"{path.relative_to(root)}:{idx + 1}: {line.strip()}"
+            modules.setdefault(module, {})[func] = {
+                "doc": doc,
+                "source": source,
+            }
+    return modules
 
 
 def merge_docs(funcs, ui_docs):
     """Merge simple function lists with UI documentation."""
     result = {}
-    for mod, items in funcs.items():
+    for mod, funcs_info in funcs.items():
         result.setdefault(mod, {})
-        for name, doc in items:
-            result[mod][name] = doc
+        for name, info in funcs_info.items():
+            result[mod][name] = info
     for mod, items in ui_docs.items():
         result.setdefault(mod, {})
-        for name, doc in items:
-            result[mod][name] = doc
-    # return sorted lists of (name, doc)
-    return {
-        mod: [(name, result[mod][name]) for name in sorted(result[mod])]
-        for mod in result
-    }
+        for name, doc in items.items():
+            if name in result[mod]:
+                result[mod][name]["doc"] = doc
+            else:
+                result[mod][name] = {"doc": doc, "source": ""}
+    return result
 
 
 def _parse_examples(app_root, docs):
@@ -131,14 +131,14 @@ def _parse_examples(app_root, docs):
                     if t in docs:
                         target = t
                 if target in docs:
-                    for func, _ in docs[target]:
+                    for func in docs[target]:
                         if f'{var}.{func}' in line or f'{var}:{func}' in line:
                             examples.setdefault(target, {}).setdefault(func, f"{path.relative_to(root)}:{i}: {line.strip()}")
                 if mod == 'ui':
                     for dmod in docs:
                         if dmod.startswith('UI.'):
                             cls = dmod.split('.', 1)[1]
-                            for func, _ in docs[dmod]:
+                            for func in docs[dmod]:
                                 if f'{var}.{cls}.{func}' in line or f'{var}.{cls}:{func}' in line:
                                     examples.setdefault(dmod, {}).setdefault(func, f"{path.relative_to(root)}:{i}: {line.strip()}")
     return examples
@@ -153,17 +153,18 @@ def generate(app_root=None):
         fw.write("# API Reference\n\n")
         for cls in sorted(docs):
             fw.write(f"## {cls}\n")
-            for name, doc in docs[cls]:
+            for name, info in sorted(docs[cls].items()):
+                doc = info.get("doc", "")
+                src = info.get("source", "")
                 example = examples.get(cls, {}).get(name)
                 if doc:
                     fw.write(f"- **{name}**: {doc}\n")
-                    if example:
-                        fw.write(f"  - Example: `{example}`\n")
                 else:
-                    if example:
-                        fw.write(f"- **{name}**: Example: `{example}`\n")
-                    else:
-                        fw.write(f"- **{name}**: No documentation available\n")
+                    fw.write(f"- **{name}**:\n")
+                if example:
+                    fw.write(f"  - Example: `{example}`\n")
+                elif src:
+                    fw.write(f"  - Definition: `{src}`\n")
             fw.write("\n")
     print("Generated", out)
 
