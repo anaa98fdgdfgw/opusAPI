@@ -1,8 +1,8 @@
 # API Reference
 
 ## Array
-- **filter**: No documentation available
-- **removeByValue**: No documentation available
+- **filter**: Example: `neural/neuralLook.lua:26: local l = Array.filter(neural.sense(), function(a)`
+- **removeByValue**: Example: `common/edit.lua:573: Array.removeByValue(config.recent, path)`
 
 ## Blit
 - **init**: No documentation available
@@ -41,8 +41,8 @@ TODO: finish vertical scrolling
 - **writeLine**: No documentation available
 
 ## Config
-- **load**: No documentation available
-- **update**: No documentation available
+- **load**: Example: `turtle/autorun/startup.lua:138: local config = Config.load('gps')`
+- **update**: Example: `turtle/system/turtle.lua:57: Config.update('gps', config)`
 
 ## Entry
 - **backspace**: No documentation available
@@ -138,34 +138,41 @@ TODO: finish vertical scrolling
 ## Peripheral
 - **addDevice**: No documentation available
 - **get**: match any of the passed arguments
-- **getByMethod**: No documentation available
-- **getBySide**: No documentation available
-- **getByType**: No documentation available
-- **getList**: No documentation available
+  - Example: `milo/storageGen.lua:71: self.storages = Util.filter(Peripheral.getList(), function(dev)`
+- **getByMethod**: Example: `core/apis/chestAdapter.lua:55: chest = Peripheral.getByMethod('getAllStacks')`
+- **getBySide**: Example: `core/apis/chestAdapter.lua:57: chest = Peripheral.getBySide(self.side)`
+- **getByType**: Example: `core/apis/meAdapter18.lua:20: controller = Peripheral.getByType(DEVICE_TYPE)`
+- **getList**: Example: `milo/storageGen.lua:71: self.storages = Util.filter(Peripheral.getList(), function(dev)`
 
 ## Point
-- **above**: No documentation available
-- **adjacentPoints**: No documentation available
-- **below**: No documentation available
-- **calculateHeading**: No documentation available
+- **above**: Example: `common/multiMiner.lua:170: turtle.pathfind(Point.above(topPoint))`
+- **adjacentPoints**: Example: `common/Follow.lua:220: local apts = Point.adjacentPoints(tpt)`
+- **below**: Example: `farms/superTreefarm.lua:152: local pt = Point.below(HOME_PT)`
+- **calculateHeading**: Example: `farms/apis/level.lua:82: local h = Point.calculateHeading(reference, pt)`
 - **calculateMoves**: Calculate distance to location including turns also returns the resulting heading
-- **calculateTurns**: No documentation available
+  - Example: `turtle/apis/pathfind.lua:57: return Point.calculateMoves(node, n)`
+- **calculateTurns**: Example: `farms/apis/level.lua:83: local t = Point.calculateTurns(reference.heading, h)`
 - **closest**: given a set of points, find the one taking the least moves
+  - Example: `turtle/obsidian.lua:67: node = Point.closest(turtle.point, nodes)`
 - **closestPointInBox**: No documentation available
-- **copy**: No documentation available
+- **copy**: Example: `common/multiMiner.lua:147: local topPoint = Point.copy(chestPoint)`
 - **distance**: Euclidian distance
-- **eachClosest**: No documentation available
+  - Example: `ignore/neuralFight.lua:19: return Point.distance(e1, pos) < Point.distance(e2, pos)`
+- **eachClosest**: Example: `turtle/lavaRefuel.lua:48: Point.eachClosest(turtle.point, t, function(b)`
 - **expandBox**: expand box to include point
-- **inBox**: No documentation available
-- **iterateClosest**: No documentation available
-- **makeBox**: No documentation available
+  - Example: `turtle/apis/pathfind.lua:22: Point.expandBox(box, dest)`
+- **inBox**: Example: `turtle/apis/pathfind.lua:9: if Point.inBox(b, dim) then`
+- **iterateClosest**: Example: `farms/superTreefarm.lua:337: for pt in Point.iterateClosest(turtle.point, blocks) do`
+- **makeBox**: Example: `turtle/apis/pathfind.lua:20: local box = Point.makeBox(turtle.point, turtle.point)`
 - **nearestTo**: get the point nearest A that is in the direction of B
-- **normalizeBox**: No documentation available
-- **rotate**: No documentation available
+  - Example: `turtle/apis/pathfind.lua:192: local bpt = Point.nearestTo(turtle.point, pt)`
+- **normalizeBox**: Example: `turtle/apis/pathfind.lua:128: box = Point.normalizeBox(box)`
+- **rotate**: Example: `turtle/canvasClient.lua:21: Point.rotate(c, rotated[reference.heading])`
 - **round**: No documentation available
-- **same**: No documentation available
+- **same**: Example: `ignore/Vision.lua:55: --if t and t.point and (not current or not Point.same(t.point, current)) then`
 - **subtract**: No documentation available
 - **turtleDistance**: turtle distance (manhattan)
+  - Example: `farms/apis/level.lua:81: local m = Point.turtleDistance(reference, pt)`
 
 ## Region
 - **andRect**: region:andRect(r1, r2, r3, r4): Logical ''and''s a rectange to a region
@@ -195,15 +202,15 @@ TODO: finish vertical scrolling
 - **getPassword**: No documentation available
 - **hasPassword**: No documentation available
 - **updatePassword**: No documentation available
-- **verifyPassword**: No documentation available
+- **verifyPassword**: Example: `secure/unlock.lua:22: if password and Security.verifyPassword(SHA.compute(password)) then`
 
 ## Socket
 - **connect**: No documentation available
 - **server**: No documentation available
 
 ## Sound
-- **play**: No documentation available
-- **setVolume**: No documentation available
+- **play**: Example: `miloApps/apps/water.lua:20: Sound.play(sound)`
+- **setVolume**: Example: `milo/plugins/speakerView.lua:11: Sound.setVolume(speakerNode.volume)`
 
 ## Sync
 - **isLocked**: No documentation available
@@ -407,10 +414,8 @@ If the base class does not have colors defined, colors will be inherited from th
 - **tagged**: No documentation available
 
 ## compress.lzw
-- **compress**: No documentation available
-  - Example: `compress/compress.lua:28: Util.writeFile(file, LZW.compress(c), 'wb')`
-- **decompress**: No documentation available
-  - Example: `compress/uncompress.lua:43: local s, m = Tar.untar_string(LZW.decompress(c), outDir, true)`
+- **compress**: Example: `compress/compress.lua:28: Util.writeFile(file, LZW.compress(c), 'wb')`
+- **decompress**: Example: `compress/uncompress.lua:43: local s, m = Tar.untar_string(LZW.decompress(c), outDir, true)`
 - **dictAddA**: No documentation available
 - **dictAddB**: No documentation available
 
@@ -427,13 +432,10 @@ If the base class does not have colors defined, colors will be inherited from th
 - **tar**: the bare minimum for this program to untar
   - Example: `compress/compress.lua:24: Tar.tar(file, dir)`
 - **tar_stream**: No documentation available
-- **tar_string**: No documentation available
-  - Example: `compress/compress.lua:27: local c = Tar.tar_string(dir)`
-- **untar**: No documentation available
-  - Example: `compress/uncompress.lua:31: local s, m = Tar.untar_string(string.char(table.unpack(t)), outDir, true)`
+- **tar_string**: Example: `compress/compress.lua:27: local c = Tar.tar_string(dir)`
+- **untar**: Example: `compress/uncompress.lua:31: local s, m = Tar.untar_string(string.char(table.unpack(t)), outDir, true)`
 - **untar_stream**: No documentation available
-- **untar_string**: No documentation available
-  - Example: `compress/uncompress.lua:31: local s, m = Tar.untar_string(string.char(table.unpack(t)), outDir, true)`
+- **untar_string**: Example: `compress/uncompress.lua:31: local s, m = Tar.untar_string(string.char(table.unpack(t)), outDir, true)`
 
 ## crypto.chacha20
 - **LE_toInt**: No documentation available
@@ -506,11 +508,9 @@ If the base class does not have colors defined, colors will be inherited from th
 ## crypto.sha2
 - **BE_toInt**: No documentation available
 - **brshift**: No documentation available
-- **compute**: No documentation available
-  - Example: `secure/unlock.lua:22: if password and Security.verifyPassword(SHA.compute(password)) then`
+- **compute**: Example: `secure/unlock.lua:22: if password and Security.verifyPassword(SHA.compute(password)) then`
 - **counter**: No documentation available
-- **digest**: No documentation available
-  - Example: `swshop/apis/krist.lua:6: return sha2.digest(key):toHex()`
+- **digest**: Example: `swshop/apis/krist.lua:6: return sha2.digest(key):toHex()`
 - **digestblock**: No documentation available
 - **hmac**: No documentation available
 - **pbkdf2**: No documentation available
@@ -593,10 +593,9 @@ If the base class does not have colors defined, colors will be inherited from th
 - **addnewline2**: No documentation available
 - **addpair**: No documentation available
 - **appendcustom**: No documentation available
-- **decode**: No documentation available
-  - Example: `builder/apis/blocks.lua:13: local blocks = JSON.decodeFromFile('packages/core/etc/names/minecraft.json')`
+- **decode**: Example: `core/apis/nameDB.lua:20: local blocks = JSON.decodeFromFile(fs.combine(directory, file))`
 - **decodeFromFile**: NOTE: added method - not in original source
-  - Example: `builder/apis/blocks.lua:13: local blocks = JSON.decodeFromFile('packages/core/etc/names/minecraft.json')`
+  - Example: `core/apis/nameDB.lua:20: local blocks = JSON.decodeFromFile(fs.combine(directory, file))`
 - **encode**: No documentation available
 - **encodeexception**: No documentation available
 - **escapeutf8**: No documentation available

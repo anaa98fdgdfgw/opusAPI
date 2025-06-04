@@ -124,10 +124,16 @@ def _parse_examples(app_root, docs):
                 mod = mod.replace('/', '.')
                 if mod.startswith('opus.'):
                     mod = mod[len('opus.') :]
-                if mod in docs:
-                    for func, _ in docs[mod]:
+                target = mod
+                if target not in docs:
+                    t = mod.split('.')[-1]
+                    t = t[:1].upper() + t[1:]
+                    if t in docs:
+                        target = t
+                if target in docs:
+                    for func, _ in docs[target]:
                         if f'{var}.{func}' in line or f'{var}:{func}' in line:
-                            examples.setdefault(mod, {}).setdefault(func, f"{path.relative_to(root)}:{i}: {line.strip()}")
+                            examples.setdefault(target, {}).setdefault(func, f"{path.relative_to(root)}:{i}: {line.strip()}")
                 if mod == 'ui':
                     for dmod in docs:
                         if dmod.startswith('UI.'):
@@ -151,10 +157,13 @@ def generate(app_root=None):
                 example = examples.get(cls, {}).get(name)
                 if doc:
                     fw.write(f"- **{name}**: {doc}\n")
+                    if example:
+                        fw.write(f"  - Example: `{example}`\n")
                 else:
-                    fw.write(f"- **{name}**: No documentation available\n")
-                if example:
-                    fw.write(f"  - Example: `{example}`\n")
+                    if example:
+                        fw.write(f"- **{name}**: Example: `{example}`\n")
+                    else:
+                        fw.write(f"- **{name}**: No documentation available\n")
             fw.write("\n")
     print("Generated", out)
 
