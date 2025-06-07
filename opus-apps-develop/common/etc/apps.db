@@ -83,4 +83,10 @@
 		run = "ascii",
 		title = "Ascii",
 	},
+        [ "2a52938de0d5a5f506523d2bc646da97b0d67b67b1ab17b522a45ab9ee634946" ] = {
+                title = "ElevatorScreen",
+                category = "Apps",
+                run = "ElevatorScreen.lua",
+        },
 }
+
