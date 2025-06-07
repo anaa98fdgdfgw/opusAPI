@@ -103,11 +103,12 @@ end
 
 local function sendFloor(floor)
   local id = tonumber(config.remoteId)
-  if not id or id <= 0 then
-    mainPage.statusBar:setStatus('Remote ID missing')
-    return
+  if id and id > 0 then
+    rednet.send(id, floor, 'call')
+  else
+    -- if no remote id is configured, broadcast to all computers
+    rednet.broadcast(floor, 'call')
   end
-  rednet.send(id, floor, 'call')
 end
 
 function mainPage:eventHandler(event)
