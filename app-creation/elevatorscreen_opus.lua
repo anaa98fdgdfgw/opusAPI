@@ -17,7 +17,12 @@ local monitor = Peripheral.get({ type = 'monitor' })
 if vnc then
   UI:setDefaultDevice(UI.Device { device = vnc })
 elseif monitor then
-  monitor.setTextScale(0.5)
+  local w, h = monitor.getSize()
+  if w >= 36 and h >= 24 then
+    monitor.setTextScale(1)
+  else
+    monitor.setTextScale(0.5)
+  end
   UI:setDefaultDevice(UI.Device { device = monitor })
 end
 
@@ -25,10 +30,9 @@ local config = Config.load('elevatorscreen', { floors = 0, remoteId = 0 })
 
 local function buildFloors()
   local t = {}
-  if tonumber(config.floors) then
-    for i = config.floors - 1, 0, -1 do
-      table.insert(t, { name = tostring(i), value = i })
-    end
+  local floors = tonumber(config.floors) or 0
+  for i = floors, 1, -1 do
+    table.insert(t, { name = tostring(i), value = i })
   end
   return t
 end
