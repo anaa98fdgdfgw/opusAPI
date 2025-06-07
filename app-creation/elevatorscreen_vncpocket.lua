@@ -1,4 +1,4 @@
--- Elevator Screen App rebuilt for Opus UI
+-- Elevator Screen Pocket/VNC version for Opus UI
 local Config    = require('opus.config')
 local Peripheral= require('opus.peripheral')
 local UI        = require('opus.ui')
@@ -8,12 +8,15 @@ local peripheral = _G.peripheral
 local rednet   = _G.rednet
 local os       = _G.os
 
-UI:configure('ElevatorScreen', ...)
+UI:configure('ElevatorPocket', ...)
 peripheral.find('modem', rednet.open)
 
--- use monitor when available
+-- prefer a vnc peripheral when available
+local vnc = Peripheral.get({ type = 'vnc' })
 local monitor = Peripheral.get({ type = 'monitor' })
-if monitor then
+if vnc then
+  UI:setDefaultDevice(UI.Device { device = vnc })
+elseif monitor then
   monitor.setTextScale(0.5)
   UI:setDefaultDevice(UI.Device { device = monitor })
 end
