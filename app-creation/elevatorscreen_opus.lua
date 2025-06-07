@@ -30,8 +30,8 @@ local function buildFloors()
   return t
 end
 
-local setupDialog
 local mainPage
+local setupDialog
 
 setupDialog = UI.Dialog {
   title = 'Setup',
@@ -83,6 +83,9 @@ mainPage = UI.Page {
   },
 }
 
+-- attach the configuration dialog to the page
+mainPage:add({ setupDialog = setupDialog })
+
 function mainPage:enable()
   UI.Page.enable(self)
   if not tonumber(config.floors) or not tonumber(config.remoteId) then
@@ -112,6 +115,6 @@ function mainPage:eventHandler(event)
   return true
 end
 
-UI:setPages({ mainPage, setupDialog })
+UI:setPages({ mainPage })
 UI:setPage(mainPage)
 UI:start()
