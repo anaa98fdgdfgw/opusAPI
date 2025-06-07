@@ -2,16 +2,16 @@
 -- Converts floor selection into network messages
 
 local Config = require('opus.config')
-local Socket = require('opus.socket')
 local UI     = require('opus.ui')
 local Util   = require('opus.util')
+
+peripheral.find('modem', rednet.open)
 
 UI:configure('ElevatorScreen', ...)
 
 local config = Config.load('ElevatorScreen', {
   floors = 0,
   id     = 0,
-  port   = 188,
   page   = 1,
 })
 
@@ -28,14 +28,26 @@ end
 local device = UI.term
 local width, height = device.width, device.height
 
-local buttonsPerColumn = math.floor(height / 2)
-local columns = math.min(math.ceil(config.floors / buttonsPerColumn), 3)
+local pocketMode = width <= 26 or height <= 20
+local buttonsPerColumn
+local columns
+local buttonWidth
+
+if pocketMode then
+  buttonsPerColumn = math.floor((height - 2) / 2)
+  columns = 1
+  buttonWidth = width - 2
+else
+  buttonsPerColumn = math.floor(height / 2)
+  columns = math.min(math.ceil(config.floors / buttonsPerColumn), 3)
+  buttonWidth = width - 2
+  if config.floors * 2 >= height then
+    buttonWidth = math.floor((width - columns - 3) / columns)
+  end
+end
+
 local maxPerPage = buttonsPerColumn * columns
 local pages = math.ceil(config.floors / maxPerPage)
-local buttonWidth = width - 2
-if config.floors * 2 >= height then
-  buttonWidth = math.floor((width - columns - 3) / columns)
-end
 
 local pageList = {}
 local topFloor = config.floors - 1
@@ -72,6 +84,9 @@ for p = 1, pages do
   if p > 1 then
     pg:add({ prev = UI.Button{ x = 2, y = height, text = '<<', event = 'prev' } })
   end
+  if pages > 1 then
+    pg:add({ pageLabel = UI.Text{ x = math.floor(width / 2) - 3, y = height, value = 'Page ' .. p } })
+  end
   pageList[p] = pg
 end
 
@@ -83,13 +98,7 @@ local function saveConfig()
 end
 
 local function sendFloor(n)
-  local socket, msg = Socket.connect(config.id, config.port)
-  if socket then
-    socket:write(n)
-    socket:close()
-  else
-    _G._syslog(msg or 'connection failed')
-  end
+  rednet.send(config.id, n, 'call')
 end
 
 for i, pg in ipairs(pageList) do
