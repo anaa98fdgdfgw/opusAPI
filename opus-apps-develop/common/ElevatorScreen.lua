@@ -61,16 +61,15 @@ for p = 1, pages do
       ['control-q'] = 'quit',
     },
   }
-  pg.buttons = {}
   local x = 2
   local y = height - 1
   for i = 1, maxPerPage do
     if floor < 0 then break end
     local name = 'btn_' .. floor
-    pg.buttons[name] = floor
     pg:add({[name] = UI.Button{
       x = x, ex = x + buttonWidth - 1, y = y,
       text = tostring(floor), event = 'floor',
+      floor = floor,
       backgroundColor = colors.red,
       backgroundFocusColor = colors.lime,
     }})
@@ -126,9 +125,8 @@ for i, pg in ipairs(pageList) do
         UI:setPage(pageList[currentPage])
         saveConfig()
       else
-        local f = self.buttons[event.button.name]
-        if f then
-          sendFloor(f)
+        if event.button.floor then
+          sendFloor(event.button.floor)
         end
       end
       return true
