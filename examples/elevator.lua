@@ -1,9 +1,14 @@
--- Example elevator screen app using opus UI library
+-- Opus OS elevator app - supports VNC pocket displays
 require('opus.injector')(_ENV)
 
-local Config = require('opus.config')
+local Config     = require('opus.config')
 local Peripheral = require('opus.peripheral')
-local UI = require('opus.ui')
+local UI         = require('opus.ui')
+
+local term       = _G.term
+local multishell = _ENV.multishell
+
+multishell.setTitle(multishell.getCurrent(), 'Elevator')
 
 -- load configuration or prompt
 local cfg = Config.load('elevator', { floors = false, id = false, page = 1 })
@@ -19,13 +24,20 @@ end
 
 peripheral.find('modem', rednet.open)
 
-local monitor = Peripheral.get({ type = 'monitor' }) or error('No monitor attached')
-monitor.setTextScale(1)
+local monitor = Peripheral.get({ type = 'monitor' })
+local vnc     = Peripheral.get({ type = 'vnc' })
+local pocket  = _G.pocket or vnc
 
-UI:setDefaultDevice(UI.Device { device = monitor })
+monitor = monitor or vnc or term.current()
+
+local device = UI.Device {
+  device = monitor,
+  textScale = pocket and .5 or 1,
+}
+UI:setDefaultDevice(device)
 UI:configure('elevator')
 
-local mw, mh = monitor.getSize()
+local mw, mh = device.width, device.height
 local buttonsPerColumn = math.floor(mh/2)
 local columns = math.min(math.ceil(cfg.floors/buttonsPerColumn), 3)
 local maxPerPage = buttonsPerColumn * columns
