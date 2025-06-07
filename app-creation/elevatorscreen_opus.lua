@@ -1,81 +1,109 @@
--- Elevator Screen App using Opus UI
-local UI   = require('opus.ui')
+-- Elevator Screen App rebuilt for Opus UI
+local Config    = require('opus.config')
+local Peripheral= require('opus.peripheral')
+local UI        = require('opus.ui')
 
 local fs       = _G.fs
 local peripheral = _G.peripheral
 local rednet   = _G.rednet
-local term     = _G.term
-local textutils = _G.textutils
-local read     = _G.read
+local os       = _G.os
 
-local INFO_FILE = 'info'
-
--- configure UI and choose display device
 UI:configure('ElevatorScreen', ...)
 peripheral.find('modem', rednet.open)
 
--- attempt to use a monitor if one is attached
-local monitor = peripheral.find('monitor')
+-- use monitor when available
+local monitor = Peripheral.get({ type = 'monitor' })
 if monitor then
   monitor.setTextScale(0.5)
-  UI:setDefaultDevice(UI.Device{ device = monitor })
+  UI:setDefaultDevice(UI.Device { device = monitor })
 end
 
-local floor
-local remoteId
+local config = Config.load('elevatorscreen', { floors = 0, remoteId = 0 })
 
--- load persisted configuration
-if fs.exists(INFO_FILE) then
-  local h = fs.open(INFO_FILE, 'r')
-  local info = textutils.unserialize(h.readAll())
-  h.close()
-  if info then
-    floor = tonumber(info[1])
-    remoteId = tonumber(info[2])
+local function buildFloors()
+  local t = {}
+  if tonumber(config.floors) then
+    for i = config.floors - 1, 0, -1 do
+      table.insert(t, { name = tostring(i), value = i })
+    end
   end
+  return t
 end
 
--- ask for data if missing
-while not floor or not remoteId do
-  term.write('Total number of floors: ')
-  floor = tonumber(read())
-  term.write('ID of receiving computer: ')
-  remoteId = tonumber(read())
-  local h = fs.open(INFO_FILE, 'w')
-  h.write(textutils.serialize({ floor, remoteId }))
-  h.close()
-end
+local setupDialog
+local mainPage
 
--- build floor list
-local floors = { }
-for i = floor - 1, 0, -1 do
-  table.insert(floors, { name = tostring(i), value = i })
-end
-
--- ui setup
-local page = UI.Page {
-  grid = UI.ScrollingGrid {
-    y = 2,
-    ey = -2,
-    columns = {
-      { heading = 'Floor', key = 'name' },
-    },
-    values = floors,
+setupDialog = UI.Dialog {
+  title = 'Setup',
+  height = 7,
+  form = UI.Form {
+    y = 3, x = 2, ey = -2,
+    event = 'save_setup',
+    cancelEvent = 'dialog_cancel',
+    floors = UI.TextEntry { formLabel = 'Floors',  formKey = 'floors',  width = 6, limit = 3, required = true, transform = 'number' },
+    remoteId = UI.TextEntry { formLabel = 'Remote', formKey = 'remoteId', width = 6, limit = 6, required = true, transform = 'number' },
   },
-  statusBar = UI.StatusBar { values = 'Select floor' },
+  statusBar = UI.StatusBar(),
+}
+
+function setupDialog:eventHandler(event)
+  if event.type == 'save_setup' then
+    if not self.form:save() then
+      return true
+    end
+    config.floors = tonumber(self.form.values.floors)
+    config.remoteId = tonumber(self.form.values.remoteId)
+    Config.update('elevatorscreen', config)
+    mainPage.grid:setValues(buildFloors())
+    self:hide()
+    mainPage.statusBar:setStatus('Configuration saved')
+  else
+    return UI.Dialog.eventHandler(self, event)
+  end
+  return true
+end
+
+mainPage = UI.Page {
+  menuBar = UI.MenuBar {
+    buttons = {
+      { text = 'Setup', event = 'setup' },
+      { text = 'Clear', event = 'clear' },
+    },
+  },
+  grid = UI.ScrollingGrid {
+    y = 2, ey = -2,
+    columns = { { heading = 'Floor', key = 'name' } },
+    values = buildFloors(),
+  },
+  statusBar = UI.StatusBar { values = 'Select a floor' },
   accelerators = {
-    [ 'e' ] = 'clear',
-    [ 'control-q' ] = 'quit',
+    s = 'setup',
+    e = 'clear',
+    ['control-q'] = 'quit',
   },
 }
 
-function page:eventHandler(event)
+function mainPage:enable()
+  UI.Page.enable(self)
+  if not tonumber(config.floors) or not tonumber(config.remoteId) then
+    setupDialog.form:setValues(config)
+    setupDialog:show()
+  end
+end
+
+function mainPage:eventHandler(event)
   if event.type == 'grid_select' then
-    rednet.send(remoteId, event.selected.value, 'call')
+    rednet.send(config.remoteId, event.selected.value, 'call')
     self.statusBar:timedStatus('Sent to floor ' .. event.selected.value, 2)
+  elseif event.type == 'setup' then
+    setupDialog.form:setValues(config)
+    setupDialog:show()
   elseif event.type == 'clear' then
-    fs.delete(INFO_FILE)
-    self.statusBar:timedStatus('Cleared data', 2)
+    config = { floors = 0, remoteId = 0 }
+    Config.update('elevatorscreen', { })
+    self.grid:setValues({})
+    setupDialog.form:setValues(config)
+    setupDialog:show()
   elseif event.type == 'quit' then
     UI:quit()
   else
@@ -84,5 +112,6 @@ function page:eventHandler(event)
   return true
 end
 
-UI:setPage(page)
+UI:setPages({ mainPage, setupDialog })
+UI:setPage(mainPage)
 UI:start()
