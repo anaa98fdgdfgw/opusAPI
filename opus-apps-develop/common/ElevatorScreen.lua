@@ -3,7 +3,6 @@
 
 local Config = require('opus.config')
 local UI     = require('opus.ui')
-local Util   = require('opus.util')
 
 peripheral.find('modem', rednet.open)
 
@@ -24,6 +23,8 @@ if config.floors <= 0 or config.id <= 0 then
   config.id = tonumber(read()) or 0
   Config.update('ElevatorScreen', config)
 end
+
+print('Press Ctrl-E to clear settings')
 
 local device = UI.term
 local width, height = device.width, device.height
@@ -54,7 +55,12 @@ local topFloor = config.floors - 1
 local floor = topFloor
 
 for p = 1, pages do
-  local pg = UI.Page{}
+  local pg = UI.Page{
+    accelerators = {
+      ['control-e'] = 'clear',
+      ['control-q'] = 'quit',
+    },
+  }
   pg.buttons = {}
   local x = 2
   local y = height - 1
@@ -103,7 +109,14 @@ end
 
 for i, pg in ipairs(pageList) do
   function pg:eventHandler(event)
-    if event.type == 'button_press' then
+    if event.type == 'clear' then
+      fs.delete('usr/config/ElevatorScreen')
+      UI:quit()
+      return true
+    elseif event.type == 'quit' then
+      UI:quit()
+      return true
+    elseif event.type == 'button_press' then
       if event.button == self.next then
         currentPage = currentPage + 1
         UI:setPage(pageList[currentPage])
