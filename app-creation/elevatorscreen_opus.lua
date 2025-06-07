@@ -11,9 +11,12 @@ local os       = _G.os
 UI:configure('ElevatorScreen', ...)
 peripheral.find('modem', rednet.open)
 
--- use monitor when available
+-- prefer vnc when available, otherwise use a monitor
+local vnc = Peripheral.get({ type = 'vnc' })
 local monitor = Peripheral.get({ type = 'monitor' })
-if monitor then
+if vnc then
+  UI:setDefaultDevice(UI.Device { device = vnc })
+elseif monitor then
   monitor.setTextScale(0.5)
   UI:setDefaultDevice(UI.Device { device = monitor })
 end
