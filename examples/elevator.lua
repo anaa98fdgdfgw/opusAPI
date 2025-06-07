@@ -40,8 +40,8 @@ UI:configure('elevator')
 local mw, mh = device.width, device.height
 local buttonsPerColumn = math.floor(mh/2)
 local columns = math.min(math.ceil(cfg.floors/buttonsPerColumn), 3)
-local maxPerPage = buttonsPerColumn * columns
-local pages = math.ceil(cfg.floors/maxPerPage)
+local maxButtons = buttonsPerColumn * 3
+local pages = math.ceil(cfg.floors/maxButtons)
 local buttonWidth = mw - 2
 if cfg.floors * 2 >= mh then
   buttonWidth = math.floor((mw-columns-3)/columns)
@@ -51,25 +51,63 @@ if cfg.page > pages then
 end
 
 local pageList = {}
-local floor = cfg.floors - 1
-for p=1,pages do
-  local page = UI.Page { backgroundColor = 'black' }
-  local x = 2
-  local y = 1
-  local maxY = mh-1
-  for c=1,columns do
-    y = 1
-    while y <= maxY and floor >= 0 do
-      page:add{ [tostring(floor)] = UI.Button {
-        x = x, y = y, width = buttonWidth,
-        text = tostring(floor), backgroundColor = 'red', textColor = 'lime',
-        event = 'choose_floor', floor = floor
-      }}
-      y = y + 2
-      floor = floor - 1
-    end
-    x = x + buttonWidth + 2
+local pageIndex = 1
+pageList[pageIndex] = UI.Page { backgroundColor = 'black' }
+
+local minX = 2
+local maxX = mw - 1
+local minY = 1
+local maxY = minY
+local topFloor = cfg.floors - 1
+
+if topFloor < buttonsPerColumn then
+  for i = topFloor, 0, -1 do
+    pageList[pageIndex]:add{ [tostring(i)] = UI.Button {
+      x = minX, y = minY, width = buttonWidth,
+      text = tostring(i), backgroundColor = 'red', textColor = 'lime',
+      event = 'choose_floor', floor = i
+    }}
+    minY = minY + 2
+    maxY = minY
   end
+else
+  minX = 2
+  maxX = minX + buttonWidth
+  minY = mh - 1
+  maxY = minY
+  for i = 0, topFloor do
+    pageList[pageIndex]:add{ [tostring(i)] = UI.Button {
+      x = minX, y = minY, width = buttonWidth,
+      text = tostring(i), backgroundColor = 'red', textColor = 'lime',
+      event = 'choose_floor', floor = i
+    }}
+    local remaining = topFloor - i
+    minY = maxY - 2
+    maxY = minY
+    if maxY <= 0 then
+      minX = maxX + 2
+      maxX = minX + buttonWidth
+      minY = mh - 1
+      maxY = minY
+      if maxX > mw then
+        pageIndex = pageIndex + 1
+        pageList[pageIndex] = UI.Page { backgroundColor = 'black' }
+        minX = 2
+        maxX = minX + buttonWidth
+        minY = mh - 1
+        maxY = minY
+      end
+      if remaining < buttonsPerColumn then
+        minY = mh - 1 - ((buttonsPerColumn - remaining) * 2)
+        maxY = minY
+      end
+    end
+  end
+end
+
+pages = pageIndex
+for p = 1, pages do
+  local page = pageList[p]
   if p > 1 then
     page:add{ back = UI.Button{ x = 1, y = mh, width = 4, text = '<<', event = 'prev_page' } }
   end
